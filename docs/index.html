@@ -12,12 +12,19 @@
 <div id="app">加载中...</div>
 <script>
   window.$docsify = {
-    name: 'Study Notes',
+    name: 'White\'s Notes',
     nameLink: '/',
-    repo: 'whiteChen233/StudyNotes',
+    repo: 'whiteChen233/notes',
     loadSidebar: true,
+    autoHeader: true,
+    subMaxLevel: 2,
     coverpage: true,
+    auto2top: true,
     homepage: 'home.md',
+    notFoundPage: true,
+    alias: {
+      '/.*/_sidebar.md': '/_sidebar.md'
+    },
     // 搜索配置
     search: {
       paths: 'auto',
