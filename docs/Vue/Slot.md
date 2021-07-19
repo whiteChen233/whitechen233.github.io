@@ -85,7 +85,7 @@
 
 <script>
   Vue.component('cpn', {
-    template: '#cpn'，
+    template: '#cpn',
     data () {
       return {
         list: ['Java','C++','C#']
