@@ -47,7 +47,7 @@ module.exports = {
   "description": "xxx",
   "main": "xxx",
   "scripts": {
-    // 使用 npm run [commond] 来执行定义的命令
+    // 使用 npm run [command] 来执行定义的命令
     "test": "echc \"Error: no test specified\" && exit 1",
     "build": "webpack",
   },
@@ -150,12 +150,16 @@ module.exports = {
 </html>
 ```
 
-使用webpack打包后运行，打包的过程应该不会出错，但是运行起来没有效果，查看浏览器控制台有报错，应该是因为Vue的runtime-only与runtime-complier的区别：
+对上述代码使用webpack打包并运行，其中打包的过程应该不会出错，但是运行起来没有效果，查看浏览器控制台有报错，这里有下面这个问题：
 
-- runtime-only:代码中不可以含有任何template
-- runtime-complier:代码中可以有template，因为可以使用complier对其进行编译
+> Vue的runtime-only与runtime-compiler的区别：
+>
+> - runtime-only:代码中不可以含有任何template
+> - runtime-compiler:代码中可以有template，因为可以使用compiler对其进行编译
+>
+> 这里有[官方解释](https://cn.vuejs.org/v2/guide/installation.html#%E8%BF%90%E8%A1%8C%E6%97%B6-%E7%BC%96%E8%AF%91%E5%99%A8-vs-%E5%8F%AA%E5%8C%85%E5%90%AB%E8%BF%90%E8%A1%8C%E6%97%B6)
 
-上面的代码使用的是runtime-only但是却包含了template(`<div id="app"></div>`),这里有[官方解释](https://cn.vuejs.org/v2/guide/installation.html#%E8%BF%90%E8%A1%8C%E6%97%B6-%E7%BC%96%E8%AF%91%E5%99%A8-vs-%E5%8F%AA%E5%8C%85%E5%90%AB%E8%BF%90%E8%A1%8C%E6%97%B6)
+上面的代码使用的是runtime-only但是却包含了template(`<div id="app"></div>`),所以代码执行不了
 
 ```javascript
 //webpack.config.js
@@ -286,9 +290,72 @@ module.exports = {
   // ...
   devServer： {
     contentBase: './dist',
-    iline: true
+    inline: true
   }
 }
 ```
 
 另外在package.json中配置一个新的script: `"dev": "webpack-dev-server --open"`, 其中`--open`参数表示直接打开浏览器
+
+## 配置分离
+
+有时候需要把生产的配置和开发的配置分开来，以便管理。一般分成3个文件：
+
+- base.config.js ———— 基础的一些配置
+- dev.config.js ———— dev的一些配置
+- prod.config.js ———— prod的一些配置
+
+在分离之前，需要先安装`webpack-merge`来合并分离后的配的文件，使用`npm install --save-dev webpack-merge`安装
+
+```JavaScript
+// base.config.js、dev.config.js、prod.config.js在同一个文件夹中
+
+// base.config.js
+module.exports = {
+  // 一些dev和prod都有的配置 ...
+}
+
+// dev.config.js
+const webpackMerge = require('wepack-merge')
+const baseConfig = require('./base.config.js')
+
+module.exports = webpackMerge(baseConfig, {
+  // 一些dev独有的配置 ...
+  devServer: {
+    // ...
+  }
+})
+
+// prod.config.js
+const webpackMerge = require('wepack-merge')
+const baseConfig = require('./base.config.js')
+const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin')
+
+module.exports = webpackMerge(baseConfig, {
+  // 一些prod独有的配置 ...
+  plugins: [
+    // ...
+    new UglifyJsWebpackPlugin()
+  ]
+})
+```
+
+修改之后需要将`package.json`中的script脚本修改一下：
+
+```JavaScript
+/**
+ * 假设文件结构如下
+ * - packasge.json
+ * - build
+ *    - base.config.js
+ *    - dev.config.js
+ *    - prod.config.js
+ */
+  script： {
+    // 默认的webapck.config.js不用了 手动指定配置文件位置
+    "build": "webpack --config ./build/prod.config.js"
+    "dev": "webpack-dev-server --open --config ./build/dev.config.js"
+  }
+```
+
+> Tips：此时打包，会发现根目录下的dist没有打包出来的文件，而是在build文件夹下，这是因为`base.config.js`中配置的`output`的`path.reslove(__dirname, 'dist')`，将`'dist'`修改为`'../dist'`即可

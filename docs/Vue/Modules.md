@@ -28,7 +28,7 @@
 ### CommonJS 中的使用
 
 ```javascript
-// 以下代码需要运行环境
+// 以下代码需要运行环境支持
 
 // 导出
 module.exports = {
