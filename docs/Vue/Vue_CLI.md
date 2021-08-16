@@ -10,13 +10,13 @@ CLI(Commmand-Line Interface)，翻译为命令行界面，俗称脚手架。
 
 Vue CLI是一个官方发布的Vue.js项目脚手架。使用它可以快速搭建Vue爱发环境以及对应的webpack配置。
 
-## 使用前提
+## Vue CLI的使用
+
+### 使用前提
 
 - node：使用脚手架需要node环境，node也会安装npm(node package manager)
 
 - webpack：脚手架工具就使用了webpack模板，对所有的资源会压缩等优化操作，并在开发中提供了一套完整的功能，能够使得开发变得更高效。
-
-## Vue CLI的使用
 
 ### 安装
 
@@ -83,3 +83,12 @@ Vue CLI是一个官方发布的Vue.js项目脚手架。使用它可以快速搭�
 - index.html —— index的模板
 - package.json
 - README.md
+
+### Vue CLI 3
+
+与 vue-cli 2 的区别
+
+1. vue-cli 3 是基于 webpack 4 打造，vu-cli 2 还是 webpack 3
+2. vue-cli 3 的设计原则是"0配置"，移除了跟文件目录下的build、config等配置文件的目录
+3. vue-cli 3 增加了 vue ui 命令，提供了可视化配置，更加人性化
+4. 移除了 static 文件夹，新增了 public 问加纳及，并且 index.html 移动到 public 中
