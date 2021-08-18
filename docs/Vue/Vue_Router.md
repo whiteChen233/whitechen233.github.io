@@ -43,3 +43,70 @@
 单页Web应用（single page web application，SPA），就是只有一个Web页面的应用。其实SPA最主要的特点就是在前后端分离的基础上加了一层前端路由，也就是前端来维护一套路由规则。
 
 前端路由的核心是：改变 URL，不会造成整个页面的刷新。
+
+## URL的hash和HTML5的history
+
+### URL的hash
+
+1. URL的hash：URL的hash也就是锚点(#)，本质上是改变`window.location`的`href`属性，可以直接通过`location.hash`来改变`href`，但是页面不会发生刷新。
+2. 当页面中的 hash 发生变化时，会触发`hashchange`事件，可以通过监听这个事件来判断路由是否发生了变化。
+
+```javascript
+window.addEventListener(
+  'hashchange',
+  event => {
+    const oldURL = event.oldURL // 上一个URL
+    const newURL = event.newURL // 当前的URL
+    console.log(newURL, oldURL)
+  },
+  false
+)
+```
+
+> href -> <font color="red">h</font>yper <font color="red">ref</font>erence 的缩写
+
+### window的history
+
+Window.history 是一个只读属性，用来获取 History 对象的引用，History 对象提供了操作浏览器会话历史（浏览器地址栏中访问的页面，以及当前页面中通过框架加载的页面）的接口。
+
+History API：
+
+1. 向后跳转：`window.history.back()`，这和用户点击浏览器回退按钮的效果相同。
+2. 向前跳转：`window.history.forward()`，这和用户点击浏览器前进按钮的效果相同。
+3. 跳转到 history 中指定的一个点: `window.history.go()`，用`go()`方法载入到会话历史中的某一特定页面，通过与当前页面相对位置来标志 (当前页面的相对位置标志为0).
+
+    ```JavaScript
+      window.history.go(-1)   // 相当于 back()
+      window.history.go(1)    // 相当于 forward()
+
+      // 通过查看长度属性的值来确定的历史堆栈中页面的数量
+      let numberOfEntries = window.history.length;
+    ```
+
+4. 添加和修改历史记录中的条目：
+
+    HTML5引入了 history.pushState() 和 history.replaceState() 方法，它们分别可以添加和修改历史记录条目。这些方法通常与window.onpopstate 配合使用。
+    - `pushState()`方法：
+
+        pushState() 需要三个参数: 一个状态对象, 一个标题 (目前被忽略), 和 (可选的) 一个URL. 让我们来解释下这三个参数详细内容：
+        - **状态对象** — 状态对象state是一个JavaScript对象，通过`pushState()`创建新的历史记录条目。无论什么时候用户导航到新的状态，popstate事件就会被触发，且该事件的state属性包含该历史记录条目状态对象的副本。  
+        状态对象可以是能被序列化的任何东西。原因在于Firefox将状态对象保存在用户的磁盘上，以便在用户重启浏览器时使用，我们规定了状态对象在序列化表示后有640k的大小限制。如果你给`pushState()`方法传了一个序列化后大于640k的状态对象，该方法会抛出异常。如果你需要更大的空间，建议使用 sessionStorage 以及 localStorage.
+        - **标题** — Firefox 目前忽略这个参数，但未来可能会用到。在此处传一个空字符串应该可以安全的防范未来这个方法的更改。或者，你可以为跳转的state传递一个短标题。
+        - **URL** — 该参数定义了新的历史URL记录。注意，调用`pushState()`后浏览器并不会立即加载这个URL，但可能会在稍后某些情况下加载这个URL，比如在用户重新打开浏览器时。新URL不必须为绝对路径。如果新URL是相对路径，那么它将被作为相对于当前URL处理。新URL必须与当前URL同源，否则 pushState() 会抛出一个异常。该参数是可选的，缺省为当前URL。
+
+        在某种意义上，调用`pushState()`与设置`window.location = "#foo"`类似，二者都会在当前页面创建并激活新的历史记录。但`pushState()`具有如下几条优点：
+        - 新的 URL 可以是与当前URL同源的任意URL 。相反，只有在修改哈希时，设置`window.location`才能是同一个 document。
+        - 如果你不想改URL，就不用改。相反，设置`window.location = "#foo"`在当前哈希不是 #foo 时， 才能创建新的历史记录项。
+        - 你可以将任意数据和新的历史记录项相关联。而基于哈希的方式，要把所有相关数据编码为短字符串。
+        - 如果 标题 随后还会被浏览器所用到，那么这个数据是可以被使用的（哈希则不是）。
+        注意`pushState()`绝对不会触发 hashchange 事件，即使新的URL与旧的URL仅哈希不同也是如此。
+
+    - `replaceState()`方法：
+
+        `history.replaceState()`的使用与`history.pushState()`非常相似，区别在于`replaceState()`是修改了当前的历史记录项而不是新建一个。注意这并不会阻止其在全局浏览器历史记录中创建一个新的历史记录项。
+
+        `replaceState()`的使用场景在于为了响应用户操作，你想要更新状态对象state或者当前历史记录的URL。
+
+    - `popstate`事件：
+
+        每当活动的历史记录项发生变化时， popstate 事件都会被传递给window对象。如果当前活动的历史记录项是被 pushState 创建的，或者是由 replaceState 改变的，那么 popstate 事件的状态属性 state 会包含一个当前历史记录状态对象的拷贝。
