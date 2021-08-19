@@ -110,3 +110,145 @@ History API：
     - `popstate`事件：
 
         每当活动的历史记录项发生变化时， popstate 事件都会被传递给window对象。如果当前活动的历史记录项是被 pushState 创建的，或者是由 replaceState 改变的，那么 popstate 事件的状态属性 state 会包含一个当前历史记录状态对象的拷贝。
+
+## 安装和使用 vue-router
+
+目前前端主流的三大框架，都有自己的路由实现：
+
+- Angular的ngRouter
+- React的ReactRouter
+- Vue的vue-router
+
+vue-router是Vue.js的官方路由插件，它和vue.js是深度集成的，适合于构建单页面应用。
+
+vue-router是基于路由和组件的，路由用于设定访问路径，将路径和组件映射起来。在单页面应用中，页面路径的改变就是组件的切换。
+
+### 安装
+
+执行以下命令安装vue-router：
+
+```shell
+npm install vue-router --save
+```
+
+在模块化工程中使用它(因为是一个插件，所以可以通过`Vue.use()`来安装路由功能)
+
+- 第一步：**导入**路由对象，并且调用`Vue.use(VueRouter)`
+- 第二步：创建**路由实例**，并且传入路由**映射配置**
+- 第三步：在**Vue实例**中**挂载**创建的**路由实例**
+
+```javascript
+// /router/index.js
+import Vue from 'vue'
+import VueRoter from 'vue-router'
+// 安装插件
+Vue.use(VueRouter)
+// 创建VueRouter对象
+const routers = []
+// 创建路由对象
+export default new VueRouter({
+  routers
+})
+
+
+// /main.js
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+
+export default new Vue ({
+  el: '#app',
+  router,
+  render: h => h(App)
+})
+```
+
+### 使用
+
+使用vue-router的步骤：
+
+- 第一步：创建路由组件
+- 第二步：配置路由映射：组件和路径映射关系
+- 第三步：使用路由：`<router-link>`和`<router-view>`
+
+```javascript
+// /router/index.js
+// 省略其他代码...
+// 创建VueRouter对象
+const routers = [
+  {
+    path: '/home',
+    component: () => import('../components/Home'),
+  },
+  {
+    path: '/about',
+    component: () => import('../components/About'),
+  }
+]
+
+
+// /App.vue
+<template>
+  <div id="app">
+    <router-link to="/home">首页</router-link>
+    <router-link to="/about">关于</router-link>
+    <router-view></router-view>
+  </div>
+</template>
+// 省略其他代码...
+```
+
+- `<router-link>`：该标签是一个vue-router中已经内置的组件，它最终会被渲染成a标签
+- `<router-view>`：该标签会根据当前路由的路径，动态渲染出不同的组件
+- 网页的其他内容，比如顶部的标题/导航，或者底部的一些版权信息等会和`<router-view>`处于同一个等级
+- 在路由切换时，切换的是`<router-view>`挂载的组件，其他内容不会发生改变
+
+> router-link 补充
+>
+> 除了之前使用的属性`to`，指定跳转的路径，还有一些其他属性：
+>
+> - `tag`：指定`<router-link>`最终渲染成什么标签，默认是`<a>`。`<router-link to='/' tag='li'>`最终会渲染成`<li>`
+> - `replace`：不会留下history记录，和使用`history.replaceState()`效果一样。`<router-link to='/' replace>`
+> - `active-class`：当`<router-link>`对应的路由匹配成功是，会自动给当前的元素设置一个`router-link-active`的calss，可以通过设置`active-class`来修改默认的名称。
+>   - 在进行高亮显示的导航菜单或者底部tabbar时，会使用到该类
+>   - 一般会直接使用默认值而不会修改类的属性
+>   - 也可以在VueRouter中配置`linkActiveClass`来指定全局的类名
+
+### 默认首页
+
+一般情况下，进入网站首页希望默认渲染某个页面的内容，在之前的例子中需要在routers中添加如下代码即可：
+
+```javascript
+// 配置一个根路径的映射，重定向到/home
+{
+  path: '/',
+  redirect: '/home'
+}
+```
+
+### history 模式
+
+默认情况下，vue-router是使用hash模式的，也就是url上会带上一个`#`，这样不太美观，通过修改router的mode属性来变更为history模式
+
+```javascript
+// 添加 mode 属性
+export default new VueRouter({
+  routers，
+  mode: 'history'
+})
+```
+
+### 编程式的导航
+
+除了使用`<router-link>`创建 a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现。
+
+- `router.push(location, onComplete?, onAbort?)`
+- `router.replace(location, onComplete?, onAbort?)`
+- `router.go(n)`
+
+在`Vue`实例内部，你可以通过`$router`访问路由实例。因此你可以调用`this.$router.push`
+
+|声明式|编程式|
+|:---:|:---:|
+|`<router-link :to="...">`|`router.push(...)`|
+|`<router-link :to="..." replace>`|`router.replace(...)`|
