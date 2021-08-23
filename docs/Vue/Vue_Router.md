@@ -252,3 +252,162 @@ export default new VueRouter({
 |:---:|:---:|
 |`<router-link :to="...">`|`router.push(...)`|
 |`<router-link :to="..." replace>`|`router.replace(...)`|
+
+## 动态路由
+
+在某些情况下，一个页面的路径可能时不确定的，比如某个系统中用户界面，形如：`/user/zhangsan`、`/user/123`，除了前面的`/user`之外，后面还有其他参数。这种path和Component的匹配关系，称之为动态路由（也是路由传递数据的一种方式）。
+
+```JavaScript
+// router.js
+{
+  path: '/user/:id',
+  component: () => import('@/components/User')
+}
+
+// User.vue
+methods: {
+  getId () {
+    // 注意这里是route而不是router
+    return this.$route.params.id
+  }
+}
+```
+
+### 响应路由参数的变化
+
+需要注意的是，当使用路由参数时，例如从`/user/foo`导航到`/user/bar`，原来的组件实例会被复用。因为两个路由都渲染同个组件，比起销毁再创建，复用则显得更加高效。不过，这也意味着组件的生命周期钩子不会再被调用。
+
+复用组件时，想对路由参数的变化作出响应的话，你可以简单地`watch`(监测变化)`$route`对象：
+
+```JavaScript
+const User = {
+  template: '...',
+  watch: {
+    $route(to, from) {
+      // 对路由变化作出响应...
+    }
+  }
+}
+```
+
+或者使用 2.2 中引入的`beforeRouteUpdate`导航守卫：
+
+```JavaScript
+const User = {
+  template: '...',
+  beforeRouteUpdate(to, from, next) {
+    // react to route changes...
+    // don't forget to call next()
+  }
+}
+```
+
+## 路由懒加载
+
+当打包构建应用时，JavaScript 包会变得非常大，影响页面加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件，这样就更加高效了。
+
+结合 Vue 的异步组件 (opens new window)和 Webpack 的代码分割功能 (opens new window)，轻松实现路由组件的懒加载。
+
+首先，可以将异步组件定义为返回一个 Promise 的工厂函数 (该函数返回的 Promise 应该 resolve 组件本身)：
+
+```JavaScript
+const Foo = () =>
+  Promise.resolve({
+    /* 组件定义对象 */
+  })
+```
+
+第二，在 Webpack 2 中，我们可以使用动态 import (opens new window)语法来定义代码分块点 (split point)：
+
+```JavaScript
+import('./Foo.vue') // 返回 Promise
+```
+
+结合这两者，这就是如何定义一个能够被 Webpack 自动代码分割的异步组件。
+
+```JavaScript
+const Foo = () => import('./Foo.vue')
+```
+
+在路由配置中什么都不需要改变，只需要像往常一样使用 Foo：
+
+```JavaScript
+const router = new VueRouter({
+  routes: [{ path: '/foo', component: Foo }]
+})
+```
+
+### 懒加载的几种方法
+
+1. 结合Vue的异步组件和webpack的代码分析
+
+    ```javascript
+    const Home = resolve => {
+      require.ensure(['../components/Home.vue'], () => {
+        resolve(require('../components/Home.vue'))
+      })
+    }
+    ```
+
+2. AMD写法
+
+    ```JavaScript
+    const Home = resolve => require(['../components/Home.vue'], resolve)
+    ```
+
+3. 在ES6中，可以使用跟简单的写法来组织Vue一部组件和Webpack的代码分割
+
+    ```JavaScript
+    const Home = () => import('../components/Home.vue')
+    ```
+
+### 把组件按组分块
+
+有时候我们想把某个路由下的所有组件都打包在同个异步块 (chunk) 中。只需要使用 命名 chunk (opens new window)，一个特殊的注释语法来提供 chunk name (需要 Webpack > 2.4)。
+
+```JavaScript
+const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue')
+const Bar = () => import(/* webpackChunkName: "group-foo" */ './Bar.vue')
+const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue')
+```
+
+Webpack 会将任何一个异步模块与相同的块名称组合到相同的异步块中。
+
+## 嵌套路由
+
+嵌套路由是一个很常见的功能，比如在home页面中，可以通过`/home/news`和`/home/message`访问不同的页面（组件），其实就是一个路径映射一个组件，访问这两个路径会分别渲染这两个组件。
+
+如何实现嵌套路由：
+
+- 创建对应的子组件，并且在路由映射中配置对应的子路由
+- 在组件内部使用`<router-view>`标签
+
+```JavaScript
+{
+  path: '/home',
+  component: () => import('../components/Home'),
+  children: [
+    {
+      path: 'news',
+      component: () => import('../components/News'),
+    },
+    {
+      path: 'message',
+      component: () => import('../components/Message'),
+    }
+  ]
+}
+```
+
+## 参数传递
+
+有时候在页面的跳转中需要从上一个页面传递一些参数到下一个页面，这里需要router来传参。主有两种传参的方式：
+
+- params的形式：
+  - 配置路由格式： `/user/:id`
+  - 传递的方式：在`path`后面跟傻瓜对应的值
+  - 传递后形成的路径：`/user/123`或`/user/zhangsan`，通过`$route.params.id`来获取上面定义的参数
+- query的形式：
+  - 配置路由格式： `/user`，普通的配置
+  - 传递的方式：对象中使用`query`的key作为传递方式，传递的其实是一个对象
+  - 传递后形成的路径：`/user?id=123`或`/user?id=zhangsan`,通过`$route.query`来获取上面定义的参数
