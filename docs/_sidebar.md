@@ -15,3 +15,4 @@
 
 * Other
   * [UML](others/uml/uml.md)
+  * [ES6](/others/es6/)

@@ -19,7 +19,7 @@
 >
 >     render -> vdom -> UI
 
-```JavaScript
+```javascript
 // main.js
 // 使用 runtime-only
 new Vue({
@@ -28,7 +28,7 @@ new Vue({
 })
 ```
 
-```JavaScript
+```javascript
 // main.js
 // 使用 runtime-compiler
 new Vue({

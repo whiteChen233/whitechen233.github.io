@@ -22,7 +22,7 @@ webpack需要nodejs的环境，使用nodejs中的包管理器npm安装webpack: `
 
 output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。
 
-```JavaScript
+```javascript
 // webpack.config.js
 const path = require('path')
 
@@ -68,7 +68,7 @@ loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身�
 1. test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。
 2. use 属性，表示进行转换时，应该使用哪个 loader。
 
-```JavaScript
+```javascript
 // webpack.config.js
 const path = require('path')
 
@@ -105,7 +105,7 @@ module.exports = config
 
 使用babel这个loader可以将ES6的语法转换成ES5，使用这条命令安装`npm install babel-loader babel-core babel-preset-2015`
 
-```JavaScript
+```javascript
 // webpack.config.js
 module.exports = {
   // ...
@@ -240,7 +240,7 @@ HtmlWebpackPlugin：自动生成index.html文件，将打包的js文件自动通
 
 配置：
 
-```JavaScript
+```javascript
 // webpack.config.js
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
@@ -262,7 +262,7 @@ module.exports = {
 
 配置：
 
-```JavaScript
+```javascript
 // webpack.config.js
 const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
@@ -284,7 +284,7 @@ webpack提供了一个可选的本地开发服务器，这个本地服务器基�
 - inline: 页面实时刷新
 - historyApiFallback: 在SPA页面中，依赖HTML5的history模式
 
-```JavaScript
+```javascript
 // webpack.config.js
 module.exports = {
   // ...
@@ -307,7 +307,7 @@ module.exports = {
 
 在分离之前，需要先安装`webpack-merge`来合并分离后的配的文件，使用`npm install --save-dev webpack-merge`安装
 
-```JavaScript
+```javascript
 // base.config.js、dev.config.js、prod.config.js在同一个文件夹中
 
 // base.config.js
@@ -342,7 +342,7 @@ module.exports = webpackMerge(baseConfig, {
 
 修改之后需要将`package.json`中的script脚本修改一下：
 
-```JavaScript
+```javascript
 /**
  * 假设文件结构如下
  * - packasge.json
