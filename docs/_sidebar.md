@@ -5,14 +5,14 @@
 * Linux
   * [Test](/Linux/a.md)
 
-* [Vue](/vue/)
-  * [组件化 Component](vue/component.md)
-  * [插槽 Slot](vue/slot.md)
-  * [模块化 Modules](vue/modules.md)
-  * [模块打包器 Webpack](vue/webpack.md)
-  * [Vue脚手架 Vue CLI](vue/vue_cli.md)
-  * [路由管理器 Vue-Router](vue/vue_router.md)
+* [Vue](/Vue/)
+  * [组件化 Component](Vue/Component.md)
+  * [插槽 Slot](Vue/Slot.md)
+  * [模块化 Modules](Vue/Modules.md)
+  * [模块打包器 Webpack](Vue/Webpack.md)
+  * [Vue脚手架 Vue CLI](Vue/Vue_CLI.md)
+  * [路由管理器 Vue-Router](Vue/Vue_Router.md)
 
 * Other
-  * [UML](others/uml/uml.md)
-  * [ES6](/others/es6/)
+  * [UML](Others/UML/UML.md)
+  * [ES6](Others/ES6/)
