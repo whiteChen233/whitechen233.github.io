@@ -108,10 +108,55 @@ new Promise((resolve, reject) => {
 2. 参数
 
    - onRejected
-       当Promise 被rejected时,被调用的一个Function。 该函数拥有一个参数：
-       reason    rejection 的原因。
-       如果 onRejected 抛出一个错误或返回一个本身失败的 Promise ，  通过 catch() 返回的Promise 被rejected；否则，它将显示为成功（resolved）。
+       当 Promise 被 rejected 时,被调用的一个Function。 该函数拥有一个参数：
+
+       `reason`    rejection 的原因。
+
+       如果`onRejected`抛出一个错误或返回一个本身失败的 Promise ，  通过`catch()`返回的 Promise 被rejected；否则，它将显示为成功（resolved）。
 
 3. 返回值
 
     一个`Promise`
+
+## `Promise.resolve()`
+
+`Promise.resolve(value)`方法返回一个以给定值解析后的`Promise`对象。如果这个值是一个 promise ，那么将返回这个 promise ；如果这个值是thenable（即带有`then`方法），返回的promise会“跟随”这个thenable的对象，采用它的最终状态；否则返回的promise将以此值完成。此函数将类promise对象的多层嵌套展平。
+
+1. 语法
+
+    `Promise.resolve(value)`
+2. 参数
+
+    `value`：将被Promise对象解析的参数，也可以是一个Promise对象，或者是一个thenable。
+3. 返回值
+
+    返回一个带着给定值解析过的Promise对象，如果参数本身就是一个Promise对象，则直接返回这个Promise对象。
+
+## `Promise.reject()`
+
+`Promise.reject()`方法返回一个带有拒绝原因的Promise对象。
+
+1. 语法
+
+    `Promise.reject(reason)`
+2. 参数
+
+    `reason`：表示Promise被拒绝的原因。
+3. 返回值
+
+    一个给定原因了的被拒绝的 Promise。
+
+## `Promise.all()`
+
+`Promise.all()`方法接收一个promise的iterable类型（注：Array，Map，Set都属于ES6的iterable类型）的输入，并且只返回一个`Promise`实例， 那个输入的所有promise的resolve回调的结果是一个数组。这个`Promise`的resolve回调执行是在所有输入的promise的resolve回调都结束，或者输入的iterable里没有promise了的时候。它的reject回调执行是，只要任何一个输入的promise的reject回调执行或者输入不合法的promise就会立即抛出错误，并且reject的是第一个抛出的错误信息。
+
+1. 语法
+
+    `Promise.all(iterable)`
+2. 参数
+
+    `iterable`：一个可迭代对象，如 Array 或 String。
+3. 返回值
+    - 如果传入的参数是一个空的可迭代对象，则返回一个**已完成（already resolved**状态的`Promise`。
+    - 如果传入的参数不包含任何`promise`，则返回一个**异步完成（asynchronously resolved）** Promise。注意：Google Chrome 58 在这种情况下返回一个**已完成（already resolved）**状态的 Promise。
+    - 其它情况下返回一个**处理中（pending）**的`Promise`。这个返回的`promise`之后会在所有的 promise 都完成或有一个 promise 失败时**异步**地变为完成或失败。 见下方关于“Promise.all 的异步或同步”示例。返回值将会按照参数内的`promise`顺序排列，而不是由调用 `promise` 的完成顺序决定。
