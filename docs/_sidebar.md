@@ -3,7 +3,7 @@
 * [Home](/)
 
 * Linux
-  * [Test](/Linux/a.md)
+  * [Test](/Linux/A.md)
 
 * [Vue](/Vue/)
   * [组件化 Component](Vue/Component.md)

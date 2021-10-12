@@ -19,26 +19,30 @@
 >
 >     render -> vdom -> UI
 
+使用 runtime-only 的写法
+
 ```javascript
 // main.js
-// 使用 runtime-only
 new Vue({
   el: '#app',
   render: h => h(App)
 })
 ```
 
+使用 runtime-compiler 的写法
+
 ```javascript
 // main.js
-// 使用 runtime-compiler
 new Vue({
   el: '#app',
   template: '<App/>',
   components: { App }
 })
+```
 
-// runtime-only 中 h，实际上是 createElement 函数。所以上面这种写法可以改成如下
+runtime-only 中的函数 h，实际上是 createElement 函数。所以上面这种写法可以改成如下
 
+```javascript
 // createElement 的一种用法: createElement('标签',{标签的属性},[内容])
 new Vue({
   el: '#app',
@@ -57,7 +61,7 @@ import cpn from './cpn'
 new Vue({
   el: '#app',
   render: createElement => {
-    // createElement的用法: createElement(组件)。如果将组件 cpn 换成App，其实就更 runtime-only 的写法是一样的了
+    // createElement的用法: createElement(组件)。如果将组件 cpn 换成 App，其实就跟 runtime-only 的写法是一样的了
     return createElement(cpn)
   }
 })
@@ -65,5 +69,5 @@ new Vue({
 
 更多关于 createElement 的内容，请见[官方文档](https://cn.vuejs.org/v2/guide/render-function.html#createElement-%E5%8F%82%E6%95%B0)
 
-在`runtime-only`中是没有前面从`template —> AST`的处理过程的，那`*.vue`文件中的 template 是由谁处理的呢？  
-—— 由 package.json 的`devDependencies`中引入的`vue-template-compiler`插件完成的
+在`runtime-only`中是没有`runtime-compiler`前面从`template —> AST`的处理过程，那`*.vue`文件中的 template 是由谁处理的呢？  
+—— 由 package.json 中`devDependencies`引入的`vue-template-compiler`插件完成的
