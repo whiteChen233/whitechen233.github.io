@@ -48,7 +48,7 @@ module.exports = {
   "main": "xxx",
   "scripts": {
     // 使用 npm run [command] 来执行定义的命令
-    "test": "echc \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
   },
   "author": ""
