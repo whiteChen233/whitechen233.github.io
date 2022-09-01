@@ -32,6 +32,7 @@
     - [说明](ruankao/xtjgs/start.md)
     - [企业信息化战略与实施](ruankao/xtjgs/enterprise-informatization-strategy-and-implementation.md)
     - [软件工程](ruankao/xtjgs/software-engineering.md)
+    - [软件架构设计](ruankao/xtjgs/software-architecture-design.md)
 
   - [Other](/Others/)
 - plan
