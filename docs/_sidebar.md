@@ -34,6 +34,7 @@
     - [软件工程](ruankao/xtjgs/software-engineering.md)
     - [软件架构设计](ruankao/xtjgs/software-architecture-design.md)
     - [系统架构设计论文](ruankao/xtjgs/design-thesis.md)
+    - [系统安全分析与设计](ruankao/xtjgs/system-security-analysis-and-design.md)
 
   - [Other](/Others/)
 - plan
