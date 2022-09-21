@@ -36,6 +36,7 @@
     - [系统架构设计论文](ruankao/xtjgs/design-thesis.md)
     - [系统安全分析与设计](ruankao/xtjgs/system-security-analysis-and-design.md)
     - [系统可靠性分析与设计](ruankao/xtjgs/system-reliability-analysis-and-design.md)
+    - [项目管理](ruankao/xtjgs/project-management.md)
 
   - [Other](/Others/)
 - plan
