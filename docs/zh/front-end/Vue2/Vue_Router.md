@@ -1,4 +1,7 @@
-# Vue-路由管理器
+---
+title: Vue-路由管理器
+date: 2021-08-17
+---
 
 ## 什么是路由
 
@@ -172,8 +175,8 @@ export default new Vue ({
 - 第三步：使用路由：`<router-link>`和`<router-view>`
 
 ```javascript
-// /router/index.js
-// 省略其他代码...
+// router/index.js
+
 // 创建VueRouter对象
 const routers = [
   {
@@ -185,9 +188,11 @@ const routers = [
     component: () => import('../components/About'),
   }
 ]
+// 省略其他代码...
+```
 
-
-// /App.vue
+```vue
+// App.vue
 <template>
   <div id="app">
     <router-link to="/home">首页</router-link>
@@ -233,7 +238,7 @@ const routers = [
 ```javascript
 // 添加 mode 属性
 export default new VueRouter({
-  routers，
+  routers,
   mode: 'history'
 })
 ```
@@ -248,10 +253,10 @@ export default new VueRouter({
 
 在`Vue`实例内部，你可以通过`$router`访问路由实例。因此你可以调用`this.$router.push`
 
-|声明式|编程式|
-|:---:|:---:|
-|`<router-link :to="...">`|`router.push(...)`|
-|`<router-link :to="..." replace>`|`router.replace(...)`|
+|                声明式                |          编程式          |
+|:---------------------------------:|:---------------------:|
+|     `<router-link :to="...">`     |  `router.push(...)`   |
+| `<router-link :to="..." replace>` | `router.replace(...)` |
 
 ## 动态路由
 
@@ -266,7 +271,7 @@ export default new VueRouter({
 
 // User.vue
 methods: {
-  getId () {
+  getId = () => {
     // 注意这里是route而不是router
     return this.$route.params.id
   }

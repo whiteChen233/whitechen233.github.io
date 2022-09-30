@@ -38,17 +38,17 @@ export const zhSidebar = sidebar({
       prefix: "software-design-engineer/",
       collapsable: true,
       children: [
-        "说明",
-        "计算机组成与结构",
-        "程序语言",
-        "操作系统",
-        "软件工程基础",
-        "系统开发与运行",
-        "网络与多媒体基础知识",
-        "数据库技术",
-        "算法与数据结构",
-        "面向对象技术",
-        "标准化和知识产权"
+        "start",
+        "computer-composition-and-structure",
+        "program-language",
+        "operating-system",
+        "fundamentals-of-software-engineering",
+        "system-development-and-operation",
+        "basic-knowledge-of-network-and-multimedia",
+        "database-technology",
+        "algorithms-and-data-structures",
+        "object-oriented-technology",
+        "standardization-and-intellectual-property"
       ]
     },
     {

@@ -2,6 +2,7 @@ import { navbar } from "vuepress-theme-hope";
 
 export const enNavbar = navbar([
   "/en/",
+  { text: "Slide", icon: "slides", link: "/en/slides" },
   { text: "Demo", icon: "discover", link: "/en/demo/" },
   {
     text: "Posts",
