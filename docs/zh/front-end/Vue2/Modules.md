@@ -1,4 +1,7 @@
-# 模块化
+---
+title: 模块化
+date: 2021-07-17
+---
 
 参考 > MDN-[JavaScript modules 模块](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)
 
@@ -49,72 +52,72 @@ const test = _moduleA.test
 
 ### ES6 中的使用
 
-1. 使用关键字: `export`导出,`import`导入。
+#### 使用关键字: `export`导出,`import`导入。
 
-    导出的功能都是由named exports 组成— 每个项目（无论是函数，常量等）在导出时都由其名称引用，并且该名称也用于在导入时引用它
+导出的功能都是由named exports 组成— 每个项目（无论是函数，常量等）在导出时都由其名称引用，并且该名称也用于在导入时引用它
 
-    ```javascript
-    // 导出
-    // 方式一
-    export const flag = true
-    export function test () {}
-    // 方式二
-    export {
-      flag: true,
-      test () {
-        consloe.log('test')
-      }
-    }
+```javascript
+// 导出
+// 方式一
+export const flag = true
+export function test () {}
+// 方式二
+export const module = {
+  flag: true,
+  test: () => {
+    consloe.log('test')
+  }
+}
 
-    // 导入
-    import { flag, test } from 'moduleA'
-    ```
+// 导入
+import { flag, test } from 'moduleA'
+```
 
-2. 默认导出 versus 命名导出。
+#### 默认导出 versus 命名导出。
 
-    还有一种导出类型叫做 default export —这样可以很容易地使模块提供默认功能，并且还可以帮助JavaScript模块与现有的CommonJS和AMD模块系统进行互操作
+还有一种导出类型叫做 default export —这样可以很容易地使模块提供默认功能，并且还可以帮助JavaScript模块与现有的CommonJS和AMD模块系统进行互操作
 
-    ```javascript
-    // 默认导出，一个模块只能有一个default
-    export default {}
+```javascript
+// 默认导出，一个模块只能有一个default
+export default {}
 
-    // 导入的时候可以自定义名字
-    import customName from 'ModuleA'
-    ```
+// 导入的时候可以自定义名字
+import customName from 'ModuleA'
+```
 
-3. 重命名导出与导入
+#### 重命名导出与导入
 
-    ```javascript
-    // 重命名导出
-    export {
-      function1 as newFunc1,
-      function2 as newFunc2
-    }
+```javascript
+// 重命名导出
+export {
+  function1 as newFunc1,
+  function2 as newFunc2
+}
 
-    // 导入
-    import { newFunc1, newFunc2 } from 'moduleA'
-    ```
+// 导入
+import { newFunc1, newFunc2 } from 'moduleA'
+```
 
-    ```javascript
-    // 导出
-    export { function1, function2 };
+```javascript
+// 导出
+export { function1, function2 };
 
-    // 重命名导入
-    import {
-      function1 as newFunc1,
-      function2 as newFunc2
-    } from 'moduleA'
-    ```
+// 重命名导入
+import {
+  function1 as newFunc1,
+  function2 as newFunc2
+} from 'moduleA'
+```
 
-4. 创建模块对象
+#### 创建模块对象
 
-    导入每一个模块功能到一个模块功能对象上。可以使用以下语法形式：
+导入每一个模块功能到一个模块功能对象上。可以使用以下语法形式：
 
-    ```javascript
-    // 导入
-    import * as ModuleA from 'moduleA'
+```javascript
+// 导入
+import * as ModuleA from 'moduleA'
 
-    // 使用
-    ModuleA.func1()
-    ModuleA.prop1
-    ```
+// 使用
+ModuleA.func1()
+ModuleA.prop1
+```

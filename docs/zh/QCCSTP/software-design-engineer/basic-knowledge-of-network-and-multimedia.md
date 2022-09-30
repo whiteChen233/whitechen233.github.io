@@ -1,4 +1,7 @@
-# 网络与多媒体基础知识
+---
+title: 网络与多媒体基础知识
+date: 2021-10-19
+---
 
 ---
 HTTPS：全称`Hyper Text Transfer Protocol over Secure Socket Layer`，是以安全为目标的HTTP通道，简单讲就是HTTP的安全版。HTTPS在HTTP的基础上加入了SSL协议，SSl依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。

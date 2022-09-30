@@ -1,6 +1,9 @@
-# Vue程序运行过程
+---
+title: Vue程序运行过程
+date: 2021-07-17
+---
 
-`runtime-compiler` 与 `runtime-only` 区别，`runtime-only` 的性能更好，代码量更少（使用两种方式创建项目的时候，complier 比 only 要大）。
+`runtime-compiler` 与 `runtime-only` 区别，`runtime-only` 的性能更好，代码量更少（使用两种方式创建项目的时候，compiler 比 only 要大）。
 
 > 1. runtime-compiler的处理过程
 >

@@ -21,6 +21,9 @@ export default hopeTheme({
   },
   fullscreen: true,
   blog: {
+    description: "Today.do(() -> new Bug());",
+    timeline: '温故而知新~',
+    roundAvatar: true,
     medias: {
       Email: "mailto:white996@qq.com",
       Gmail: "mailto:white294476387@gmail.com",
@@ -35,7 +38,6 @@ export default hopeTheme({
       sidebar: zhSidebar,
       displayFooter: true,
       blog: {
-        description: "Today.do(() -> new Bug());",
         intro: "/zh/intro.html",
       },
       metaLocales: {
@@ -47,7 +49,6 @@ export default hopeTheme({
       sidebar: enSidebar,
       displayFooter: true,
       blog: {
-        description: "Today.do(() -> new Bug());",
         intro: "/en/intro.html",
       },
       metaLocales: {

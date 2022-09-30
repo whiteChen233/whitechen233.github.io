@@ -1,56 +1,121 @@
 ---
-lang: zh-CN
-title: 导航
+layout: Slide
+title: '| 学而不厌，诲人不倦'
 icon: house
 ---
 
-<a style="
-    display:inline-block;
-    width:150px;
-    height:40px;
-    line-height: 40px;
-    text-align:center;
-    text-decoration:none;
-    background-color: #096dd9;
-    color: white;
-    radius: 3px;
-  " href="/zh/">开始</a>
+@slidestart
 
-- 前端
-  - ES6
-    - Promise
-  - Vue 2
-    - runtime与compiler
-    - 组件化 Component
-    - 插槽 Slot
-    - 模块化 Modules
-    - 模块打包器 Webpack
-    - Vue脚手架 Vue CLI
-    - 路由管理器 Vue Router
-    - 状态管理模式 Vuex
-  - Vue 3
-- 软考
-  - 软件设计师
-    - 说明
-    - 计算机组成与结构
-    - 程序语言
-    - 操作系统
-    - 软件工程基础
-    - 系统开发与运行
-    - 网络与多媒体基础知识
-    - 数据库技术
-    - 算法与数据结构
-    - 面向对象技术
-    - 标准化和知识产权
-  - 系统架构师
-    - 说明
-    - 企业信息化战略与实施
-    - 软件工程
-    - 软件架构设计
-    - 系统架构设计论文
-    - 系统安全分析与设计
-    - 系统可靠性分析与设计
-    - 项目管理
-    - 计算机组成与体系结构
-  - Other
-    - UML
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 有人说
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 有人说
+
+三人行，必有我师焉。
+
+——《论语·述而》<!-- .element: class="fragment fade-up" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 有人说
+
+知之为知之，不知为不知，是知也。
+
+——《论语·为政》<!-- .element: class="fragment fade-up" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 有人说
+
+温故而知新，可以为师矣。
+
+——《论语·为政》<!-- .element: class="fragment fade-up" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 有人说
+
+……
+
+能不能讲点听得懂的~<!-- .element: class="fragment fade-in" -->
+
+OK，下面说点简单的<!-- .element: class="fragment fade-in" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 有人说
+
+饭可以一日不吃，
+
+觉可以一日不睡，<!-- .element: class="fragment fade-in" -->
+
+书不可以一日不读。<!-- .element: class="fragment fade-in" -->
+
+这是伟大领袖毛泽东说的。<!-- .element: class="fragment fade-up" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 有人说
+
+好好学习，天天向上！
+
+猜猜这是谁说的？<!-- .element: class="fragment fade-in" -->
+
+这还是伟大领袖毛泽东说的！<!-- .element: class="fragment fade-up" -->
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 我们为什么要学习？
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 我们为什么要学习？
+
+为了升职加薪、当上总经理、出任CEO、迎娶白富美、走上人生巅峰？<!-- .element: class="fragment fade-in" -->
+
+别说，想想还有真点小激动~😎<!-- .element: class="fragment fade-in-then-out" -->
+
+不！不！不！<!-- .element: class="fragment fade-in" -->
+
+那——又是为了什么？<!-- .element: class="fragment fade-up" -->
+
+---
+
+仅仅为了……
+
+为了给这个破笔记写个门面！<!-- .element: class="fragment fade-in r-fit-text" -->
+
+---
+
+对，没错！我把你骗了。😆
+
+反正来都来都来了，就<a style="text-align:center;text-decoration:none;" href="/zh/">进来看看</a>嘛
+
+<!-- .element: class="fragment fade-up" -->
+
+不想看也行，<a style="text-align:center;text-decoration:none;" href="/zh/">立马离开</a>
+
+<!-- .element: class="fragment fade-up" -->
+
+@slideend

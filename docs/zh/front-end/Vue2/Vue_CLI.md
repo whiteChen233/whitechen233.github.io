@@ -1,4 +1,7 @@
-# Vue 脚手架
+---
+title: Vue 脚手架
+date: 2021-07-20
+---
 
 ## 什么是Vue CLI
 
@@ -28,44 +31,46 @@ Vue CLI是一个官方发布的Vue.js项目脚手架。使用它可以快速搭�
    - Vue CLI2: `vue init webpack my-project`
    - Vue CLI3: `vue create my-project`
 
-> Tips:
->
-> 1. 关于旧版本
->
->     Vue CLI 的包名称由`vue-cli`改成了`@vue/cli`。如果已经全局安装了旧版本的 vue-cli (1.x 或 2.x)，需要先通过`npm uninstall vue-cli -g`或`yarn global > remove vue-cli`卸载它。
->
-> 2. 拉取2.X的模板(旧版本)
->
->     Vue CLI >= 3 和旧版使用了相同的 vue 命令，所以 Vue CLI 2 (vue-cli) 被覆盖了。如果你仍然需要使用旧版本的 vue init 功能，你可以全局安装一个桥接工具：
->
->     ```bash
->     npm install -g @vue/cli-init
->     # `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同
->     vue init webpack my-project
->     ```
+::: tip
+##### 关于旧版本
+
+Vue CLI 的包名称由`vue-cli`改成了`@vue/cli`。如果已经全局安装了旧版本的 vue-cli (1.x 或 2.x)，需要先通过`npm uninstall vue-cli -g`或`yarn global > remove vue-cli`卸载它。
+
+##### 拉取2.X的模板(旧版本)
+
+Vue CLI >= 3 和旧版使用了相同的 vue 命令，所以 Vue CLI 2 (vue-cli) 被覆盖了。如果你仍然需要使用旧版本的 vue init 功能，你可以全局安装一个桥接工具：
+
+```bash
+npm install -g @vue/cli-init
+# `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同
+vue init webpack my-project
+```
+:::
 
 ### Vue CLI2初始化项目
 
 执行`vue init webpack my-project`后的一些选项：
 
-- Project name —— 项目名称
-- Project description —— 项目描述
-- Author —— 作者
-- Vue build —— 项目构建方式
+<pre>
+- Project name                                                            —— 项目名称
+- Project description                                                     —— 项目描述
+- Author                                                                  —— 作者
+- Vue build                                                               —— 项目构建方式
   - Runtime + Compiler
   - Runtime only
-- Install vue-router? —— 是否安装路由
-- Use ESLint to lint your code? —— 是否使用ESLint代码规范
+- Install vue-router?                                                     —— 是否安装路由
+- Use ESLint to lint your code?                                           —— 是否使用ESLint代码规范
   - yes -> Pick an ESLint preset
     - Standard
     - Airbnb
     - none(configure it yourself)
-- Set up unit tests —— 单元测试
-- Setup e2e tests whit Nightwatch? —— 端到端单元测试
+- Set up unit tests                                                       —— 单元测试
+- Setup e2e tests whit Nightwatch?                                        —— 端到端单元测试
 - Should we run `npm install` for you after the project has been created? —— 使用哪一个包管理器
+</pre>
 
 生成的项目文件目录：
-
+<pre>
 - build
 - config
 - src
@@ -73,16 +78,17 @@ Vue CLI是一个官方发布的Vue.js项目脚手架。使用它可以快速搭�
   - components
   - App.vue
   - main.js
-- static —— 静态资源，原封不动的复制到dist中
-- .babelrc —— babel的配置
-- .editorconfig —— 保证团队代码编辑风格的统一
-- .eslintignore —— 忽略eslint规则的文件/文件夹
-- .eslintrc.js —— eslit的配置
-- .gitignore —— git版本控制忽略的文件/文件夹
-- .postcsssrc.js —— css转化的配置
-- index.html —— index的模板
+- static          —— 静态资源，原封不动的复制到dist中
+- .babelrc        —— babel的配置
+- .editorconfig   —— 保证团队代码编辑风格的统一
+- .eslintignore   —— 忽略eslint规则的文件/文件夹
+- .eslintrc.js    —— eslit的配置
+- .gitignore      —— git版本控制忽略的文件/文件夹
+- .postcsssrc.js  —— css转化的配置
+- index.html      —— index的模板
 - package.json
 - README.md
+</pre>
 
 ### Vue CLI 3
 
