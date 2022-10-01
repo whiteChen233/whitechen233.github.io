@@ -1,7 +1,7 @@
 ---
 layout: Slide
 title: '| 学而不厌，诲人不倦'
-icon: house
+lang: zh-CN
 ---
 
 @slidestart
