@@ -19,6 +19,15 @@ export default defineUserConfig({
   theme,
   shouldPrefetch: false,
   plugins: [
-    searchPlugin({})
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: 'Search',
+        },
+        '/zh/': {
+          placeholder: '搜索',
+        }
+      }
+    })
   ]
 });
