@@ -21,8 +21,9 @@ export default hopeTheme({
   },
   fullscreen: true,
   blog: {
+    name: "White",
     description: "Today.do(() -> new Bug());",
-    timeline: '温故而知新~',
+    timeline: "温故而知新~",
     roundAvatar: true,
     medias: {
       Email: "mailto:white996@qq.com",
