@@ -67,7 +67,8 @@ export const zhSidebar = sidebar({
         "computer-composition-and-architecture",
         "system-configuration-and-performance-evaluation",
         "case-analysis",
-        "operating-system"
+        "operating-system",
+        "computer-network"
       ]
     }
   ],
