@@ -69,7 +69,8 @@ export const zhSidebar = sidebar({
         "case-analysis",
         "operating-system",
         "computer-network",
-        "database-system"
+        "database-system",
+        "intellectual-property-and-standardization"
       ]
     }
   ],
