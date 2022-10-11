@@ -70,7 +70,8 @@ export const zhSidebar = sidebar({
         "operating-system",
         "computer-network",
         "database-system",
-        "intellectual-property-and-standardization"
+        "intellectual-property-and-standardization",
+        "mathematics-and-economic-management"
       ]
     }
   ],
