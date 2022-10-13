@@ -10,7 +10,7 @@ lang: zh-CN
 
 <!-- .slide: data-transition="zoom" -->
 
-不搞什么花里胡哨，<a style="text-align:center;text-decoration:none;" href="/zh/">直接开始</a>
+杜绝花里胡哨，<a style="text-align:center;text-decoration:none;" href="/zh/">直接开始~</a>
 
 ---
 
@@ -68,21 +68,11 @@ lang: zh-CN
 
 <!-- .slide: data-transition="slide" data-auto-animate -->
 
-……<!-- .element: class="r-fit-text" -->
-
---
-
-<!-- .slide: data-auto-animate -->
-
 ……
 
-## 别人说<!-- .element: class="fragment fade-in" -->
-
---
-
 <!-- .slide: data-auto-animate -->
 
-## 别人说<!-- .element: class="r-fit-text" -->
+## 别人说<!-- .element: class="fragment fade-in" -->
 
 --
 
@@ -106,7 +96,7 @@ lang: zh-CN
 
 好好学习，天天向上！
 
-猜猜这是谁说的？<!-- .element: class="fragment fade-in" -->
+猜猜这个"别人"是谁？<!-- .element: class="fragment fade-in" -->
 
 这个"别人"还是伟大领袖毛泽东！<!-- .element: class="fragment fade-up" -->
 
