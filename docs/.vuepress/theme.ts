@@ -113,6 +113,9 @@ export default hopeTheme({
       },
       presentation: {
         plugins: ["highlight", "math", "search", "notes", "zoom"],
+        revealConfig: {
+          controlsLayout: "edges"
+        }
       },
       stylize: [
         {
