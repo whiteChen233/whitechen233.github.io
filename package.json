@@ -1,7 +1,8 @@
 {
   "name": "note",
-  "version": "2.0.0",
-  "description": "A project of vuepress-theme-hope",
+  "version": "1.0.0",
+  "description": "A project on learning notes",
+  "auther": "white",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -9,11 +10,17 @@
     "build": "vuepress build docs",
     "serve:clean-dev": "vuepress dev docs --clean-cache"
   },
+  "dependencies": {
+    
+  },
   "devDependencies": {
+    "@vuepress/cli":  "2.0.0-beta.51",
     "@vuepress/client": "2.0.0-beta.51",
-    "@vuepress/plugin-search": "^2.0.0-beta.51",
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.51",
     "vue": "^3.2.40",
-    "vuepress": "2.0.0-beta.51",
-    "vuepress-theme-hope": "2.0.0-beta.108"
+    "vuepress-theme-hope": "2.0.0-beta.110",
+    "vuepress-vite": "2.0.0-beta.51",
+    "vuepress-webpack": "2.0.0-beta.51",
+    "prettier": "2.7.1"
   }
 }

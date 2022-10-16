@@ -1,6 +1,7 @@
 ---
 title: 计算机软件资格考试
 date: 2022-09-24
+icon: certificate
 ---
 
 ## 考试简介

@@ -1,14 +1,8 @@
 ---
-icon: info
+title: 个人简介
+icon: user
 date: 2021-06-03
 ---
 
-# 我的文档网站
+Hello！很高兴见到你！
 
-## 个人文档网站
-
-> 一个神奇的文档网站生成巩固
-
-* Simple and lightweight (~12kb gzipped)
-* Multiple themes
-* Not build static html files
