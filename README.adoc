@@ -3,6 +3,10 @@
 image:https://img.shields.io/badge/Auther-White-blue?style=for-the-badge&logo=github[link=https://github.com/whiteChen233]
 image:https://img.shields.io/badge/LICENSE-MIT-green?style=for-the-badge[link=https://github.com/whiteChen233/whitechen233.github.io/blob/main/LICENSE]
 
-使用 https://v2.vuepress.vuejs.org/zh/[VuePress] 搭建的个人博客，使用的主题是 https://vuepress-theme-hope.github.io/v2/zh/[VuePress Theme Hope] 
+俗话说，好记心不如烂笔头，对于我这种学渣来说，学过的知识可太TM容易忘了
 
-== https://whitechen233.github.io/[笔记首页] | https://github.com/whiteChen233/whitechen233.github.io/[项目首页]
+没办法只能寄希望于电子大脑了...
+
+本项目使用 https://v2.vuepress.vuejs.org/zh/[VuePress] 搭建，应该、可能会往个人博客的方向发展，搭配使用的主题是 https://vuepress-theme-hope.github.io/v2/zh/[VuePress Theme Hope] 
+
+== https://whitechen233.github.io/[笔记首页]

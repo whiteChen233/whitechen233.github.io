@@ -1,35 +1,9 @@
-import {sidebar} from "vuepress-theme-hope";
+import { sidebar } from "vuepress-theme-hope";
 
 export const zhSidebar = sidebar({
   "/zh/": [
     "",
     "intro"
-  ],
-  "/zh/front-end": [
-    "",
-    {
-      text: "ES6",
-      prefix: "ES6/",
-      collapsable: true,
-      children: [
-        "Promise"
-      ]
-    },
-    {
-      text: "Vue 2",
-      prefix: "Vue2/",
-      collapsable: true,
-      children: [
-        "Runtime",
-        "Component",
-        "Slot",
-        "Modules",
-        "Webpack",
-        "Vue_CLI",
-        "Vue_Router",
-        "Vuex"
-      ]
-    }
   ],
   "/zh/QCCSTP/": [
     "",
@@ -75,8 +49,59 @@ export const zhSidebar = sidebar({
       ]
     }
   ],
+  "/zh/step-by-step/": [
+    {
+      text: "手把手系列",
+      icon: "hands",
+      children: [
+        "",
+      ]
+    }
+  ],
+  "/zh/front-end/": [
+    {
+      text: "前端",
+      children: [
+        "",
+        {
+          text: "ES6",
+          prefix: "ES6/",
+          collapsable: true,
+          children: [
+            "Promise"
+          ]
+        },
+        {
+          text: "Vue 2",
+          prefix: "Vue2/",
+          collapsable: true,
+          children: [
+            "Runtime",
+            "Component",
+            "Slot",
+            "Modules",
+            "Webpack",
+            "Vue_CLI",
+            "Vue_Router",
+            "Vuex"
+          ]
+        },
+        {
+          text: "Vue 3",
+          prefix: "Vue3/",
+          collapsable: true,
+          children: [""]
+        }
+      ]
+    }
+  ],
   "/zh/others/": [
-    "",
-    "UML/UML"
+    {
+      text: "其他",
+      children: [
+        "",
+        "UML/UML"
+      ]
+    }
   ]
 });

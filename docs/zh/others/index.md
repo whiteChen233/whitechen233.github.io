@@ -1,5 +1,5 @@
 ---
-title: 杂七杂八
+title: 其他
 timeline: false
 article: false
 ---
