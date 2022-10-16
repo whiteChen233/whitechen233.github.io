@@ -19,11 +19,11 @@ jobs:
         with:
           node-version: 16
           
-      #- name: Cache Node Dependencies
-      #  uses: actions/cache@v3
-      #  with:
-      #    path: node_modules
-      #    key: ${{runner.OS}}-npm-caches-${{ hashFiles('package-lock.json') }}
+      - name: Cache Node Dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{runner.OS}}-npm-caches-${{ hashFiles('package-lock.json') }}
 
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
