@@ -38,7 +38,7 @@ new Vue({
 - **view**，以声明方式将 state 映射到视图；
 - **actions**，响应在 view 上的用户输入导致的状态变化。
 
-以下是一个表示“单向数据流”理念的简单示意：
+以下是一个表示"单向数据流"理念的简单示意：
 
 <img src="https://vuex.vuejs.org/flow.png" style="max-width: 450px;"/>
 
@@ -95,7 +95,7 @@ Vuex 依赖 Promise 。如果你支持的浏览器并没有实现 Promise (比�
 
 ## 使用
 
-每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的**状态 (state)**。Vuex 和单纯的全局对象有以下两点不同：
+每一个 Vuex 应用的核心就是 store（仓库）。"store"基本上就是一个容器，它包含着你的应用中大部分的**状态 (state)**。Vuex 和单纯的全局对象有以下两点不同：
 
 1. Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。
 
@@ -131,7 +131,7 @@ store.commit('increment')
 console.log(store.state.count) // -> 1
 ```
 
-为了在 Vue 组件中访问 `this.$store property`，你需要为 Vue 实例提供创建好的 store。Vuex 提供了一个从根组件向所有子组件，以 store 选项的方式“注入”该 store 的机制：
+为了在 Vue 组件中访问 `this.$store property`，你需要为 Vue 实例提供创建好的 store。Vuex 提供了一个从根组件向所有子组件，以 store 选项的方式"注入"该 store 的机制：
 
 ```javascript
 new Vue({
@@ -199,7 +199,7 @@ computed: mapState([
 
 ### Getters
 
-Vuex 允许我们在 store 中定义“getter”（可以认为是 store 的计算属性）。就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+Vuex 允许我们在 store 中定义"getter"（可以认为是 store 的计算属性）。就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
 
 Getter 接受 state 作为其第一个参数：
 
@@ -312,7 +312,7 @@ const store = new Vuex.Store({
 })
 ```
 
-你不能直接调用一个 mutation handler。这个选项更像是事件注册：“当触发一个类型为 `increment` 的 mutation 时，调用此函数。”要唤醒一个 mutation handler，你需要以相应的 type 调用 store.commit 方法：
+你不能直接调用一个 mutation handler。这个选项更像是事件注册："当触发一个类型为 `increment` 的 mutation 时，调用此函数。"要唤醒一个 mutation handler，你需要以相应的 type 调用 store.commit 方法：
 
 ```javascript
 store.commit('increment')
