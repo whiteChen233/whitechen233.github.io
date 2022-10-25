@@ -122,7 +122,7 @@ p.catch(function(reason) {
 
 ## `Promise.resolve()`
 
-`Promise.resolve(value)`方法返回一个以给定值解析后的`Promise`对象。如果这个值是一个 promise ，那么将返回这个 promise ；如果这个值是thenable（即带有`then`方法），返回的promise会“跟随”这个thenable的对象，采用它的最终状态；否则返回的promise将以此值完成。此函数将类promise对象的多层嵌套展平。
+`Promise.resolve(value)`方法返回一个以给定值解析后的`Promise`对象。如果这个值是一个 promise ，那么将返回这个 promise ；如果这个值是thenable（即带有`then`方法），返回的promise会"跟随"这个thenable的对象，采用它的最终状态；否则返回的promise将以此值完成。此函数将类promise对象的多层嵌套展平。
 
 ### 语法
 
@@ -168,4 +168,4 @@ p.catch(function(reason) {
 
 - 如果传入的参数是一个空的可迭代对象，则返回一个**已完成（already resolved**状态的`Promise`。
 - 如果传入的参数不包含任何`promise`，则返回一个**异步完成（asynchronously resolved）** Promise。注意：Google Chrome 58 在这种情况下返回一个**已完成（already resolved）**状态的 Promise。
-- 其它情况下返回一个**处理中（pending）**的`Promise`。这个返回的`promise`之后会在所有的 promise 都完成或有一个 promise 失败时**异步**地变为完成或失败。 见下方关于“Promise.all 的异步或同步”示例。返回值将会按照参数内的`promise`顺序排列，而不是由调用 `promise` 的完成顺序决定。
+- 其它情况下返回一个**处理中（pending）**的`Promise`。这个返回的`promise`之后会在所有的 promise 都完成或有一个 promise 失败时**异步**地变为完成或失败。 见下方关于"Promise.all 的异步或同步"示例。返回值将会按照参数内的`promise`顺序排列，而不是由调用 `promise` 的完成顺序决定。
