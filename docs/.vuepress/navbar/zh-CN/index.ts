@@ -8,8 +8,16 @@ export const zhNavbar = navbar([
     text: "杂七杂八", 
     icon: "boxes-stacked",
     children: [
-      { text: "前端", link: "/zh/front-end/" },
-      { text: "其他", link: "/zh/others/" }
+      {
+        text: "程序员", 
+        prefix: "/zh/programmer/", 
+        activeMatch: "^/programmer/$", 
+        children: [
+          "front-end/"
+        ]
+      },
+      { text: "杂文", link: "/zh/essay/", activeMatch: "^/essay/$" },
+      { text: "其他", link: "/zh/others/", activeMatch: "^/others/$" }
     ]
   }
 ]);
