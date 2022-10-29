@@ -53,53 +53,74 @@ export const zhSidebar = sidebar({
     {
       text: "手把手系列",
       icon: "hands",
+      link: "/zh/step-by-step/",
+      // prefix: "/zh/step-by-step/",
+      // children: [""]
+    }
+  ],
+  "/zh/programmer/": [
+    {
+      text: "程序猿",
       children: [
-        "",
+        {
+          text: "前端",
+          link: "front-end/",
+          prefix: "front-end/",
+          children: [
+            {
+              text: "ES6",
+              prefix: "ES6/",
+              collapsable: true,
+              children: [
+                "Promise"
+              ]
+            },
+            {
+              text: "Vue 2",
+              prefix: "Vue2/",
+              collapsable: true,
+              children: [
+                "Runtime",
+                "Component",
+                "Slot",
+                "Modules",
+                "Webpack",
+                "Vue_CLI",
+                "Vue_Router",
+                "Vuex"
+              ]
+            },
+            {
+              text: "Vue 3",
+              prefix: "Vue3/",
+              collapsable: true,
+              children: [""]
+            }
+          ]
+        }
       ]
     }
   ],
-  "/zh/front-end/": [
+  "/zh/essay/": [
     {
-      text: "前端",
+      text: "杂文",
+      link: "/zh/essay/",
+      prefix: "/zh/essay/",
       children: [
-        "",
-        {
-          text: "ES6",
-          prefix: "ES6/",
-          collapsable: true,
-          children: [
-            "Promise"
-          ]
-        },
-        {
-          text: "Vue 2",
-          prefix: "Vue2/",
-          collapsable: true,
-          children: [
-            "Runtime",
-            "Component",
-            "Slot",
-            "Modules",
-            "Webpack",
-            "Vue_CLI",
-            "Vue_Router",
-            "Vuex"
-          ]
-        },
-        {
-          text: "Vue 3",
-          prefix: "Vue3/",
-          collapsable: true,
-          children: [""]
-        }
+        "me",
+        "love",
+        "rain",
+        "tearsOfRouge",
+        "SlowSlowSong"
       ]
     }
   ],
   "/zh/others/": [
     {
       text: "其他",
+      link: "/zh/others/",
+      prefix: "/zh/others/",
       children: [
-        "",
         "UML/UML"
       ]
     }
