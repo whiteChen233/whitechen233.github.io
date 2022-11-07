@@ -19,7 +19,7 @@
     "@vuepress/cli": "2.0.0-beta.53",
     "@vuepress/plugin-search": "^2.0.0-beta.53",
     "vue": "3.2.41",
-    "vuepress-theme-hope": "2.0.0-beta.115",
+    "vuepress-theme-hope": "2.0.0-beta.121",
     "vuepress-webpack": "2.0.0-beta.53",
     "prettier": "2.7.1"
   }
