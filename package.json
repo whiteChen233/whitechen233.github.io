@@ -13,14 +13,12 @@
     "dev:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack dev docs",
     "lint": "prettier --check --write ."
   },
-  "dependencies": {
-  },
   "devDependencies": {
     "@vuepress/cli": "2.0.0-beta.53",
-    "@vuepress/plugin-search": "^2.0.0-beta.53",
-    "vue": "3.2.41",
-    "vuepress-theme-hope": "2.0.0-beta.121",
-    "vuepress-webpack": "2.0.0-beta.53",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "vue": "3.2.45",
+    "vuepress-plugin-search-pro": "^2.0.0-beta.126",
+    "vuepress-theme-hope": "2.0.0-beta.125",
+    "vuepress-webpack": "2.0.0-beta.53"
   }
 }
