@@ -1,6 +1,7 @@
 import { defineUserConfig } from "@vuepress/cli";
 // import { docsearchPlugin } from "@vuepress/plugin-docsearch";
-import { searchPlugin } from "@vuepress/plugin-search";
+// import { searchPlugin } from "@vuepress/plugin-search";
+import { searchProPlugin } from "vuepress-plugin-search-pro";
 import theme from "./theme.js";
 
 export default defineUserConfig({
@@ -76,15 +77,20 @@ export default defineUserConfig({
     //     },
     //   },
     // })
-    searchPlugin({
-      locales: {
-        '/en/': {
-          placeholder: 'Search',
-        },
-        '/zh/': {
-          placeholder: '搜索',
-        }
-      }
+    // searchPlugin({
+    //   locales: {
+    //     '/en/': {
+    //       placeholder: 'Search',
+    //     },
+    //     '/zh/': {
+    //       placeholder: '搜索',
+    //     }
+    //   }
+    // })
+    searchProPlugin({
+      // https://vuepress-theme-hope.github.io/v2/search-pro/zh/
+      // 索引全部内容
+      indexContent: true
     })
   ]
 });
