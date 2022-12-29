@@ -1,0 +1,1 @@
+import{_ as o,$ as t,a0 as s,a3 as e}from"./framework-2884e278.js";const l={},n=e("p",null,"红楼交杯相思豆，痴男怨女乞白头。",-1),_=e("br",null,null,-1),c=e("blockquote",null,[e("p",null,"一句话，精髓！（半成品也来占个坑）")],-1),a=[n,_,c];function r(u,d){return t(),s("div",null,a)}const i=o(l,[["render",r],["__file","TearsOfRouge.html.vue"]]);export{i as default};
