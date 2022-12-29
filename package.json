@@ -6,19 +6,20 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build:webpack": "vuepress-webpack build docs",
-    "build:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack build docs",
-    "dev:webpack": "vuepress-webpack dev docs",
-    "dev:webpack-clean": "vuepress-webpack dev docs --clean-cache",
-    "dev:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack dev docs",
+    "build:vite": "vuepress-vite build docs",
+    "build:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite build docs",
+    "dev:vite": "vuepress-vite dev docs",
+    "dev:vite-clean": "vuepress-vite dev docs --clean-cache",
+    "dev:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite dev docs",
     "lint": "prettier --check --write ."
   },
   "devDependencies": {
-    "@vuepress/cli": "2.0.0-beta.53",
-    "prettier": "2.7.1",
+    "@vuepress/cli": "2.0.0-beta.60",
+    "prettier": "2.8.1",
     "vue": "3.2.45",
-    "vuepress-plugin-search-pro": "^2.0.0-beta.126",
-    "vuepress-theme-hope": "2.0.0-beta.126",
-    "vuepress-webpack": "2.0.0-beta.53"
+    "vuepress-plugin-search-pro": "^2.0.0-beta.146",
+    "vuepress-theme-hope": "2.0.0-beta.146",
+    "vuepress-vite": "2.0.0-beta.60",
+    "cross-env": "7.0.3"
   }
 }
