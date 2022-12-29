@@ -2,6 +2,7 @@
 title: Vue 的组件化
 date: 2021-07-05
 ---
+
 ## 基本步骤
 
 1. 创建组件构造器  
@@ -9,12 +10,12 @@ date: 2021-07-05
 2. 注册组件  
    调用`Vue.component()`注册组件,需要传入组件标签，组件构造器
 3. 使用组件  
-   在Vue实例的作用范围内使用组件
+   在 Vue 实例的作用范围内使用组件
 
 ## 全局组件和局部组件
 
 - 使用`Vue.component()`注册组件是全局的
-- 在Vue实例下使用`components: {}`注册的是局部组件
+- 在 Vue 实例下使用`components: {}`注册的是局部组件
 
 ## 父组件和子组件
 
@@ -23,11 +24,11 @@ date: 2021-07-05
 ## 语法糖
 
 直接使用`Vue.component(tagName, options)`来注册全局组件，
-在Vue实例中使用`components: { tagName: options }`来注册局部组件
+在 Vue 实例中使用`components: { tagName: options }`来注册局部组件
 
 ## 抽离模板的写法
 
-在HTML中，使用如下的方式声明模板
+在 HTML 中，使用如下的方式声明模板
 
 ```html
 <!-- 方式一：使用script标签声明 -->
@@ -39,17 +40,15 @@ date: 2021-07-05
 
 <!-- 方式二：使用template标签声明 -->
 <template id="id">
-  <div>
-    ...
-  </div>
+  <div>...</div>
 </template>
 
 <!-- 使用方式 -->
 <script>
   // 注册全局组件
-  Vue.component('tagName', {
-    template: '#id'
-  })
+  Vue.component("tagName", {
+    template: "#id",
+  });
 </script>
 ```
 
@@ -134,7 +133,6 @@ date: 2021-07-05
       cpn
     }
   })
-
 </script>
 ```
 
@@ -150,43 +148,38 @@ date: 2021-07-05
 <!-- 子组件模板 -->
 <template id="id">
   <div>
-    <button
-      v-for="item in books"
-      @click="btnClick(item)"
-    >
-      {{ item }}
-    </button>
+    <button v-for="item in books" @click="btnClick(item)">{{ item }}</button>
   </div>
 </template>
 
 <script>
   // 子组件
   const cpn = {
-    template: '#id',
-    data () {
+    template: "#id",
+    data() {
       return {
-        books: [ 'Java','C','C#' ]
-      }
+        books: ["Java", "C", "C#"],
+      };
     },
     methods: {
-      btnClick (item) {
+      btnClick(item) {
         // 发送自定义事件
-        this.$emit('btn-click', item)
-      }
-    }
-  }
+        this.$emit("btn-click", item);
+      },
+    },
+  };
 
   // 父组件
   const app = new Vue({
-    el: '#app',
+    el: "#app",
     data: {},
     components: { cpn },
     methods: {
-      cpnClick (item) {
-        consloe.log(item)
-      }
-    }
-  })
+      cpnClick(item) {
+        consloe.log(item);
+      },
+    },
+  });
 </script>
 ```
 
@@ -195,4 +188,4 @@ date: 2021-07-05
 有时候需要父组件直接访问子组件，或者子组件访问根组件
 
 - 父组件访问子组件: `$children`或`$refs`。一般不使用`$children`，而是通过`$refs`访问，但是使用前需要给子组件添加`ref`属性使其添加到`$refs`中
-- 子组件访问父组件：`$parent`。使用`$root`可以访问Vue实例
+- 子组件访问父组件：`$parent`。使用`$root`可以访问 Vue 实例

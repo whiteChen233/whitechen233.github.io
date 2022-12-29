@@ -3,21 +3,21 @@ title: 状态管理模式
 date: 2021-08-31
 ---
 
-## Vuex是什么
+## Vuex 是什么
 
-Vuex是一个专门为Vue.js应用程序开发的**状态管理模式**。它采用**集中式存储管理**应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具[devtools extension](https://github.com/vuejs/vue-devtools)，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。
+Vuex 是一个专门为 Vue.js 应用程序开发的**状态管理模式**。它采用**集中式存储管理**应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具[devtools extension](https://github.com/vuejs/vue-devtools)，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。
 
-状态管理又是什么？简单来说，就是把需要多个组件共享的变量全部存储在一个对象里面，然后将整个对象放在顶层的Vue实例中，让其他组件可以使用。
+状态管理又是什么？简单来说，就是把需要多个组件共享的变量全部存储在一个对象里面，然后将整个对象放在顶层的 Vue 实例中，让其他组件可以使用。
 
 让我们从一个简单的 Vue 计数应用开始：
 
 ```javascript
 new Vue({
   // state
-  data () {
+  data() {
     return {
-      count: 0
-    }
+      count: 0,
+    };
   },
   // view
   template: `
@@ -25,11 +25,11 @@ new Vue({
   `,
   // actions
   methods: {
-    increment () {
-      this.count++
-    }
-  }
-})
+    increment() {
+      this.count++;
+    },
+  },
+});
 ```
 
 这个状态自管理应用包含以下几个部分：
@@ -106,38 +106,38 @@ Vuex 依赖 Promise 。如果你支持的浏览器并没有实现 Promise (比�
 安装 Vuex 之后，让我们来创建一个 store。创建过程直截了当——仅需要提供一个初始 state 对象和一些 mutation：
 
 ```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
   },
   mutations: {
-    increment (state) {
-      state.count++
-    }
-  }
-})
+    increment(state) {
+      state.count++;
+    },
+  },
+});
 ```
 
 现在，你可以通过 `store.state` 来获取状态对象，以及通过 `store.commit` 方法触发状态变更：
 
 ```javascript
-store.commit('increment')
+store.commit("increment");
 
-console.log(store.state.count) // -> 1
+console.log(store.state.count); // -> 1
 ```
 
 为了在 Vue 组件中访问 `this.$store property`，你需要为 Vue 实例提供创建好的 store。Vuex 提供了一个从根组件向所有子组件，以 store 选项的方式"注入"该 store 的机制：
 
 ```javascript
 new Vue({
-  el: '#app',
+  el: "#app",
   store,
-})
+});
 ```
 
 现在我们可以从组件的方法提交一个变更：
@@ -169,23 +169,23 @@ methods: {
 
 ```javascript
 // 在单独构建的版本中辅助函数为 Vuex.mapState
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   // ...
   computed: mapState({
     // 箭头函数可使代码更简练
-    count: state => state.count,
+    count: (state) => state.count,
 
     // 传字符串参数 'count' 等同于 `state => state.count`
-    countAlias: 'count',
+    countAlias: "count",
 
     // 为了能够使用 `this` 获取局部状态，必须使用常规函数
-    countPlusLocalState (state) {
-      return state.count + this.localCount
-    }
-  })
-}
+    countPlusLocalState(state) {
+      return state.count + this.localCount;
+    },
+  }),
+};
 ```
 
 当映射的计算属性的名称与 state 的子节点名称相同时，我们也可以给 mapState 传一个字符串数组。
@@ -193,8 +193,8 @@ export default {
 ```javascript
 computed: mapState([
   // 映射 this.count 为 store.state.count
-  'count'
-])
+  "count",
+]);
 ```
 
 ### Getters
@@ -207,16 +207,16 @@ Getter 接受 state 作为其第一个参数：
 const store = new Vuex.Store({
   state: {
     todos: [
-      { id: 1, text: '...', done: true },
-      { id: 2, text: '...', done: false }
-    ]
+      { id: 1, text: "...", done: true },
+      { id: 2, text: "...", done: false },
+    ],
   },
   getters: {
-    doneTodos: state => {
-      return state.todos.filter(todo => todo.done)
-    }
-  }
-})
+    doneTodos: (state) => {
+      return state.todos.filter((todo) => todo.done);
+    },
+  },
+});
 ```
 
 #### 通过属性访问
@@ -224,7 +224,7 @@ const store = new Vuex.Store({
 Getter 会暴露为 store.getters 对象，你可以以属性的形式访问这些值：
 
 ```javascript
-store.getters.doneTodos // -> [{ id: 1, text: '...', done: true }]
+store.getters.doneTodos; // -> [{ id: 1, text: '...', done: true }]
 ```
 
 Getter 也可以接受其他 getter 作为第二个参数：
@@ -233,10 +233,10 @@ Getter 也可以接受其他 getter 作为第二个参数：
 getters: {
   // ...
   doneTodosCount: (state, getters) => {
-    return getters.doneTodos.length
-  }
+    return getters.doneTodos.length;
+  };
 }
-store.getters.doneTodosCount // -> 1
+store.getters.doneTodosCount; // -> 1
 ```
 
 我们可以很容易地在任何组件中使用它：
@@ -259,10 +259,10 @@ computed: {
 getters: {
   // ...
   getTodoById: (state) => (id) => {
-    return state.todos.find(todo => todo.id === id)
-  }
+    return state.todos.find((todo) => todo.id === id);
+  };
 }
-store.getters.getTodoById(2) // -> { id: 2, text: '...', done: false }
+store.getters.getTodoById(2); // -> { id: 2, text: '...', done: false }
 ```
 
 #### mapGetters 辅助函数
@@ -270,19 +270,19 @@ store.getters.getTodoById(2) // -> { id: 2, text: '...', done: false }
 mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性：
 
 ```javascript
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   // ...
   computed: {
-  // 使用对象展开运算符将 getter 混入 computed 对象中
+    // 使用对象展开运算符将 getter 混入 computed 对象中
     ...mapGetters([
-      'doneTodosCount',
-      'anotherGetter',
+      "doneTodosCount",
+      "anotherGetter",
       // ...
-    ])
-  }
-}
+    ]),
+  },
+};
 ```
 
 如果你想将一个 getter 属性另取一个名字，使用对象形式：
@@ -301,21 +301,21 @@ export default {
 ```javascript
 const store = new Vuex.Store({
   state: {
-    count: 1
+    count: 1,
   },
   mutations: {
-    increment (state) {
+    increment(state) {
       // 变更状态
-      state.count++
-    }
-  }
-})
+      state.count++;
+    },
+  },
+});
 ```
 
 你不能直接调用一个 mutation handler。这个选项更像是事件注册："当触发一个类型为 `increment` 的 mutation 时，调用此函数。"要唤醒一个 mutation handler，你需要以相应的 type 调用 store.commit 方法：
 
 ```javascript
-store.commit('increment')
+store.commit("increment");
 ```
 
 #### 提交载荷（Payload）
@@ -332,7 +332,7 @@ mutations: {
 ```
 
 ```javascript
-store.commit('increment', 10)
+store.commit("increment", 10);
 ```
 
 在大多数情况下，载荷应该是一个对象，这样可以包含多个字段并且记录的 mutation 会更易读：
@@ -347,9 +347,9 @@ mutations: {
 ```
 
 ```javascript
-store.commit('increment', {
-  amount: 10
-})
+store.commit("increment", {
+  amount: 10,
+});
 ```
 
 #### 对象风格的提交方式
@@ -358,9 +358,9 @@ store.commit('increment', {
 
 ```javascript
 store.commit({
-  type: 'increment',
-  amount: 10
-})
+  type: "increment",
+  amount: 10,
+});
 ```
 
 当使用对象风格的提交方式，整个对象都作为载荷传给 mutation 函数，因此 handler 保持不变：
@@ -380,12 +380,12 @@ mutations: {
 1. 最好提前在你的 store 中初始化好所有所需属性。
 2. 当需要在对象上修改属性时（添加、删除）
 
-    - 使用 `Vue.set(obj, 'newProp', 123)` 添加属性, 或者使用 `Vue.delete(obj, 'prop')` 删除属性
-    - 以新对象替换老对象。例如，利用对象展开运算符我们可以这样写：
+   - 使用 `Vue.set(obj, 'newProp', 123)` 添加属性, 或者使用 `Vue.delete(obj, 'prop')` 删除属性
+   - 以新对象替换老对象。例如，利用对象展开运算符我们可以这样写：
 
-    ```javascript
-    state.obj = { ...state.obj, newProp: 123 }
-    ```
+   ```javascript
+   state.obj = { ...state.obj, newProp: 123 };
+   ```
 
 #### 使用常量替代 Mutation 事件类型
 
@@ -393,7 +393,7 @@ mutations: {
 
 ```javascript
 // mutation-types.js
-export const SOME_MUTATION = 'SOME_MUTATION'
+export const SOME_MUTATION = "SOME_MUTATION";
 ```
 
 ```javascript
@@ -435,22 +435,22 @@ mutations: {
 你可以在组件中使用 `this.$store.commit('xxx')` 提交 mutation，或者使用 `mapMutations` 辅助函数将组件中的 methods 映射为 `store.commit` 调用（需要在根节点注入 `store`）。
 
 ```javascript
-import { mapMutations } from 'vuex'
+import { mapMutations } from "vuex";
 
 export default {
   // ...
   methods: {
     ...mapMutations([
-      'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+      "increment", // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
 
       // `mapMutations` 也支持载荷：
-      'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
+      "incrementBy", // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
     ]),
     ...mapMutations({
-      add: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
-    })
-  }
-}
+      add: "increment", // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+    }),
+  },
+};
 ```
 
 ### Action
@@ -458,7 +458,7 @@ export default {
 在 mutation 中混合异步调用会导致程序很难调试。例如，当你调用了两个包含异步回调的 mutation 来改变状态，你怎么知道什么时候回调和哪个先回调呢？这就是为什么我们要区分这两个概念。在 Vuex 中，**mutation 都是同步事务**：
 
 ```javascript
-store.commit('increment')
+store.commit("increment");
 // 任何由 "increment" 导致的状态变更都应该在此刻完成。
 ```
 
@@ -472,19 +472,19 @@ Action 类似于 mutation，不同在于：
 ```javascript
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
   },
   mutations: {
-    increment (state) {
-      state.count++
-    }
+    increment(state) {
+      state.count++;
+    },
   },
   actions: {
-    increment (context) {
-      context.commit('increment')
-    }
-  }
-})
+    increment(context) {
+      context.commit("increment");
+    },
+  },
+});
 ```
 
 Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 `context.commit` 提交一个 mutation，或者通过 `context.state` 和 `context.getters` 来获取 state 和 getters。
@@ -504,7 +504,7 @@ Action 函数接受一个与 store 实例具有相同方法和属性的 context 
 Action 通过 `store.dispatch` 方法触发：
 
 ```javascript
-store.dispatch('increment')
+store.dispatch("increment");
 ```
 
 乍一眼看上去感觉多此一举，我们直接分发 mutation 岂不更方便？实际上并非如此，还记得 **mutation 必须同步执行**这个限制么？Action 就不受约束！我们可以在 action 内部执行异步操作：
@@ -523,17 +523,17 @@ Actions 支持同样的载荷方式和对象方式进行分发：
 
 ```javascript
 // 以载荷形式分发
-store.dispatch('incrementAsync', {
-  amount: 10
-})
+store.dispatch("incrementAsync", {
+  amount: 10,
+});
 ```
 
 ```javascript
 // 以对象形式分发
 store.dispatch({
-  type: 'incrementAsync',
-  amount: 10
-})
+  type: "incrementAsync",
+  amount: 10,
+});
 ```
 
 来看一个更加实际的购物车示例，涉及到**调用异步 API 和分发多重 mutation**：
@@ -564,22 +564,22 @@ actions: {
 你在组件中使用 `this.$store.dispatch('xxx')` 分发 action，或者使用 `mapActions` 辅助函数将组件的 methods 映射为 `store.dispatch` 调用（需要先在根节点注入 `store`）：
 
 ```javascript
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
   // ...
   methods: {
     ...mapActions([
-      'increment', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+      "increment", // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
 
       // `mapActions` 也支持载荷：
-      'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`
+      "incrementBy", // 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`
     ]),
     ...mapActions({
-      add: 'increment' // 将 `this.add()` 映射为 `this.$store.dispatch('increment')`
-    })
-  }
-}
+      add: "increment", // 将 `this.add()` 映射为 `this.$store.dispatch('increment')`
+    }),
+  },
+};
 ```
 
 #### 组合 Action
@@ -604,9 +604,9 @@ actions: {
 现在你可以：
 
 ```javascript
-store.dispatch('actionA').then(() => {
+store.dispatch("actionA").then(() => {
   // ...
-})
+});
 ```
 
 在另外一个 action 中也可以：
@@ -678,21 +678,21 @@ store.state.b // -> moduleB 的状态
 ```javascript
 const moduleA = {
   state: () => ({
-    count: 0
+    count: 0,
   }),
   mutations: {
-    increment (state) {
+    increment(state) {
       // 这里的 `state` 对象是模块的局部状态
-      state.count++
-    }
+      state.count++;
+    },
   },
 
   getters: {
-    doubleCount (state) {
-      return state.count * 2
-    }
-  }
-}
+    doubleCount(state) {
+      return state.count * 2;
+    },
+  },
+};
 ```
 
 同样，对于模块内部的 action，局部状态通过 `context.state` 暴露出来，根节点状态则为 `context.rootState`：
@@ -701,13 +701,13 @@ const moduleA = {
 const moduleA = {
   // ...
   actions: {
-    incrementIfOddOnRootSum ({ state, commit, rootState }) {
+    incrementIfOddOnRootSum({ state, commit, rootState }) {
       if ((state.count + rootState.count) % 2 === 1) {
-        commit('increment')
+        commit("increment");
       }
-    }
-  }
-}
+    },
+  },
+};
 ```
 
 对于模块内部的 getter，根节点状态会作为第三个参数暴露出来：
@@ -716,11 +716,11 @@ const moduleA = {
 const moduleA = {
   // ...
   getters: {
-    sumWithRootCount (state, getters, rootState) {
-      return state.count + rootState.count
-    }
-  }
-}
+    sumWithRootCount(state, getters, rootState) {
+      return state.count + rootState.count;
+    },
+  },
+};
 ```
 
 #### 命名空间
@@ -879,26 +879,23 @@ methods: {
 而且，你可以通过使用 `createNamespacedHelpers` 创建基于某个命名空间辅助函数。它返回一个对象，对象里有新的绑定在给定命名空间值上的组件绑定辅助函数：
 
 ```javascript
-import { createNamespacedHelpers } from 'vuex'
+import { createNamespacedHelpers } from "vuex";
 
-const { mapState, mapActions } = createNamespacedHelpers('some/nested/module')
+const { mapState, mapActions } = createNamespacedHelpers("some/nested/module");
 
 export default {
   computed: {
     // 在 `some/nested/module` 中查找
     ...mapState({
-      a: state => state.a,
-      b: state => state.b
-    })
+      a: (state) => state.a,
+      b: (state) => state.b,
+    }),
   },
   methods: {
     // 在 `some/nested/module` 中查找
-    ...mapActions([
-      'foo',
-      'bar'
-    ])
-  }
-}
+    ...mapActions(["foo", "bar"]),
+  },
+};
 ```
 
 #### 给插件开发者的注意事项
@@ -908,12 +905,12 @@ export default {
 ```javascript
 // 通过插件的参数对象得到空间名称
 // 然后返回 Vuex 插件函数
-export function createPlugin (options = {}) {
+export function createPlugin(options = {}) {
   return function (store) {
     // 把空间名字添加到插件模块的类型（type）中去
-    const namespace = options.namespace || ''
-    store.dispatch(namespace + 'pluginAction')
-  }
+    const namespace = options.namespace || "";
+    store.dispatch(namespace + "pluginAction");
+  };
 }
 ```
 
@@ -922,18 +919,20 @@ export function createPlugin (options = {}) {
 在 store 创建之后，你可以使用 `store.registerModule` 方法注册模块：
 
 ```javascript
-import Vuex from 'vuex'
+import Vuex from "vuex";
 
-const store = new Vuex.Store({ /* 选项 */ })
+const store = new Vuex.Store({
+  /* 选项 */
+});
 
 // 注册模块 `myModule`
-store.registerModule('myModule', {
+store.registerModule("myModule", {
   // ...
-})
+});
 // 注册嵌套模块 `nested/myModule`
-store.registerModule(['nested', 'myModule'], {
+store.registerModule(["nested", "myModule"], {
   // ...
-})
+});
 ```
 
 之后就可以通过 `store.state.myModule` 和 `store.state.nested.myModule` 访问模块的状态。
@@ -956,15 +955,15 @@ store.registerModule(['nested', 'myModule'], {
 
 - 创建多个 store，他们公用同一个模块 (例如当 `runInNewContext` 选项是 `false` 或 `'once'` 时，为了在服务端渲染中避免有状态的单例 )
 - 在一个 store 中多次注册同一个模块
-如果我们使用一个纯对象来声明模块的状态，那么这个状态对象会通过引用被共享，导致状态对象被修改时 store 或模块间数据互相污染的问题。
+  如果我们使用一个纯对象来声明模块的状态，那么这个状态对象会通过引用被共享，导致状态对象被修改时 store 或模块间数据互相污染的问题。
 
 实际上这和 Vue 组件内的 `data` 是同样的问题。因此解决办法也是相同的——使用一个函数来声明模块状态（仅 2.3.0+ 支持）：
 
 ```javascript
 const MyReusableModule = {
   state: () => ({
-    foo: 'bar'
+    foo: "bar",
   }),
   // mutation, action 和 getter 等等...
-}
+};
 ```
