@@ -1,5 +1,5 @@
 ---
-title: '| 学而不厌，诲人不倦'
+title: 学而不厌，诲人不倦
 layout: Slide
 lang: zh-CN
 ---
@@ -118,7 +118,7 @@ lang: zh-CN
 
 ## 我们为什么要学习？
 
-为了升职加薪、当上总经理、出任CEO、迎娶白富美、走上人生巅峰？<!-- .element: class="fragment fade-in" -->
+为了升职加薪、当上总经理、出任 CEO、迎娶白富美、走上人生巅峰？<!-- .element: class="fragment fade-in" -->
 
 别说，想想还有真点小激动~😎<!-- .element: class="fragment fade-in-then-out" -->
 

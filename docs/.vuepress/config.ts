@@ -16,7 +16,7 @@ export default defineUserConfig({
       lang: "en-US",
       title: "Blog Demo",
       description: "A blog demo for vuepress-theme-hope",
-    }
+    },
   },
   theme,
   shouldPrefetch: false,
@@ -90,7 +90,7 @@ export default defineUserConfig({
     searchProPlugin({
       // https://vuepress-theme-hope.github.io/v2/search-pro/zh/
       // 索引全部内容
-      indexContent: true
-    })
-  ]
+      indexContent: true,
+    }),
+  ],
 });

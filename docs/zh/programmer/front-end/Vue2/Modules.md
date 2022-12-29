@@ -11,12 +11,12 @@ date: 2021-07-17
 >
 > 因此，近年来，有必要开始考虑提供一种将 JavaScript 程序拆分为可按需导入的单独模块的机制。Node.js 已经提供这个能力很长时间了，还有很多的 Javascript 库和框架 已经开始了模块的使用（例如， CommonJS 和基于 AMD 的其他模块系统 如 RequireJS, 以及最新的 Webpack 和 Babel）。
 >
-> --- *摘自 MDN*
+> --- _摘自 MDN_
 
-在模块化之前通常javascript的代码会保存在不同的js文件中维护,这样的维护方式，会带来一些问题：
+在模块化之前通常 javascript 的代码会保存在不同的 js 文件中维护,这样的维护方式，会带来一些问题：
 
 - 全局变量同名
-- 引入js的依赖顺序
+- 引入 js 的依赖顺序
 
 ## 使用模块作为出口
 
@@ -24,7 +24,7 @@ date: 2021-07-17
 于是模块化的思想出现了，它将匿名函数中需要对外暴露的属性、方法通过添加到一个对象里，将这个对象返回，并在函数外面使用一个变量接收，这就是一个'模块'了。在其他地方使用前面定义的变量.来调用属性或者方法
 
 常见的模块化规范：  
-  CommonJS、AMD、CMD、也有ES6的Modules
+ CommonJS、AMD、CMD、也有 ES6 的 Modules
 
 模块化有两个核心: **导入和导出**
 
@@ -36,66 +36,63 @@ date: 2021-07-17
 // 导出
 module.exports = {
   flag: true,
-  test () {
-    console.log('function')
-  }
-}
+  test() {
+    console.log("function");
+  },
+};
 
 // 导入
 // CommonJS模块
-const { flag, test } = require('moduleA')
+const { flag, test } = require("moduleA");
 // 等同于
-const _moduleA = require('moduleA')
-const flag = _moduleA.flag
-const test = _moduleA.test
+const _moduleA = require("moduleA");
+const flag = _moduleA.flag;
+const test = _moduleA.test;
 ```
 
 ### ES6 中的使用
 
 #### 使用关键字: `export`导出,`import`导入。
 
-导出的功能都是由named exports 组成— 每个项目（无论是函数，常量等）在导出时都由其名称引用，并且该名称也用于在导入时引用它
+导出的功能都是由 named exports 组成— 每个项目（无论是函数，常量等）在导出时都由其名称引用，并且该名称也用于在导入时引用它
 
 ```javascript
 // 导出
 // 方式一
-export const flag = true
-export function test () {}
+export const flag = true;
+export function test() {}
 // 方式二
 export const module = {
   flag: true,
   test: () => {
-    consloe.log('test')
-  }
-}
+    consloe.log("test");
+  },
+};
 
 // 导入
-import { flag, test } from 'moduleA'
+import { flag, test } from "moduleA";
 ```
 
 #### 默认导出 versus 命名导出。
 
-还有一种导出类型叫做 default export —这样可以很容易地使模块提供默认功能，并且还可以帮助JavaScript模块与现有的CommonJS和AMD模块系统进行互操作
+还有一种导出类型叫做 default export —这样可以很容易地使模块提供默认功能，并且还可以帮助 JavaScript 模块与现有的 CommonJS 和 AMD 模块系统进行互操作
 
 ```javascript
 // 默认导出，一个模块只能有一个default
-export default {}
+export default {};
 
 // 导入的时候可以自定义名字
-import customName from 'ModuleA'
+import customName from "ModuleA";
 ```
 
 #### 重命名导出与导入
 
 ```javascript
 // 重命名导出
-export {
-  function1 as newFunc1,
-  function2 as newFunc2
-}
+export { function1 as newFunc1, function2 as newFunc2 };
 
 // 导入
-import { newFunc1, newFunc2 } from 'moduleA'
+import { newFunc1, newFunc2 } from "moduleA";
 ```
 
 ```javascript
@@ -103,10 +100,7 @@ import { newFunc1, newFunc2 } from 'moduleA'
 export { function1, function2 };
 
 // 重命名导入
-import {
-  function1 as newFunc1,
-  function2 as newFunc2
-} from 'moduleA'
+import { function1 as newFunc1, function2 as newFunc2 } from "moduleA";
 ```
 
 #### 创建模块对象
@@ -115,9 +109,9 @@ import {
 
 ```javascript
 // 导入
-import * as ModuleA from 'moduleA'
+import * as ModuleA from "moduleA";
 
 // 使用
-ModuleA.func1()
-ModuleA.prop1
+ModuleA.func1();
+ModuleA.prop1;
 ```

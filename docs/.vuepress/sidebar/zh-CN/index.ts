@@ -1,16 +1,13 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export const zhSidebar = sidebar({
-  "/zh/": [
-    "",
-    "intro"
-  ],
+  "/zh/": ["", "intro"],
   "/zh/QCCSTP/": [
     "",
     {
       text: "软件设计师",
       prefix: "software-design-engineer/",
-      collapsable: true,
+      collapsible: true,
       children: [
         "start",
         "computer-composition-and-structure",
@@ -22,13 +19,13 @@ export const zhSidebar = sidebar({
         "database-technology",
         "algorithms-and-data-structures",
         "object-oriented-technology",
-        "standardization-and-intellectual-property"
-      ]
+        "standardization-and-intellectual-property",
+      ],
     },
     {
       text: "系统架构设计师",
       prefix: "system-architect/",
-      collapsable: true,
+      collapsible: true,
       children: [
         "start",
         "enterprise-informatization-strategy-and-implementation",
@@ -45,9 +42,9 @@ export const zhSidebar = sidebar({
         "computer-network",
         "database-system",
         "intellectual-property-and-standardization",
-        "mathematics-and-economic-management"
-      ]
-    }
+        "mathematics-and-economic-management",
+      ],
+    },
   ],
   "/zh/step-by-step/": [
     {
@@ -55,10 +52,8 @@ export const zhSidebar = sidebar({
       icon: "hands",
       link: "/zh/step-by-step/",
       prefix: "/zh/step-by-step/",
-      children: [
-        "java-installation-and-configuration"
-      ]
-    }
+      children: ["java-installation-and-configuration"],
+    },
   ],
   // "/zh/step-by-step/": "structure",
   "/zh/programmer/": [
@@ -72,15 +67,13 @@ export const zhSidebar = sidebar({
             {
               text: "ES6",
               prefix: "ES6/",
-              collapsable: true,
-              children: [
-                "Promise"
-              ]
+              collapsible: true,
+              children: ["Promise"],
             },
             {
               text: "Vue 2",
               prefix: "Vue2/",
-              collapsable: true,
+              collapsible: true,
               children: [
                 "Runtime",
                 "Component",
@@ -89,42 +82,34 @@ export const zhSidebar = sidebar({
                 "Webpack",
                 "Vue_CLI",
                 "Vue_Router",
-                "Vuex"
-              ]
+                "Vuex",
+              ],
             },
             {
               text: "Vue 3",
               prefix: "Vue3/",
-              collapsable: true,
-              children: [""]
-            }
-          ]
-        }
-      ]
-    }
+              collapsible: true,
+              children: [""],
+            },
+          ],
+        },
+      ],
+    },
   ],
   "/zh/essay/": [
     {
       text: "杂文",
       link: "/zh/essay/",
       prefix: "/zh/essay/",
-      children: [
-        "me",
-        "love",
-        "rain",
-        "tearsOfRouge",
-        "SlowSlowSong"
-      ]
-    }
+      children: ["me", "love", "rain", "tearsOfRouge", "SlowSlowSong"],
+    },
   ],
   "/zh/others/": [
     {
       text: "其他",
       link: "/zh/others/",
       prefix: "/zh/others/",
-      children: [
-        "UML/UML"
-      ]
-    }
-  ]
+      children: ["UML/UML"],
+    },
+  ],
 });

@@ -7,4 +7,4 @@ article: false
 
 ## 目录
 
-* [Java 的安装与配置](java-installation-and-configuration)
+- [Java 的安装与配置](java-installation-and-configuration)

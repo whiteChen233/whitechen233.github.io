@@ -1,7 +1,7 @@
 ---
 home: true
 icon: house
-layout: Blog
+layout: BlogHome
 title: 首页
 heroImage: /logo.png
 heroText: Today.do(() -> new Bug());

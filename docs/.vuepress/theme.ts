@@ -12,7 +12,15 @@ export default hopeTheme({
   logo: "/logo.png",
   repo: "whiteChen233/whitechen233.github.io",
   docsDir: "docs",
-  pageInfo: ["Author", "Original", "Date", "Category", "Tag", "Word", "ReadingTime"],
+  pageInfo: [
+    "Author",
+    "Original",
+    "Date",
+    "Category",
+    "Tag",
+    "Word",
+    "ReadingTime",
+  ],
   themeColor: {
     white: "#ffffff",
     red: "#e53e31",
@@ -30,7 +38,7 @@ export default hopeTheme({
       Gmail: "mailto:white294476387@gmail.com",
       GitHub: "https://github.com/whiteChen233",
       Gitee: "https://gitee.com/294476387",
-      Steam: "https://steamcommunity.com/profiles/76561198819524928/"
+      Steam: "https://steamcommunity.com/profiles/76561198819524928/",
     },
   },
   locales: {
@@ -55,7 +63,7 @@ export default hopeTheme({
       metaLocales: {
         editLink: "Edit this page on GitHub",
       },
-    }
+    },
   },
   // encrypt: {
   //   config: {
@@ -64,34 +72,32 @@ export default hopeTheme({
   //   },
   // },
   plugins: {
-    blog: {
-      autoExcerpt: true,
-    },
     // If you don't need comment feature, you can remove following option
     // The following config is for demo ONLY, if you need comment feature, please generate and use your own config, see comment plugin documentation for details.
     // To avoid disturbing the theme developer and consuming his resources, please DO NOT use the following config directly in your production environment!!!!!
     // comment: {
-      /**
-       * Using Giscus
-       */
-      // provider: "Giscus",
-      // repo: "vuepress-theme-hope/giscus-discussions",
-      // repoId: "R_kgDOG_Pt2A",
-      // category: "Announcements",
-      // categoryId: "DIC_kwDOG_Pt2M4COD69",
+    /**
+     * Using Giscus
+     */
+    // provider: "Giscus",
+    // repo: "vuepress-theme-hope/giscus-discussions",
+    // repoId: "R_kgDOG_Pt2A",
+    // category: "Announcements",
+    // categoryId: "DIC_kwDOG_Pt2M4COD69",
 
-      /**
-       * Using Twikoo
-       */
-      // provider: "Twikoo",
-      // envId: "https://twikoo.ccknbc.vercel.app",
+    /**
+     * Using Twikoo
+     */
+    // provider: "Twikoo",
+    // envId: "https://twikoo.ccknbc.vercel.app",
 
-      /**
-       * Using Waline
-       */
-      // provider: "Waline",
-      // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
+    /**
+     * Using Waline
+     */
+    // provider: "Waline",
+    // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
     // },
+    blog: true,
     mdEnhance: {
       align: true,
       attrs: true,
@@ -102,10 +108,10 @@ export default hopeTheme({
       echarts: true,
       flowchart: true,
       gfm: true,
-      imageSize: true,
+      imgSize: true,
       include: true,
       katex: true,
-      lazyLoad: true,
+      imgLazyload: true,
       mark: true,
       mermaid: true,
       playground: {
@@ -114,8 +120,8 @@ export default hopeTheme({
       presentation: {
         plugins: ["highlight", "math", "search", "notes", "zoom"],
         revealConfig: {
-          controlsLayout: "edges"
-        }
+          controlsLayout: "edges",
+        },
       },
       stylize: [
         {
@@ -133,7 +139,7 @@ export default hopeTheme({
       sub: true,
       sup: true,
       tabs: true,
-      vpre: true,
+      vPre: true,
       vuePlayground: true,
     },
     pwa: {
