@@ -1,12 +1,13 @@
 ---
-home: true
-icon: house
-layout: BlogHome
 title: 首页
+home: true
+icon: home-filling
+layout: BlogHome
+bgImage: /Lucy-David.png
+heroFullScreen: true
 heroImage: /logo.png
 heroText: Today.do(() -> new Bug());
 tagline: Good good study, Day day up!
-heroFullScreen: true
 projects:
   - name: 设计模式
     link: https://github.com/whiteChen233/design-patterns
