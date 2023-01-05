@@ -7,6 +7,6 @@ image:https://img.shields.io/badge/LICENSE-MIT-green?style=for-the-badge[link=ht
 
 没办法只能寄希望于电子大脑了...
 
-本项目使用 https://v2.vuepress.vuejs.org/zh/[VuePress] 搭建，应该、可能会往个人博客的方向发展，搭配使用的主题是 https://vuepress-theme-hope.github.io/v2/zh/[VuePress Theme Hope] 
+本项目使用 https://v2.vuepress.vuejs.org/zh/[VuePress,window=_blank] 搭建，搭配使用的主题是 https://vuepress-theme-hope.github.io/v2/zh/[VuePress Theme Hope,window=_blank] 
 
-== https://whitechen233.github.io/[笔记首页]
+== https://whitechen233.github.io/[笔记首页,window=_blank]

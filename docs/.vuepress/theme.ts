@@ -8,7 +8,7 @@ export default hopeTheme({
     name: "White",
     url: "https://github.com/whiteChen233",
   },
-  iconAssets: "fontawesome",
+  iconAssets: "//at.alicdn.com/t/c/font_3670193_ieexsngpaa.css",
   logo: "/logo.png",
   repo: "whiteChen233/whitechen233.github.io",
   docsDir: "docs",
