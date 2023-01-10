@@ -255,7 +255,7 @@ $$
 - 有关系模式$R(A,B,C), F = \lbrace A \to B \rbrace$，其分解$p_1 = \lbrace R_1(AB), R_2(AC) \rbrace$与分解$p_2 = \lbrace R_1(AB), R_2(BC) \rbrace$，是否都为无损分解?
 
 |               | A                           | B                          | C            |
-| ------------- |-----------------------------| -------------------------- | ------------ |
+| ------------- | --------------------------- | -------------------------- | ------------ |
 | p~1~.R~1~(AB) | $\color{orange} \checkmark$ | $\checkmark$               |              |
 | p~1~.R~2~(AC) | $\color{orange} \checkmark$ | $\color{green} \checkmark$ | $\checkmark$ |
 | ---           | ---                         | ---                        | ---          |
