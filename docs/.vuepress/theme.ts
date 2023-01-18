@@ -76,10 +76,10 @@ export default hopeTheme({
     // The following config is for demo ONLY, if you need comment feature, please generate and use your own config, see comment plugin documentation for details.
     // To avoid disturbing the theme developer and consuming his resources, please DO NOT use the following config directly in your production environment!!!!!
     comment: {
-    /**
-     * Using Waline
-     */
-    provider: "Waline",
+      /**
+       * Using Waline
+       */
+      provider: "Waline",
       serverURL: "https://comment.white233.top",
     },
     blog: true,
