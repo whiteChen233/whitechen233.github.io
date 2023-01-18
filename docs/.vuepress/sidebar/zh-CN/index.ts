@@ -49,13 +49,15 @@ export const zhSidebar = sidebar({
   "/zh/step-by-step/": [
     {
       text: "手把手系列",
-      icon: "hands",
+      icon: "Grab-Hand",
       link: "/zh/step-by-step/",
       prefix: "/zh/step-by-step/",
-      children: ["java-installation-and-configuration"],
+      children: [
+        "java-installation-and-configuration",
+        "quickly-build-personal-documents",
+      ],
     },
   ],
-  // "/zh/step-by-step/": "structure",
   "/zh/programmer/": [
     {
       text: "程序猿",
