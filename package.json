@@ -15,10 +15,10 @@
   },
   "devDependencies": {
     "@vuepress/cli": "2.0.0-beta.60",
-    "prettier": "2.8.2",
+    "prettier": "2.8.3",
     "vue": "3.2.45",
-    "vuepress-plugin-search-pro": "^2.0.0-beta.165",
-    "vuepress-theme-hope": "2.0.0-beta.165",
+    "vuepress-plugin-search-pro": "^2.0.0-beta.170",
+    "vuepress-theme-hope": "2.0.0-beta.170",
     "vuepress-vite": "2.0.0-beta.60",
     "cross-env": "7.0.3"
   }
