@@ -9,4 +9,4 @@ image:https://img.shields.io/badge/LICENSE-MIT-green?style=for-the-badge[link=ht
 
 本项目使用 link:https://vuepress.github.io/zh/[VuePress,window=_blank] 搭建，搭配使用的主题是 link:https://theme-hope.vuejs.press/zh/[VuePress Theme Hope,window=_blank] 
 
-== link:https://whitechen233.github.io/[笔记首页,window=_blank]
+== link:https://blog.white233.top/[笔记首页,window=_blank]
