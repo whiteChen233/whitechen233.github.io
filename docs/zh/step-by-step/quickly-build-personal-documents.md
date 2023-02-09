@@ -149,10 +149,11 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
 
 一个页面的 `title` 标签是由侧边栏中选中条目的名称所生成的. 为了更好的 SEO , 可以在指定文件后面指定页面标题.
 
-```html
+```markdown
 <!-- docs/_sidebar.md -->
 
-* [Home](/) * [page1](page1.md "Page 1")
+- [Home](/)
+- [page1](page1.md "Page 1")
 ```
 
 ### 忽略副标题
