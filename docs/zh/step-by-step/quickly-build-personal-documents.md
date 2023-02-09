@@ -139,9 +139,9 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
   window.$docsify = {
     loadSidebar: true,
     alias: {
-      '/.*/_sidebar.md': '/_sidebar.md'
-    }
-  }
+      "/.*/_sidebar.md": "/_sidebar.md",
+    },
+  };
 </script>
 ```
 
@@ -152,8 +152,7 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
 ```html
 <!-- docs/_sidebar.md -->
 
-* [Home](/)
-* [page1](page1.md "Page 1")
+* [Home](/) * [page1](page1.md "Page 1")
 ```
 
 ### 忽略副标题
@@ -195,6 +194,7 @@ docsify 也支持自定义导航栏, 可以通过 HTML 和 Markdown 两种方式
   <div id="app"></div>
 </body>
 ```
+
 ::: warning
 文档的链接必须要以 `#/` 开头
 :::
@@ -210,15 +210,16 @@ docsify 也支持自定义导航栏, 可以通过 HTML 和 Markdown 两种方式
 ```markdown
 <!-- _navbar.md -->
 
-* 导航一
-  * [页面1](page1.md)
-  * [页面2](page2.md)
-  * [页面3](page3.md)
+- 导航一
 
-* 导航二
-  * [页面4](pages/page4.md)
-  * [页面5](pages/page5.md)
-  * [页面6](pages/page6.md)
+  - [页面 1](page1.md)
+  - [页面 2](page2.md)
+  - [页面 3](page3.md)
+
+- 导航二
+  - [页面 4](pages/page4.md)
+  - [页面 5](pages/page5.md)
+  - [页面 6](pages/page6.md)
 ```
 
 `_navbar.md` 加载逻辑和 sidebar 文件一致, 从每层目录下获取. 例如当前路由为 `/zh-cn/custom-navbar` 那么是从 `/zh-cn/_navbar.md` 获取导航栏
@@ -268,7 +269,7 @@ docsify 默认的背景是随机生成的渐变色, 可以通过在 `_coverpage.
 
 ```js
 window.$docsify = {
-  coverpage: ['/', '/pages/']
+  coverpage: ["/", "/pages/"],
 };
 ```
 
@@ -288,7 +289,7 @@ window.$docsify = {
 <!-- index.html -->
 <script>
   window.$docsify = {
-    name: '我的文档网站'
+    name: "我的文档网站",
   };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
@@ -298,7 +299,7 @@ window.$docsify = {
 
 ```js
 window.$docsify = {
-  name: '<span>Name</span>',
+  name: "<span>Name</span>",
 };
 ```
 
@@ -317,7 +318,7 @@ window.$docsify = {
 <script>
   window.$docsify = {
     // 使用用户名/存储库字符串
-    repo: 'whiteChen233/whitechen233.github.io'
+    repo: "whiteChen233/whitechen233.github.io",
     // 或者使用仓库 URL
     // repo: 'https://github.com/whiteChen233/whitechen233.github.io',
   };
@@ -340,7 +341,7 @@ window.$docsify = {
 <script>
   window.$docsify = {
     // 使用别的文件
-    homepage: 'home.md',
+    homepage: "home.md",
     // 或者指向仓库的 README
     // homepage: 'https://raw.githubusercontent.com/whiteChen233/whitechen233.github.io/main/README.adoc',
   };
@@ -362,7 +363,7 @@ window.$docsify = {
 <!-- index.html -->
 <script>
   window.$docsify = {
-    auto2top: true
+    auto2top: true,
   };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
@@ -382,13 +383,13 @@ window.$docsify = {
 <!-- index.html -->
 <script>
   window.$docsify = {
-    coverpage: true
-  }
+    coverpage: true,
+  };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 ```
 
-然后需要创建一个 `_coverpage.md` 
+然后需要创建一个 `_coverpage.md`
 
 ```markdown
 <!-- _coverpage.md -->
@@ -413,16 +414,16 @@ window.$docsify = {
 
 ```js
 window.$docsify = {
-    coverpage: 'my-cover.md'
-  }
+  coverpage: "my-cover.md",
+};
 ```
 
 - 如果有多个目录需要各自设置封面, 比如多语言的时候
 
 ```js
 window.$docsify = {
-    coverpage: ['/en-us', 'zh-cn']
-  }
+  coverpage: ["/en-us", "zh-cn"],
+};
 ```
 
 - 如果有多个封面, 又想自定义名字
@@ -430,10 +431,10 @@ window.$docsify = {
 ```js
 window.$docsify = {
   coverpage: {
-    '/en-us': 'cover-en.md',
-    'zh-cn': 'cover-zh.md'
-  }
-}
+    "/en-us": "cover-en.md",
+    "zh-cn": "cover-zh.md",
+  },
+};
 ```
 
 ### loadSidebar
@@ -451,8 +452,8 @@ window.$docsify = {
 
 <script>
   window.$docsify = {
-    loadSidebar: true
-  }
+    loadSidebar: true,
+  };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 ```
@@ -467,15 +468,15 @@ window.$docsify = {
 ```
 
 ::: tip
-子目录中的 README.md 文件可以作为路由的默认网页 
+子目录中的 README.md 文件可以作为路由的默认网页
 :::
 
 也可以通过指定文件名来自定义文件名, 像这样
 
 ```js
 window.$docsify = {
-  loadSidebar: 'my_sidebar.md'
-}
+  loadSidebar: "my_sidebar.md",
+};
 ```
 
 ### loadNavbar
@@ -493,8 +494,8 @@ window.$docsify = {
 
 <script>
   window.$docsify = {
-  loadNavbar: true
-}
+    loadNavbar: true,
+  };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 ```
@@ -504,8 +505,8 @@ window.$docsify = {
 ```markdown
 <!-- _navbar.md -->
 
-* [En](/)
-* [简体中文](/zh-cn/)
+- [En](/)
+- [简体中文](/zh-cn/)
 ```
 
 ### alias
@@ -525,10 +526,11 @@ window.$docsify = {
 ```js
 window.$docsify = {
   alias: {
-    '/pages/(.*)': '/test/$1', // 正则
-    '/pages/changelog': '/changelog',
-    '/changelog': 'https://raw.githubusercontent.com/docsifyjs/docsify/master/CHANGELOG',
-    '/.*/_sidebar.md': '/_sidebar.md', // 配置 sidebar 别名
+    "/pages/(.*)": "/test/$1", // 正则
+    "/pages/changelog": "/changelog",
+    "/changelog":
+      "https://raw.githubusercontent.com/docsifyjs/docsify/master/CHANGELOG",
+    "/.*/_sidebar.md": "/_sidebar.md", // 配置 sidebar 别名
   },
 };
 ```
