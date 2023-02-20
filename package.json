@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@vuepress/cli": "2.0.0-beta.60",
-    "prettier": "2.8.3",
+    "prettier": "2.8.4",
     "vue": "3.2.47",
     "vuepress-plugin-search-pro": "^2.0.0-beta.173",
     "vuepress-theme-hope": "2.0.0-beta.173",
