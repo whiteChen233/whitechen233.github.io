@@ -276,6 +276,22 @@ window.$docsify = {
 
 ## 配置项
 
+### el
+
+- 描述: docsify 初始化的挂载元素，可以是一个 CSS 选择器，默认为 `#app` 如果不存在就直接绑定在 `body` 上
+- 类型: `String`
+- 默认值: `#app`
+
+#### 基本用法
+
+修改 index.html 中的配置
+
+```js
+window.$docsify = {
+  el: "#app",
+};
+```
+
 ### name
 
 - 描述: 在侧边栏中显示的（网站）名字
@@ -538,10 +554,11 @@ window.$docsify = {
 
 ### subMaxLevel
 
-在自定义边栏中添加目录（TOC）
-
+- 描述: 在自定义边栏中添加目录（TOC）
 - 类型: `Number`
 - 默认值: `0`
+
+#### 基本用法
 
 ```js
 window.$docsify = {
@@ -549,13 +566,395 @@ window.$docsify = {
 };
 ```
 
-如果在侧边栏中有指向主页的链接, 并希望它在访问根网址时显示为活动状态, 请确保相应地更新侧边栏：
+如果在侧边栏中有指向主页的链接, 并希望它在访问根网址时显示为活动状态, 请确保相应地更新侧边栏
 
 ```markdown
 - Sidebar
   - [Home](/)
   - [Another page](page.md)
 ```
+
+### fallbackLanguages
+
+- 描述: 提供配置语言列表的可能性, 当请求的语言中缺少页面时, 会回退成默认语言文件
+- 类型: `Array<string>`
+- 默认值: 无
+
+Example:
+
+- 尝试访问 `/de/overview`, 如果存在则显示
+- 如果不存在则尝试 `/overview`（取决于默认语言）, 如果存在即显示
+- 如果也不存在, 显示 404 页面
+
+#### 基本用法
+
+```js
+window.$docsify = {
+  fallbackLanguages: ["en", "zh"],
+};
+```
+
+### notFoundPage
+
+- 描述: 配置 404 页面
+- 类型: `Boolean|String|Object`
+- 默认值: 无
+
+#### 基本用法
+
+在找不到指定页面时加载 `_404.md`
+
+```js
+window.$docsify = {
+  notFoundPage: true,
+};
+```
+
+#### 其他用法
+
+加载自定义的 404 页面
+
+```js
+window.$docsify = {
+  notFoundPage: "my404.md",
+};
+```
+
+加载本地化过的 404 页面
+
+```js
+window.$docsify = {
+  notFoundPage: {
+    "/": "_404.md",
+    "/en": "en_404.md",
+  },
+};
+```
+
+::: warning
+配置过 `fallbackLanguages` 这个选项的页面与这个选项 `notFoundPage` 冲突
+:::
+
+## 主题
+
+目前可以使用的有官方和社区制作的. 模仿 [Vue](https://vue.org) 和 [buble](https://buble.surge.sh) 官网定制的主题样式等
+
+```html
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css" />
+```
+
+::: tip
+CSS 的压缩文件位于 `/lib/themes/`
+
+```html
+<!-- compressed -->
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/pure.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dolphin.css" />
+```
+
+:::
+
+### 其他主题
+
+[docsify-themeable](https://jhildenbiddle.github.io/docsify-themeable) 一个用于 docsify 的, 简单到令人愉悦的主题系统
+
+可选配置
+
+::: tabs
+@tab Defaults
+
+```html
+<!-- Theme: Defaults -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css"
+/>
+```
+
+@tab Simple
+
+```html
+<!-- Theme: Simple -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"
+/>
+```
+
+@tab Simple Dark
+
+```html
+<!-- Theme: Simple Dark -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"
+/>
+```
+
+:::
+
+## 插件
+
+### 全文搜索 - Search
+
+全文搜索插件会根据当前页面上的超链接获取文档内容, 在 `localStorage` 内建立文档索引. 默认过期时间为一天, 可以指定需要缓存的文件列表或者配置过期时间
+
+- 简单使用
+
+```html
+<script>
+  window.$docsify = {
+    // 默认值
+    search: "auto",
+  };
+</script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+```
+
+当然也可以指定搜索的路径
+
+```html
+<script>
+  window.$docsify = {
+    search: [
+      "/", // => /README.md
+      "/guide", // => /guide.md
+      "/get-started", // => /get-started.md
+      "/zh-cn/", // => /zh-cn/README.md
+    ],
+  };
+</script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+```
+
+- 完整配置
+
+```html
+<script>
+  window.$docsify = {
+    // 完整配置参数
+    search: {
+      maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+      paths: [], // or 'auto'
+      /*
+       * placeholder 也支持本地化
+       * placeholder: {
+       *   '/zh-cn/': '搜索',
+       *   '/': 'Type to search'
+       * },
+       */
+      placeholder: "Type to search",
+
+      /*
+       * noData 也支持本地化
+       * noData: {
+       *   '/zh-cn/': '找不到结果',
+       *   '/': 'No Results'
+       * },
+       */
+      noData: "No Results!",
+
+      // 搜索标题的最大层级, 1 - 6
+      depth: 2,
+
+      // 是否隐藏其他侧边栏内容
+      hideOtherSidebarContent: false,
+
+      // 避免搜索索引冲突
+      // 同一域下的多个网站之间
+      namespace: "website-1",
+
+      // 使用不同的索引作为路径前缀（namespaces）
+      // 注意：仅适用于 paths: 'auto' 模式
+      //
+      // 初始化索引时，我们从侧边栏查找第一个路径, 如果它与列表中的前缀匹配，将切换到相应的索引
+      /*
+       * pathNamespaces 也可以提供一个正则表达式来匹配前缀. 在这种情况下, 匹配到的字符串将被用来识别索引
+       * pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/
+       */
+      pathNamespaces: ["/zh-cn", "/ru-ru", "/ru-ru/v1"],
+    },
+  };
+</script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+```
+
+::: tip
+当执行全文搜索时, 该插件会忽略双音符（例如, "cafe" 也会匹配 "café"）. 像 IE11 这样的旧版浏览器需要使用以下 [String.normalize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) polyfill 来忽略双音符
+
+```html
+<script src="//polyfill.io/v3/polyfill.min.js?features=String.prototype.normalize"></script>
+```
+
+:::
+
+### 图片缩放 - Zoom image
+
+基于 [medium-zoom](https://github.com/francoischalifour/medium-zoom) 的 Medium's 风格的图片缩放插件
+
+```html
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+```
+
+如果需要忽略某张图片
+
+```markdown
+![](image.png ":no-zoom")
+```
+
+### 字数统计
+
+这是一款为 docsify 提供文字统计的插件. 它提供了统计中文汉字和英文单词的功能，并且排除了一些 markdown 语法的特殊字符例如\*、-等
+
+```html
+<script>
+  window.$docsify = {
+    count: {
+      countable: true,
+      fontsize: "0.9em",
+      color: "rgb(90,90,90)",
+      language: "chinese",
+    },
+  };
+</script>
+<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+```
+
+### 分页导航
+
+docsify 的分页导航插件
+
+```html
+<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+```
+
+### emoji
+
+默认是提供 emoji 解析的, 能将类似 `:100:` 解析成 :100:, 但是它不是精准的, 因为没有处理非 emoji 的字符串. 如果需要正确解析 emoji 字符串, 可以引入这个插件
+
+```html
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+```
+
+::: tip
+如果你不想解析成表情符号, 可以使用 `__colon__` 或 `&#58;`, 如果你需要在标题中使用, 我们建议使用 `&#58;`, 例如: `&#58;100:`
+:::
+
+### 更多插件
+
+参考 [awesome-docsify](https://docsify.js.org/#/awesome?id=plugins)
+
+### 自定义插件
+
+参考 [自定义插件](https://docsify.js.org/#/zh-cn/write-a-plugin)
+
+## Markdown 配置
+
+docsify 内置的 Markdown 解析器是 [marked](https://github.com/markedjs/marked), 可以修改它的配置来实现自定义, 也可以直接配置 `renderer`
+
+```js
+window.$docsify = {
+  markdown: {
+    smartypants: true,
+    renderer: {
+      link: function () {
+        // ...
+      },
+    },
+  },
+};
+```
+
+当然也可以完全定制 Markdown 的解析规则
+
+```js
+window.$docsify = {
+  markdown: function (marked, renderer) {
+    // ...
+    return marked;
+  },
+};
+```
+
+### mermaid
+
+docsify 也是支持 mermaid 的, [mermaid 是什么](https://github.com/mermaid-js/mermaid/blob/develop/README.zh-CN.md)
+
+导入脚本和样式
+
+```html
+<!-- css -->
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"
+/>
+<!-- js 注意这个导入要在声明 mermaid 之前 -->
+<script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+```
+
+配置
+
+```html
+<script>
+  var num = 0;
+  mermaid.initialize({ startOnLoad: false });
+
+  window.$docsify = {
+    markdown: {
+      renderer: {
+        code: function (code, lang) {
+          if (lang === "mermaid") {
+            return (
+              '<div class="mermaid">' +
+              mermaid.render("mermaid-svg-" + num++, code) +
+              "</div>"
+            );
+          }
+          return this.origin.code.apply(this, arguments);
+        },
+      },
+    },
+  };
+</script>
+```
+
+## 代码高亮
+
+docsify 有内置的代码高亮工具, 由 [Prism](https://github.com/PrismJS/prism) 实现, 默认支持以下语言
+
+- Markup - `markup`, `html`, `xml`, `svg`, `mathml`, `ssml`, `atom`, `rss`
+- CSS - `css`
+- C-like - `clike`
+- JavaScript - `javascript`, `js`
+
+添加额外的语法支持需要只通过 CDN 添加不同的语法文件, 比如
+
+```html
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+```
+
+查看[支持的语言列表](https://prismjs.com/#supported-languages)
+
+## 更多支持
+
+- [文档助手](https://docsify.js.org/#/zh-cn/helpers)
+- [兼容 Vue](https://docsify.js.org/#/zh-cn/vue)
+- [CDN](https://docsify.js.org/#/zh-cn/cdn)
+- [离线模式（PWA）](https://docsify.js.org/#/zh-cn/pwa)
+- [服务端渲染（SSR）](https://docsify.js.org/#/zh-cn/ssr)
+- [文件嵌入](https://docsify.js.org/#/zh-cn/embed-files)
 
 ## docsify-cli 的使用
 
