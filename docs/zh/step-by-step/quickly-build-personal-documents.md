@@ -644,7 +644,10 @@ window.$docsify = {
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css" />
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" />
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css" />
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css" />
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css"
+/>
 ```
 
 ::: tip
@@ -653,11 +656,26 @@ CSS 的压缩文件位于 `/lib/themes/`
 ```html
 <!-- compressed -->
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" />
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css" />
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css" />
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/pure.css" />
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dolphin.css" />
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css"
+/>
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css"
+/>
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css"
+/>
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/pure.css"
+/>
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dolphin.css"
+/>
 ```
 
 :::

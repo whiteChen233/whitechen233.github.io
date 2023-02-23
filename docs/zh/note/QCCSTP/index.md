@@ -51,7 +51,7 @@ icon: certificate
 
 软考各科目**全部**达到合格线则本次考试视为通过
 
-2022 年 2 月 16 日, 人力资源社会保障部办公厅发布了[关于 33 项专业技术人员职业资格考试实行相对固定合格标准有关事项的通告](http://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/sykaoshi/zyjsryzyzgkshgbz/202202/t20220217_436122.html?bsh_bid=5674035974), 至此软考正式实施相对固定合格标准, 合格标准为试卷满分的 60%即 45 分
+2022 年 2 月 16 日, 人力资源社会保障部办公厅发布了[关于 33 项专业技术人员职业资格考试实行相对固定合格标准有关事项的通告](http://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/sykaoshi/zyjsryzyzgkshgbz/202202/t20220217_436122.html?bsh_bid=5674035974), 至此软考正式实施相对固定合格标准, 合格标准为试卷满分（75 分）的 60% 即 45 分
 
 ## 官网
 

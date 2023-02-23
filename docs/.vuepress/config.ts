@@ -10,7 +10,7 @@ export default defineUserConfig({
     "/zh/": {
       lang: "zh-CN",
       title: "温故而知新~",
-      description: "俗话说，好记心不如烂笔头",
+      description: "俗话说, 好记心不如烂笔头",
     },
     "/en/": {
       lang: "en-US",
@@ -91,6 +91,6 @@ export default defineUserConfig({
       // https://vuepress-theme-hope.github.io/v2/search-pro/zh/
       // 索引全部内容
       indexContent: true,
-    }),
-  ],
+    })
+  ]
 });

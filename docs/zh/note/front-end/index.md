@@ -1,5 +1,6 @@
 ---
-title: 其他
+title: 前端
 timeline: false
 article: false
+icon: nodejs
 ---

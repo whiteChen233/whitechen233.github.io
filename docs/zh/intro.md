@@ -1,7 +1,7 @@
 ---
-title: 个人简介
-icon: yonghu
+title: 关于我
+icon: account
 date: 2021-06-03
 ---
 
-Hello！很高兴见到你！
+Hello！很高兴认识你！

@@ -144,7 +144,7 @@ npm install vue-router --save
 - 第三步：在**Vue 实例**中**挂载**创建的**路由实例**
 
 ```javascript
-// /router/index.js
+// /router/index.ts
 import Vue from 'vue'
 import VueRoter from 'vue-router'
 // 安装插件
@@ -178,7 +178,7 @@ export default new Vue ({
 - 第三步：使用路由：`<router-link>`和`<router-view>`
 
 ```javascript
-// router/index.js
+// router/index.ts
 
 // 创建VueRouter对象
 const routers = [

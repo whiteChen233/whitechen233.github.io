@@ -1,117 +1,23 @@
 import { sidebar } from "vuepress-theme-hope";
 
+import { qccstp, frontEnd, design } from "./note";
+import { stepByStep } from "./step-by-step";
+
 export const zhSidebar = sidebar({
-  "/zh/": ["", "intro"],
-  "/zh/QCCSTP/": [
+  "/zh/": [
     "",
+    "intro",
     {
-      text: "软件设计师",
-      prefix: "software-design-engineer/",
-      collapsible: true,
-      children: [
-        "start",
-        "computer-composition-and-structure",
-        "program-language",
-        "operating-system",
-        "fundamentals-of-software-engineering",
-        "system-development-and-operation",
-        "basic-knowledge-of-network-and-multimedia",
-        "database-technology",
-        "algorithms-and-data-structures",
-        "object-oriented-technology",
-        "standardization-and-intellectual-property",
-      ],
-    },
-    {
-      text: "系统架构设计师",
-      prefix: "system-architect/",
-      collapsible: true,
-      children: [
-        "start",
-        "enterprise-informatization-strategy-and-implementation",
-        "software-engineering",
-        "software-architecture-design",
-        "design-thesis",
-        "system-security-analysis-and-design",
-        "system-reliability-analysis-and-design",
-        "project-management",
-        "computer-composition-and-architecture",
-        "system-configuration-and-performance-evaluation",
-        "case-analysis",
-        "operating-system",
-        "computer-network",
-        "database-system",
-        "intellectual-property-and-standardization",
-        "mathematics-and-economic-management",
-      ],
-    },
-  ],
-  "/zh/step-by-step/": [
-    {
-      text: "手把手系列",
-      icon: "Grab-Hand",
-      link: "/zh/step-by-step/",
-      prefix: "/zh/step-by-step/",
-      children: [
-        "java-installation-and-configuration",
-        "quickly-build-personal-documents",
-      ],
-    },
-  ],
-  "/zh/programmer/": [
-    {
-      text: "程序猿",
-      children: [
-        {
-          text: "前端",
-          prefix: "front-end/",
-          children: [
-            {
-              text: "ES6",
-              prefix: "ES6/",
-              collapsible: true,
-              children: ["Promise"],
-            },
-            {
-              text: "Vue 2",
-              prefix: "Vue2/",
-              collapsible: true,
-              children: [
-                "Runtime",
-                "Component",
-                "Slot",
-                "Modules",
-                "Webpack",
-                "Vue_CLI",
-                "Vue_Router",
-                "Vuex",
-              ],
-            },
-            {
-              text: "Vue 3",
-              prefix: "Vue3/",
-              collapsible: true,
-              children: [""],
-            },
-          ],
-        },
-      ],
-    },
-  ],
-  "/zh/essay/": [
-    {
-      text: "杂文",
+      text: "随笔",
+      icon: "heart",
       link: "/zh/essay/",
       prefix: "/zh/essay/",
       children: ["me", "love", "rain", "tearsOfRouge", "SlowSlowSong"],
     },
   ],
-  "/zh/others/": [
-    {
-      text: "其他",
-      link: "/zh/others/",
-      prefix: "/zh/others/",
-      children: ["UML/UML"],
-    },
-  ],
+  "/zh/note/QCCSTP/": qccstp,
+  "/zh/note/front-end/": frontEnd,
+  "/zh/note/design/": design,
+  "/zh/step-by-step/": stepByStep,
+  "/zh/links": [],
 });

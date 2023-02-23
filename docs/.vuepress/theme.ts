@@ -8,7 +8,8 @@ export default hopeTheme({
     name: "White",
     url: "https://github.com/whiteChen233",
   },
-  iconAssets: "//at.alicdn.com/t/c/font_3670193_ieexsngpaa.css",
+  iconAssets: "iconify",
+  iconPrefix: "mdi-",
   logo: "/logo.png",
   repo: "whiteChen233/whitechen233.github.io",
   docsDir: "docs",
@@ -30,7 +31,7 @@ export default hopeTheme({
   fullscreen: true,
   blog: {
     name: "White",
-    description: "Today.do(() -> new Bug());",
+    description: "Today.do(Bug::new);",
     timeline: "温故而知新~",
     roundAvatar: true,
     medias: {
@@ -45,9 +46,9 @@ export default hopeTheme({
     "/zh/": {
       navbar: zhNavbar,
       sidebar: zhSidebar,
-      displayFooter: true,
+      copyright: "MIT license",
       blog: {
-        intro: "/zh/intro.html",
+        intro: "/zh/intro",
       },
       metaLocales: {
         editLink: "在 GitHub 上编辑此页",
@@ -56,9 +57,9 @@ export default hopeTheme({
     "/en/": {
       navbar: enNavbar,
       sidebar: enSidebar,
-      displayFooter: true,
+      copyright: "MIT license",
       blog: {
-        intro: "/en/intro.html",
+        intro: "/en/intro",
       },
       metaLocales: {
         editLink: "Edit this page on GitHub",
@@ -72,13 +73,8 @@ export default hopeTheme({
   //   },
   // },
   plugins: {
-    // If you don't need comment feature, you can remove following option
-    // The following config is for demo ONLY, if you need comment feature, please generate and use your own config, see comment plugin documentation for details.
-    // To avoid disturbing the theme developer and consuming his resources, please DO NOT use the following config directly in your production environment!!!!!
+    // 评论
     comment: {
-      /**
-       * Using Waline
-       */
       provider: "Waline",
       serverURL: "https://comment.white233.top",
     },
@@ -126,6 +122,16 @@ export default hopeTheme({
       tabs: true,
       vPre: true,
       vuePlayground: true,
+    },
+    autoCatalog: {
+      exclude: ["/note/"]
+    },
+    components: {
+      components: [
+        "Badge",
+        "FontIcon",
+        "SiteInfo"
+      ]
     },
     pwa: {
       favicon: "/favicon.ico",
