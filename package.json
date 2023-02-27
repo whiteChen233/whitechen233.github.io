@@ -18,7 +18,7 @@
     "prettier": "2.8.4",
     "vue": "3.2.47",
     "vuepress-plugin-search-pro": "^2.0.0-beta.180",
-    "vuepress-theme-hope": "2.0.0-beta.180",
+    "vuepress-theme-hope": "2.0.0-beta.182",
     "vuepress-vite": "2.0.0-beta.60",
     "cross-env": "7.0.3"
   }
