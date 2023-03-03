@@ -1,6 +1,7 @@
 ---
 title: 还爱
 date: 2011-12-02
+isOriginal: true
 ---
 
 懵懂的年纪

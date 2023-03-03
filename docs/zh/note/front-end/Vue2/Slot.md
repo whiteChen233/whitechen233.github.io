@@ -38,12 +38,12 @@ date: 2021-07-17
 </template>
 
 <script>
-  Vue.component("cpn", {
-    template: "#cpn",
+  Vue.component('cpn', {
+    template: '#cpn',
   });
 
   const app = new Vue({
-    el: "#app",
+    el: '#app',
   });
 </script>
 ```
@@ -66,9 +66,7 @@ date: 2021-07-17
 <div id="app">
   <cpn>
     <!-- 在父组件中通过slotData获取从子组件传过来的数据，default是指默认的插槽，如果是具名插槽则需要替换成对应的名字且不能省略插槽名字。slotData.data中的data这个键就是子组件的slot中绑定的data(这个名字随便取) -->
-    <template v-slot:default="slotData">
-      {{ slotData.data.join(' * ') }}
-    </template>
+    <template v-slot:default="slotData">{{ slotData.data.join(' * ') }}</template>
   </cpn>
 </div>
 
@@ -84,17 +82,17 @@ date: 2021-07-17
 </template>
 
 <script>
-  Vue.component("cpn", {
-    template: "#cpn",
+  Vue.component('cpn', {
+    template: '#cpn',
     data() {
       return {
-        list: ["Java", "C++", "C#"],
+        list: ['Java', 'C++', 'C#'],
       };
     },
   });
 
   const app = new Vue({
-    el: "#app",
+    el: '#app',
   });
 </script>
 ```
@@ -114,7 +112,7 @@ date: 2021-07-17
 <!-- 简写 -->
 <!-- 注意默认插槽的缩写语法不能和具名插槽混用，因为它会导致作用域不明确。所以只要出现多个插槽，请始终为所有的插槽使用完整的基于 <template> 的语法 -->
 <cpn>
-  <template v-slot="slotData"> {{ slotData.data.join(' * ') }} </template>
+  <template v-slot="slotData">{{ slotData.data.join(' * ') }}</template>
 </cpn>
 
 <!-- 2.解构插槽prop -->
@@ -127,27 +125,25 @@ date: 2021-07-17
 -->
 <!-- 直接解构 -->
 <cpn>
-  <template v-slot="{ user }"> {{ user.name }} </template>
+  <template v-slot="{ user }">{{ user.name }}</template>
 </cpn>
 <!-- 重命名 -->
 <cpn>
-  <template v-slot="{ user: person }"> {{ person.name }} </template>
+  <template v-slot="{ user: person }">{{ person.name }}</template>
 </cpn>
 <!-- 定义后备内容，用于插槽 prop 是 undefined 的情形 -->
 <cpn>
-  <template v-slot="{ user = { firstName: 'Guest' } }">
-    {{ user.firstName }}
-  </template>
+  <template v-slot="{ user = { firstName: 'Guest' } }">{{ user.firstName }}</template>
 </cpn>
 
 <!-- 3.动态插槽名 -->
 <cpn>
-  <template v-slot:[dynamicSlotName]> ... </template>
+  <template v-slot:[dynamicSlotName]>...</template>
 </cpn>
 
 <!-- 4.具名插槽的缩写 -->
 <!-- 跟 v-on 和 v-bind 一样，v-slot 也有缩写，即把参数之前的所有内容 (v-slot:) 替换为字符 #。例如 v-slot:header 可以被重写为 #header： -->
 <cpn>
-  <template #default="{ user }"> ... </template>
+  <template #default="{ user }">...</template>
 </cpn>
 ```

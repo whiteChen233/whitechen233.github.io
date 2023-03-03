@@ -56,17 +56,19 @@ date: 2021-08-17
 
 ```javascript
 window.addEventListener(
-  "hashchange",
+  'hashchange',
   (event) => {
     const oldURL = event.oldURL; // 上一个URL
     const newURL = event.newURL; // 当前的URL
     console.log(newURL, oldURL);
   },
-  false
+  false,
 );
 ```
 
-> href -> <font color="red">h</font>yper <font color="red">ref</font>erence 的缩写
+::: tip
+$\text{href} \to \textcolor{red}{h}\text{yper}\ \textcolor{red}{ref}\text{erence}$ 的缩写
+:::
 
 ### window 的 history
 
@@ -183,12 +185,12 @@ export default new Vue ({
 // 创建VueRouter对象
 const routers = [
   {
-    path: "/home",
-    component: () => import("../components/Home"),
+    path: '/home',
+    component: () => import('../components/Home'),
   },
   {
-    path: "/about",
-    component: () => import("../components/About"),
+    path: '/about',
+    component: () => import('../components/About'),
   },
 ];
 // 省略其他代码...
@@ -242,7 +244,7 @@ const routers = [
 // 添加 mode 属性
 export default new VueRouter({
   routers,
-  mode: "history",
+  mode: 'history',
 });
 ```
 
@@ -289,7 +291,7 @@ methods: {
 
 ```javascript
 const User = {
-  template: "...",
+  template: '...',
   watch: {
     $route(to, from) {
       // 对路由变化作出响应...
@@ -302,7 +304,7 @@ const User = {
 
 ```javascript
 const User = {
-  template: "...",
+  template: '...',
   beforeRouteUpdate(to, from, next) {
     // react to route changes...
     // don't forget to call next()
@@ -328,20 +330,20 @@ const Foo = () =>
 第二，在 Webpack 2 中，我们可以使用动态 import (opens new window)语法来定义代码分块点 (split point)：
 
 ```javascript
-import("./Foo.vue"); // 返回 Promise
+import('./Foo.vue'); // 返回 Promise
 ```
 
 结合这两者，这就是如何定义一个能够被 Webpack 自动代码分割的异步组件。
 
 ```javascript
-const Foo = () => import("./Foo.vue");
+const Foo = () => import('./Foo.vue');
 ```
 
 在路由配置中什么都不需要改变，只需要像往常一样使用 Foo：
 
 ```javascript
 const router = new VueRouter({
-  routes: [{ path: "/foo", component: Foo }],
+  routes: [{ path: '/foo', component: Foo }],
 });
 ```
 
@@ -351,8 +353,8 @@ const router = new VueRouter({
 
    ```javascript
    const Home = (resolve) => {
-     require.ensure(["../components/Home.vue"], () => {
-       resolve(require("../components/Home.vue"));
+     require.ensure(['../components/Home.vue'], () => {
+       resolve(require('../components/Home.vue'));
      });
    };
    ```
@@ -360,13 +362,13 @@ const router = new VueRouter({
 2. AMD 写法
 
    ```javascript
-   const Home = (resolve) => require(["../components/Home.vue"], resolve);
+   const Home = (resolve) => require(['../components/Home.vue'], resolve);
    ```
 
 3. 在 ES6 中，可以使用跟简单的写法来组织 Vue 一部组件和 Webpack 的代码分割
 
    ```javascript
-   const Home = () => import("../components/Home.vue");
+   const Home = () => import('../components/Home.vue');
    ```
 
 ### 把组件按组分块
@@ -374,9 +376,9 @@ const router = new VueRouter({
 有时候我们想把某个路由下的所有组件都打包在同个异步块 (chunk) 中。只需要使用 命名 chunk (opens new window)，一个特殊的注释语法来提供 chunk name (需要 Webpack > 2.4)。
 
 ```javascript
-const Foo = () => import(/* webpackChunkName: "group-foo" */ "./Foo.vue");
-const Bar = () => import(/* webpackChunkName: "group-foo" */ "./Bar.vue");
-const Baz = () => import(/* webpackChunkName: "group-foo" */ "./Baz.vue");
+const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue');
+const Bar = () => import(/* webpackChunkName: "group-foo" */ './Bar.vue');
+const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue');
 ```
 
 Webpack 会将任何一个异步模块与相同的块名称组合到相同的异步块中。
@@ -489,7 +491,7 @@ router.afterEach((to, from) => {
 const router = new VueRouter({
   routes: [
     {
-      path: "/foo",
+      path: '/foo',
       component: Foo,
       beforeEnter: (to, from, next) => {
         // ...
@@ -622,16 +624,16 @@ beforeRouteLeave (to, from, next) {
 ```javascript
 export default [
   {
-    path: "/",
-    name: "a",
+    path: '/',
+    name: 'a',
     components: A,
     meta: {
       keepAlive: true, //需要被缓存的组件
     },
   },
   {
-    path: "/b",
-    name: "b",
+    path: '/b',
+    name: 'b',
     components: B,
     meta: {
       keepAlive: false, //不需要被缓存的组件

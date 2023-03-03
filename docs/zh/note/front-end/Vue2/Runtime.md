@@ -18,7 +18,7 @@ date: 2021-07-17
 ```javascript
 // main.js
 new Vue({
-  el: "#app",
+  el: '#app',
   render: (h) => h(App),
 });
 ```
@@ -28,8 +28,8 @@ new Vue({
 ```javascript
 // main.js
 new Vue({
-  el: "#app",
-  template: "<App/>",
+  el: '#app',
+  template: '<App/>',
   components: { App },
 });
 ```
@@ -39,10 +39,10 @@ runtime-only 中的函数 h，实际上是 createElement 函数。所以上面�
 ```javascript
 // createElement 的一种用法: createElement('标签',{标签的属性},[内容])
 new Vue({
-  el: "#app",
+  el: '#app',
   render: (createElement) => {
     // 创建一个 <h1 class="box">Hello World</h1> 替换掉app挂载的元素
-    return createElement("h1", { class: "box" }, ["Hello World"]);
+    return createElement('h1', { class: 'box' }, ['Hello World']);
     /*
      * 因为内容是个数组，所以可以这么写来实现嵌套
      * return createElement('h1', {class: 'box'}, ['Hello World', createElement('button',['按钮'])])
@@ -51,9 +51,9 @@ new Vue({
 });
 
 // createElement 还能接受一个组件作为参数
-import cpn from "./cpn";
+import cpn from './cpn';
 new Vue({
-  el: "#app",
+  el: '#app',
   render: (createElement) => {
     // createElement的用法: createElement(组件)。如果将组件 cpn 换成 App，其实就跟 runtime-only 的写法是一样的了
     return createElement(cpn);

@@ -46,8 +46,8 @@ date: 2021-07-05
 <!-- 使用方式 -->
 <script>
   // 注册全局组件
-  Vue.component("tagName", {
-    template: "#id",
+  Vue.component('tagName', {
+    template: '#id',
   });
 </script>
 ```
@@ -155,23 +155,23 @@ date: 2021-07-05
 <script>
   // 子组件
   const cpn = {
-    template: "#id",
+    template: '#id',
     data() {
       return {
-        books: ["Java", "C", "C#"],
+        books: ['Java', 'C', 'C#'],
       };
     },
     methods: {
       btnClick(item) {
         // 发送自定义事件
-        this.$emit("btn-click", item);
+        this.$emit('btn-click', item);
       },
     },
   };
 
   // 父组件
   const app = new Vue({
-    el: "#app",
+    el: '#app',
     data: {},
     components: { cpn },
     methods: {

@@ -1,6 +1,7 @@
 ---
 title: 雨幕、念
 date: 2012-04-12
+isOriginal: true
 ---
 
 昨夜风卷雨茫茫，

@@ -1,32 +1,23 @@
-import { arraySidebar } from "vuepress-theme-hope";
+import { arraySidebar } from 'vuepress-theme-hope';
 
 export const frontEnd = arraySidebar([
-  "",
+  '',
   {
-    text: "ES6",
-    prefix: "ES6/",
+    text: 'ES6',
+    prefix: 'ES6/',
     collapsible: true,
-    children: ["Promise"],
+    children: ['Promise'],
   },
   {
-    text: "Vue 2",
-    prefix: "Vue2/",
+    text: 'Vue 2',
+    prefix: 'Vue2/',
     collapsible: true,
-    children: [
-      "Runtime",
-      "Component",
-      "Slot",
-      "Modules",
-      "Webpack",
-      "Vue_CLI",
-      "Vue_Router",
-      "Vuex",
-    ],
+    children: ['Runtime', 'Component', 'Slot', 'Modules', 'Webpack', 'Vue_CLI', 'Vue_Router', 'Vuex'],
   },
   {
-    text: "Vue 3",
-    prefix: "Vue3/",
+    text: 'Vue 3',
+    prefix: 'Vue3/',
     collapsible: true,
-    children: [""],
+    children: [''],
   },
 ]);

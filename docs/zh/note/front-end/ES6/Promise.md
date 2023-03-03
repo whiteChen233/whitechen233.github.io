@@ -6,13 +6,13 @@ date: 2021-08-27
 以前在前端开发时会有一种情况：一个请求需要依赖另一个请求，如此循环嵌套，就形成了网络请求的回调地狱。
 
 ```javascript
-$.ajax("url1", function (data1) {
+$.ajax('url1', function (data1) {
   // 一些逻辑处理 ...
-  $.ajax("url2", function (data2) {
+  $.ajax('url2', function (data2) {
     // 一些逻辑处理 ...
-    $.ajax("url3", function (data3) {
+    $.ajax('url3', function (data3) {
       // 一些逻辑处理 ...
-      $.ajax("url4", function (data4) {
+      $.ajax('url4', function (data4) {
         // 一些逻辑处理 ...
       });
     });
@@ -42,9 +42,9 @@ ES6 中一个非常重要的和好用的特性就是 Promise。
 new Promise((resolve, reject) => {
   setTimeout(() => {
     // 成功的时候调用 resolve
-    resolve("success");
+    resolve('success');
     // 失败的时候调用 reject
-    reject("error");
+    reject('error');
   }, 1000);
 })
   .then((data) => {

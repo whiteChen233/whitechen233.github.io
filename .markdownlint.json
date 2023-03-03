@@ -1,4 +1,4 @@
-module.exports = {
+{
   "default": true,
   "MD003": {
     "style": "atx"
@@ -13,6 +13,11 @@ module.exports = {
   "MD033": {
     "allowed_elements": [
       "br",
+      "table",
+      "thead",
+      "tbody",
+      "tr",
+      "td",
       "template",
       "script",
       "style",

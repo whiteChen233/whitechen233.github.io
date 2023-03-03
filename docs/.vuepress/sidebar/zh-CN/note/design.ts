@@ -1,3 +1,3 @@
-import { arraySidebar } from "vuepress-theme-hope";
+import { arraySidebar } from 'vuepress-theme-hope';
 
-export const design = arraySidebar(["", "UML/UML"]);
+export const design = arraySidebar(['', 'UML/UML']);

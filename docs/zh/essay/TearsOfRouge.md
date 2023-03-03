@@ -1,6 +1,7 @@
 ---
 title: 胭脂泪
 date: 2014-12-10
+isOriginal: true
 ---
 
 红楼交杯相思豆，痴男怨女乞白头。

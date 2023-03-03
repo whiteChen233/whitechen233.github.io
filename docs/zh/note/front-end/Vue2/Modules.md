@@ -37,22 +37,22 @@ date: 2021-07-17
 module.exports = {
   flag: true,
   test() {
-    console.log("function");
+    console.log('function');
   },
 };
 
 // 导入
 // CommonJS模块
-const { flag, test } = require("moduleA");
+const { flag, test } = require('moduleA');
 // 等同于
-const _moduleA = require("moduleA");
+const _moduleA = require('moduleA');
 const flag = _moduleA.flag;
 const test = _moduleA.test;
 ```
 
 ### ES6 中的使用
 
-#### 使用关键字: `export`导出,`import`导入。
+- 使用关键字: `export`导出,`import`导入
 
 导出的功能都是由 named exports 组成— 每个项目（无论是函数，常量等）在导出时都由其名称引用，并且该名称也用于在导入时引用它
 
@@ -65,15 +65,15 @@ export function test() {}
 export const module = {
   flag: true,
   test: () => {
-    consloe.log("test");
+    consloe.log('test');
   },
 };
 
 // 导入
-import { flag, test } from "moduleA";
+import { flag, test } from 'moduleA';
 ```
 
-#### 默认导出 versus 命名导出。
+- 默认导出 versus 命名导出
 
 还有一种导出类型叫做 default export —这样可以很容易地使模块提供默认功能，并且还可以帮助 JavaScript 模块与现有的 CommonJS 和 AMD 模块系统进行互操作
 
@@ -82,7 +82,7 @@ import { flag, test } from "moduleA";
 export default {};
 
 // 导入的时候可以自定义名字
-import customName from "ModuleA";
+import customName from 'ModuleA';
 ```
 
 #### 重命名导出与导入
@@ -92,7 +92,7 @@ import customName from "ModuleA";
 export { function1 as newFunc1, function2 as newFunc2 };
 
 // 导入
-import { newFunc1, newFunc2 } from "moduleA";
+import { newFunc1, newFunc2 } from 'moduleA';
 ```
 
 ```javascript
@@ -100,7 +100,7 @@ import { newFunc1, newFunc2 } from "moduleA";
 export { function1, function2 };
 
 // 重命名导入
-import { function1 as newFunc1, function2 as newFunc2 } from "moduleA";
+import { function1 as newFunc1, function2 as newFunc2 } from 'moduleA';
 ```
 
 #### 创建模块对象
@@ -109,7 +109,7 @@ import { function1 as newFunc1, function2 as newFunc2 } from "moduleA";
 
 ```javascript
 // 导入
-import * as ModuleA from "moduleA";
+import * as ModuleA from 'moduleA';
 
 // 使用
 ModuleA.func1();

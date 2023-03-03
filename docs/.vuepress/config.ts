@@ -1,21 +1,21 @@
-import { defineUserConfig } from "@vuepress/cli";
+import { defineUserConfig } from '@vuepress/cli';
 // import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 // import { searchPlugin } from "@vuepress/plugin-search";
-import { searchProPlugin } from "vuepress-plugin-search-pro";
-import theme from "./theme.js";
+import { searchProPlugin } from 'vuepress-plugin-search-pro';
+import theme from './theme.js';
 
 export default defineUserConfig({
-  base: "/",
+  base: '/',
   locales: {
-    "/zh/": {
-      lang: "zh-CN",
-      title: "温故而知新~",
-      description: "俗话说, 好记心不如烂笔头",
+    '/zh/': {
+      lang: 'zh-CN',
+      title: '温故而知新~',
+      description: '俗话说, 好记心不如烂笔头',
     },
-    "/en/": {
-      lang: "en-US",
-      title: "Blog Demo",
-      description: "A blog demo for vuepress-theme-hope",
+    '/en/': {
+      lang: 'en-US',
+      title: 'Blog Demo',
+      description: 'A blog demo for vuepress-theme-hope',
     },
   },
   theme,
@@ -91,6 +91,6 @@ export default defineUserConfig({
       // https://vuepress-theme-hope.github.io/v2/search-pro/zh/
       // 索引全部内容
       indexContent: true,
-    })
-  ]
+    }),
+  ],
 });

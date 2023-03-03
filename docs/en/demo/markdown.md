@@ -346,12 +346,16 @@ $$
 
 ```html
 <h1>VuePress Theme Hope</h1>
-<p>Is <span id="very">very</span> powerful!</p>
+<p>
+  Is
+  <span id="very">very</span>
+  powerful!
+</p>
 ```
 
 ```js
-document.querySelector("#very").addEventListener("click", () => {
-  alert("Very powerful!");
+document.querySelector('#very').addEventListener('click', () => {
+  alert('Very powerful!');
 });
 ```
 
@@ -378,7 +382,7 @@ Donate Mr.Hope a cup of coffee. _Recommanded_
 @file index.ts
 
 ```ts
-const msg = "hello world";
+const msg = 'hello world';
 
 const speak = (msg: string) => console.log(msg);
 
@@ -397,9 +401,9 @@ speak(msg);
 
 ```vue
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
-const msg = ref("Hello World!");
+const msg = ref('Hello World!');
 </script>
 
 <template>

@@ -271,7 +271,7 @@ module.exports = {
     bottom: 50,
   },
   xAxis: {
-    name: "x",
+    name: 'x',
     min: -5,
     max: 10,
     minorTick: {
@@ -282,7 +282,7 @@ module.exports = {
     },
   },
   yAxis: {
-    name: "y",
+    name: 'y',
     min: -5,
     max: 15,
     minorTick: {
@@ -294,19 +294,19 @@ module.exports = {
   },
   series: [
     {
-      type: "line",
+      type: 'line',
       showSymbol: false,
       clip: true,
       data: generateData(1),
     },
     {
-      type: "line",
+      type: 'line',
       showSymbol: false,
       clip: true,
       data: generateData(2),
     },
     {
-      type: "line",
+      type: 'line',
       showSymbol: false,
       clip: true,
       data: generateData(3),

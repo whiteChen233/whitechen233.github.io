@@ -45,7 +45,7 @@ yarn global add docsify-cli
 
 :::
 
-参考 <a href="#docsify-cli-的使用">docsify-cli 的使用</a>
+参考 [docsify-cli 的使用](#docsify-cli-的使用)
 
 ### 初始化
 
@@ -124,7 +124,7 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
 
 ### 定制侧边栏
 
-随着页面的增多, 需要创建 `_sidebar.md` 文件来定义侧边栏, 默认情况下侧边栏会通过 Markdown 文件自动生成. 通过配置 `loadSidebar` 选项, 具体配置见 <a href="#loadsidebar">配置项#loadSidebar</a>
+随着页面的增多, 需要创建 `_sidebar.md` 文件来定义侧边栏, 默认情况下侧边栏会通过 Markdown 文件自动生成. 通过配置 `loadSidebar` 选项, 具体配置见 [配置项#loadSidebar](#loadsidebar)
 
 ### 嵌套的侧边栏
 
@@ -132,14 +132,14 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
 
 `_sidebar.md` 的加载逻辑是从每层目录下获取文件, 如果当前目录不存在该文件则回退到上一级目录. 例如当前路径为 `/zh-cn/more-pages` 则从 `/zh-cn/_sidebar.md` 获取文件, 如果不存在则从 `/_sidebar.md` 获取
 
-如果希望避免不必要的回退过程, 那么就需要配置 `alias` , 更多用法见 <a href="#alias">配置项#alias</a>
+如果希望避免不必要的回退过程, 那么就需要配置 `alias` , 更多用法见 [配置项#alias](#alias)
 
 ```html
 <script>
   window.$docsify = {
     loadSidebar: true,
     alias: {
-      "/.*/_sidebar.md": "/_sidebar.md",
+      '/.*/_sidebar.md': '/_sidebar.md',
     },
   };
 </script>
@@ -153,7 +153,7 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
 <!-- docs/_sidebar.md -->
 
 - [Home](/)
-- [page1](page1.md "Page 1")
+- [page1](page1.md 'Page 1')
 ```
 
 ### 忽略副标题
@@ -202,7 +202,7 @@ docsify 也支持自定义导航栏, 可以通过 HTML 和 Markdown 两种方式
 
 ### Markdown
 
-通过 Markdown 的方式需要配置 `loadNavbar`, 通过 `_navbar.md` 文件来定义 navbar, 具体配置见 <a href="#loadnavbar">配置项#loadNavbar</a>
+通过 Markdown 的方式需要配置 `loadNavbar`, 通过 `_navbar.md` 文件来定义 navbar, 具体配置见 [配置项#loadNavbar](#loadnavbar)
 
 ### 嵌套
 
@@ -227,7 +227,7 @@ docsify 也支持自定义导航栏, 可以通过 HTML 和 Markdown 两种方式
 
 ## 封面
 
-通过设置 `coverpage` 参数, 可以开启渲染封面的功能. 具体配置见 <a href="#coverpage">配置项#coverpage</a>
+通过设置 `coverpage` 参数, 可以开启渲染封面的功能. 具体配置见 [配置项#coverpage](#coverpage)
 
 ### 自定义背景
 
@@ -270,7 +270,7 @@ docsify 默认的背景是随机生成的渐变色, 可以通过在 `_coverpage.
 
 ```js
 window.$docsify = {
-  coverpage: ["/", "/pages/"],
+  coverpage: ['/', '/pages/'],
 };
 ```
 
@@ -288,7 +288,7 @@ window.$docsify = {
 
 ```js
 window.$docsify = {
-  el: "#app",
+  el: '#app',
 };
 ```
 
@@ -306,7 +306,7 @@ window.$docsify = {
 <!-- index.html -->
 <script>
   window.$docsify = {
-    name: "我的文档网站",
+    name: '我的文档网站',
   };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
@@ -316,7 +316,7 @@ window.$docsify = {
 
 ```js
 window.$docsify = {
-  name: "<span>Name</span>",
+  name: '<span>Name</span>',
 };
 ```
 
@@ -335,7 +335,7 @@ window.$docsify = {
 <script>
   window.$docsify = {
     // 使用用户名/存储库字符串
-    repo: "whiteChen233/whitechen233.github.io",
+    repo: 'whiteChen233/whitechen233.github.io',
     // 或者使用仓库 URL
     // repo: 'https://github.com/whiteChen233/whitechen233.github.io',
   };
@@ -358,7 +358,7 @@ window.$docsify = {
 <script>
   window.$docsify = {
     // 使用别的文件
-    homepage: "home.md",
+    homepage: 'home.md',
     // 或者指向仓库的 README
     // homepage: 'https://raw.githubusercontent.com/whiteChen233/whitechen233.github.io/main/README.adoc',
   };
@@ -431,7 +431,7 @@ window.$docsify = {
 
 ```js
 window.$docsify = {
-  coverpage: "my-cover.md",
+  coverpage: 'my-cover.md',
 };
 ```
 
@@ -439,7 +439,7 @@ window.$docsify = {
 
 ```js
 window.$docsify = {
-  coverpage: ["/en-us", "zh-cn"],
+  coverpage: ['/en-us', 'zh-cn'],
 };
 ```
 
@@ -448,8 +448,8 @@ window.$docsify = {
 ```js
 window.$docsify = {
   coverpage: {
-    "/en-us": "cover-en.md",
-    "zh-cn": "cover-zh.md",
+    '/en-us': 'cover-en.md',
+    'zh-cn': 'cover-zh.md',
   },
 };
 ```
@@ -492,7 +492,7 @@ window.$docsify = {
 
 ```js
 window.$docsify = {
-  loadSidebar: "my_sidebar.md",
+  loadSidebar: 'my_sidebar.md',
 };
 ```
 
@@ -543,11 +543,10 @@ window.$docsify = {
 ```js
 window.$docsify = {
   alias: {
-    "/pages/(.*)": "/test/$1", // 正则
-    "/pages/changelog": "/changelog",
-    "/changelog":
-      "https://raw.githubusercontent.com/docsifyjs/docsify/master/CHANGELOG",
-    "/.*/_sidebar.md": "/_sidebar.md", // 配置 sidebar 别名
+    '/pages/(.*)': '/test/$1', // 正则
+    '/pages/changelog': '/changelog',
+    '/changelog': 'https://raw.githubusercontent.com/docsifyjs/docsify/master/CHANGELOG',
+    '/.*/_sidebar.md': '/_sidebar.md', // 配置 sidebar 别名
   },
 };
 ```
@@ -590,7 +589,7 @@ Example:
 
 ```js
 window.$docsify = {
-  fallbackLanguages: ["en", "zh"],
+  fallbackLanguages: ['en', 'zh'],
 };
 ```
 
@@ -616,7 +615,7 @@ window.$docsify = {
 
 ```js
 window.$docsify = {
-  notFoundPage: "my404.md",
+  notFoundPage: 'my404.md',
 };
 ```
 
@@ -625,8 +624,8 @@ window.$docsify = {
 ```js
 window.$docsify = {
   notFoundPage: {
-    "/": "_404.md",
-    "/en": "en_404.md",
+    '/': '_404.md',
+    '/en': 'en_404.md',
   },
 };
 ```
@@ -644,10 +643,7 @@ window.$docsify = {
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css" />
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" />
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css" />
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css"
-/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css" />
 ```
 
 ::: tip
@@ -656,26 +652,11 @@ CSS 的压缩文件位于 `/lib/themes/`
 ```html
 <!-- compressed -->
 
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css"
-/>
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css"
-/>
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css"
-/>
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/pure.css"
-/>
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dolphin.css"
-/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/pure.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dolphin.css" />
 ```
 
 :::
@@ -691,30 +672,21 @@ CSS 的压缩文件位于 `/lib/themes/`
 
 ```html
 <!-- Theme: Defaults -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css" />
 ```
 
 @tab Simple
 
 ```html
 <!-- Theme: Simple -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css" />
 ```
 
 @tab Simple Dark
 
 ```html
 <!-- Theme: Simple Dark -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css" />
 ```
 
 :::
@@ -731,7 +703,7 @@ CSS 的压缩文件位于 `/lib/themes/`
 <script>
   window.$docsify = {
     // 默认值
-    search: "auto",
+    search: 'auto',
   };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
@@ -744,10 +716,10 @@ CSS 的压缩文件位于 `/lib/themes/`
 <script>
   window.$docsify = {
     search: [
-      "/", // => /README.md
-      "/guide", // => /guide.md
-      "/get-started", // => /get-started.md
-      "/zh-cn/", // => /zh-cn/README.md
+      '/', // => /README.md
+      '/guide', // => /guide.md
+      '/get-started', // => /get-started.md
+      '/zh-cn/', // => /zh-cn/README.md
     ],
   };
 </script>
@@ -771,7 +743,7 @@ CSS 的压缩文件位于 `/lib/themes/`
        *   '/': 'Type to search'
        * },
        */
-      placeholder: "Type to search",
+      placeholder: 'Type to search',
 
       /*
        * noData 也支持本地化
@@ -780,7 +752,7 @@ CSS 的压缩文件位于 `/lib/themes/`
        *   '/': 'No Results'
        * },
        */
-      noData: "No Results!",
+      noData: 'No Results!',
 
       // 搜索标题的最大层级, 1 - 6
       depth: 2,
@@ -790,7 +762,7 @@ CSS 的压缩文件位于 `/lib/themes/`
 
       // 避免搜索索引冲突
       // 同一域下的多个网站之间
-      namespace: "website-1",
+      namespace: 'website-1',
 
       // 使用不同的索引作为路径前缀（namespaces）
       // 注意：仅适用于 paths: 'auto' 模式
@@ -800,7 +772,7 @@ CSS 的压缩文件位于 `/lib/themes/`
        * pathNamespaces 也可以提供一个正则表达式来匹配前缀. 在这种情况下, 匹配到的字符串将被用来识别索引
        * pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/
        */
-      pathNamespaces: ["/zh-cn", "/ru-ru", "/ru-ru/v1"],
+      pathNamespaces: ['/zh-cn', '/ru-ru', '/ru-ru/v1'],
     },
   };
 </script>
@@ -828,7 +800,7 @@ CSS 的压缩文件位于 `/lib/themes/`
 如果需要忽略某张图片
 
 ```markdown
-![](image.png ":no-zoom")
+![](image.png ':no-zoom')
 ```
 
 ### 字数统计
@@ -840,9 +812,9 @@ CSS 的压缩文件位于 `/lib/themes/`
   window.$docsify = {
     count: {
       countable: true,
-      fontsize: "0.9em",
-      color: "rgb(90,90,90)",
-      language: "chinese",
+      fontsize: '0.9em',
+      color: 'rgb(90,90,90)',
+      language: 'chinese',
     },
   };
 </script>
@@ -913,10 +885,7 @@ docsify 也是支持 mermaid 的, [mermaid 是什么](https://github.com/mermaid
 
 ```html
 <!-- css -->
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"
-/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css" />
 <!-- js 注意这个导入要在声明 mermaid 之前 -->
 <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 ```
@@ -932,12 +901,8 @@ docsify 也是支持 mermaid 的, [mermaid 是什么](https://github.com/mermaid
     markdown: {
       renderer: {
         code: function (code, lang) {
-          if (lang === "mermaid") {
-            return (
-              '<div class="mermaid">' +
-              mermaid.render("mermaid-svg-" + num++, code) +
-              "</div>"
-            );
+          if (lang === 'mermaid') {
+            return '<div class="mermaid">' + mermaid.render('mermaid-svg-' + num++, code) + '</div>';
           }
           return this.origin.code.apply(this, arguments);
         },

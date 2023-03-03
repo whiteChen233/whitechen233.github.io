@@ -27,15 +27,15 @@ output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如�
 
 ```javascript
 // webpack.config.js
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   // 入口
-  entry: "./src/main.js",
+  entry: './src/main.js',
   // 出口
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
 };
 ```
@@ -73,26 +73,26 @@ loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身�
 
 ```javascript
 // webpack.config.js
-const path = require("path");
+const path = require('path');
 
 const config = {
   output: {
-    filename: "bundle.js",
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       // use可以配置多个 loader，wbpack会从右到左加载
-      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             // 当加载的图片小于limit时，会将图片编译成base64字符串返回，否则会使用file-loader
             options: {
               limit: 8196,
               // 文件打包的规则:存放在img文件夹下,保持名字使用8位hash值
-              name: "img/[name].[hash:8].[ext]",
+              name: 'img/[name].[hash:8].[ext]',
             },
           },
         ],
@@ -118,9 +118,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["es2015"],
+            presets: ['es2015'],
           },
         },
       },
@@ -171,7 +171,7 @@ module.exports = {
   // ...
   resolve: {
     alias: {
-      vue$: "vue/dist/vue.esm.js", // 用webpack 1时需用'vue/dist/vue.common.js'
+      vue$: 'vue/dist/vue.esm.js', // 用webpack 1时需用'vue/dist/vue.common.js'
     },
   },
 };
@@ -226,10 +226,10 @@ Bannerplugin: 为打包文件添加版权声明，是 webpack 自带的
 
 ```javascript
 // webpack.config.js
-const webpack = require("webpack");
+const webpack = require('webpack');
 moduke.exports = {
   // ...
-  plugins: [new webpack.BannerPlugin("最终版权归xxx所有")],
+  plugins: [new webpack.BannerPlugin('最终版权归xxx所有')],
 };
 ```
 
@@ -243,13 +243,13 @@ HtmlWebpackPlugin：自动生成 index.html 文件，将打包的 js 文件自�
 
 ```javascript
 // webpack.config.js
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // ...
   plugins: [
     new HtmlWebpackPlugin({
       // 指定生成index的模板
-      template: "index.html",
+      template: 'index.html',
     }),
   ],
 };
@@ -265,7 +265,7 @@ module.exports = {
 
 ```javascript
 // webpack.config.js
-const UglifyJsWebpackPlugin = require("uglifyjs-webpack-plugin");
+const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   // ...
   plugins: [new UglifyJsWebpackPlugin()],
@@ -315,8 +315,8 @@ module.exports = {
 };
 
 // dev.config.js
-const webpackMerge = require("wepack-merge");
-const baseConfig = require("./base.config.js");
+const webpackMerge = require('wepack-merge');
+const baseConfig = require('./base.config.js');
 
 module.exports = webpackMerge(baseConfig, {
   // 一些dev独有的配置 ...
@@ -326,9 +326,9 @@ module.exports = webpackMerge(baseConfig, {
 });
 
 // prod.config.js
-const webpackMerge = require("wepack-merge");
-const baseConfig = require("./base.config.js");
-const UglifyJsWebpackPlugin = require("uglifyjs-webpack-plugin");
+const webpackMerge = require('wepack-merge');
+const baseConfig = require('./base.config.js');
+const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = webpackMerge(baseConfig, {
   // 一些prod独有的配置 ...

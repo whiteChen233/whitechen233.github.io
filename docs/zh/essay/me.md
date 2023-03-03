@@ -1,6 +1,7 @@
 ---
 title: 半地伤·满地绝望
 date: 2011-04-15
+isOriginal: true
 ---
 
 一室之内的温暖

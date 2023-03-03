@@ -1,6 +1,7 @@
 ---
 title: 声声慢
 date: 2015-11-16
+isOriginal: true
 ---
 
 月落前窗微微亮，

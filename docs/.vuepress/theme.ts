@@ -1,71 +1,65 @@
-import { hopeTheme } from "vuepress-theme-hope";
-import { enNavbar, zhNavbar } from "./navbar";
-import { enSidebar, zhSidebar } from "./sidebar";
+import { hopeTheme } from 'vuepress-theme-hope';
+import { enNavbar, zhNavbar } from './navbar';
+import { enSidebar, zhSidebar } from './sidebar';
 
 export default hopeTheme({
-  hostname: "https://whiteChen233/whitechen233.github.io",
+  hostname: 'https://blog.white233.top',
   author: {
-    name: "White",
-    url: "https://github.com/whiteChen233",
+    name: 'White',
+    url: 'https://blog.white233.top',
   },
-  iconAssets: "iconify",
-  iconPrefix: "mdi-",
-  logo: "/logo.png",
-  repo: "whiteChen233/whitechen233.github.io",
-  docsDir: "docs",
-  pageInfo: [
-    "Author",
-    "Original",
-    "Date",
-    "Category",
-    "Tag",
-    "Word",
-    "ReadingTime",
-  ],
+  iconAssets: 'iconify',
+  iconPrefix: 'mdi:',
+  logo: '/logo.png',
+  repo: 'whiteChen233/whitechen233.github.io',
+  docsDir: 'docs',
+  pageInfo: ['Author', 'Original', 'Date', 'Category', 'Tag', 'Word', 'ReadingTime'],
   themeColor: {
-    white: "#ffffff",
-    red: "#e53e31",
-    green: "#3eaf7c",
-    orange: "#f29e00",
+    white: '#ffffff',
+    red: '#e53e31',
+    green: '#3eaf7c',
+    orange: '#f29e00',
   },
   fullscreen: true,
   blog: {
-    name: "White",
-    description: "Today.do(Bug::new);",
-    timeline: "温故而知新~",
+    name: 'White',
+    description: 'Today.do(Bug::new);',
+    timeline: '温故而知新~',
     roundAvatar: true,
     medias: {
-      Email: "mailto:white996@qq.com",
-      Gmail: "mailto:white294476387@gmail.com",
-      GitHub: "https://github.com/whiteChen233",
-      Gitee: "https://gitee.com/294476387",
-      Steam: "https://steamcommunity.com/profiles/76561198819524928/",
+      Email: 'mailto:white996@qq.com',
+      Gmail: 'mailto:white294476387@gmail.com',
+      GitHub: 'https://github.com/whiteChen233',
+      Gitee: 'https://gitee.com/294476387',
+      Steam: 'https://steamcommunity.com/profiles/76561198819524928/',
     },
   },
   locales: {
-    "/zh/": {
+    '/zh/': {
       navbar: zhNavbar,
       sidebar: zhSidebar,
-      copyright: "MIT license",
+      footer: '主题使用 <a href="https://theme-hope.vuejs.press/zh/">VuePress Theme Hope</a>',
       blog: {
-        intro: "/zh/intro",
+        intro: '/zh/intro',
       },
       metaLocales: {
-        editLink: "在 GitHub 上编辑此页",
+        editLink: '在 GitHub 上编辑此页',
       },
     },
-    "/en/": {
+    '/en/': {
       navbar: enNavbar,
       sidebar: enSidebar,
-      copyright: "MIT license",
+      footer: 'Theme by <a href="https://theme-hope.vuejs.press/zh/">VuePress Theme Hope</a>',
       blog: {
-        intro: "/en/intro",
+        intro: '/en/intro',
       },
       metaLocales: {
-        editLink: "Edit this page on GitHub",
+        editLink: 'Edit this page on GitHub',
       },
     },
   },
+  displayFooter: true,
+  copyright: 'MIT license | Copyright © 2021-present White',
   // encrypt: {
   //   config: {
   //     "/en/demo/encrypt.html": ["1234"],
@@ -75,8 +69,8 @@ export default hopeTheme({
   plugins: {
     // 评论
     comment: {
-      provider: "Waline",
-      serverURL: "https://comment.white233.top",
+      provider: 'Waline',
+      serverURL: 'https://comment.white233.top',
     },
     blog: true,
     mdEnhance: {
@@ -96,23 +90,23 @@ export default hopeTheme({
       mark: true,
       mermaid: true,
       playground: {
-        presets: ["ts", "vue"],
+        presets: ['ts', 'vue'],
       },
       presentation: {
-        plugins: ["highlight", "math", "search", "notes", "zoom"],
+        plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
         revealConfig: {
-          controlsLayout: "edges",
+          controlsLayout: 'edges',
         },
       },
       stylize: [
         {
-          matcher: "Recommanded",
+          matcher: 'Recommanded',
           replacer: ({ tag }) => {
-            if (tag === "em")
+            if (tag === 'em')
               return {
-                tag: "Badge",
-                attrs: { type: "tip" },
-                content: "Recommanded",
+                tag: 'Badge',
+                attrs: { type: 'tip' },
+                content: 'Recommanded',
               };
           },
         },
@@ -124,70 +118,66 @@ export default hopeTheme({
       vuePlayground: true,
     },
     autoCatalog: {
-      exclude: ["/note/"]
+      exclude: ['/note/'],
     },
     components: {
-      components: [
-        "Badge",
-        "FontIcon",
-        "SiteInfo"
-      ]
+      components: ['Badge', 'FontIcon', 'SiteInfo'],
     },
     pwa: {
-      favicon: "/favicon.ico",
+      favicon: '/favicon.ico',
       cacheHTML: true,
       cachePic: true,
       appendBase: true,
       apple: {
-        icon: "/assets/icon/apple-icon-152.png",
-        statusBarColor: "black",
+        icon: '/assets/icon/apple-icon-152.png',
+        statusBarColor: 'black',
       },
       msTile: {
-        image: "/assets/icon/ms-icon-144.png",
-        color: "#ffffff",
+        image: '/assets/icon/ms-icon-144.png',
+        color: '#ffffff',
       },
       manifest: {
         icons: [
           {
-            src: "/assets/icon/chrome-mask-512.png",
-            sizes: "512x512",
-            purpose: "maskable",
-            type: "image/png",
+            src: '/assets/icon/chrome-mask-512.png',
+            sizes: '512x512',
+            purpose: 'maskable',
+            type: 'image/png',
           },
           {
-            src: "/assets/icon/chrome-mask-192.png",
-            sizes: "192x192",
-            purpose: "maskable",
-            type: "image/png",
+            src: '/assets/icon/chrome-mask-192.png',
+            sizes: '192x192',
+            purpose: 'maskable',
+            type: 'image/png',
           },
           {
-            src: "/assets/icon/chrome-512.png",
-            sizes: "512x512",
-            type: "image/png",
+            src: '/assets/icon/chrome-512.png',
+            sizes: '512x512',
+            type: 'image/png',
           },
           {
-            src: "/assets/icon/chrome-192.png",
-            sizes: "192x192",
-            type: "image/png",
+            src: '/assets/icon/chrome-192.png',
+            sizes: '192x192',
+            type: 'image/png',
           },
         ],
         shortcuts: [
           {
-            name: "Demo",
-            short_name: "Demo",
-            url: "/demo/",
+            name: 'Demo',
+            short_name: 'Demo',
+            url: '/demo/',
             icons: [
               {
-                src: "/assets/icon/guide-maskable.png",
-                sizes: "192x192",
-                purpose: "maskable",
-                type: "image/png",
+                src: '/assets/icon/guide-maskable.png',
+                sizes: '192x192',
+                purpose: 'maskable',
+                type: 'image/png',
               },
               {
-                src: "/assets/icon/guide-monochrome.png",
-                sizes: "192x192",
-                purpose: "monochrome",
-                type: "image/png",
+                src: '/assets/icon/guide-monochrome.png',
+                sizes: '192x192',
+                purpose: 'monochrome',
+                type: 'image/png',
               },
             ],
           },
