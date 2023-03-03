@@ -1,0 +1,1 @@
+import{_ as p,W as e,X as t,a2 as c}from"./framework-8b16fc6a.js";const _={},n=c("<p>昨夜风卷雨茫茫，</p><p>隔窗望，心不安。</p><p>久别伊人仍难忘，</p><p>此时相见几分难，</p><p>泣已湿裳，情不断。</p><p>酒一杯，醉惆怅。</p><p>泪雨阑干愁千样，</p><p>何处忍我诉衷肠，</p><p>三添浊酒，终不满。</p><p>歌一曲，是离殇。</p>",10),o=[n];function a(r,s){return e(),t("div",null,o)}const l=p(_,[["render",a],["__file","rain.html.vue"]]);export{l as default};

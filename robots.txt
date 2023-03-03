@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://whiteChen233/whitechen233.github.io/sitemap.xml
+Sitemap: https://blog.white233.top/sitemap.xml
