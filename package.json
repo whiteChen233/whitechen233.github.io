@@ -5,6 +5,11 @@
   "auther": "white",
   "license": "MIT",
   "type": "module",
+  "keywords": [
+    "vuepress",
+    "vuepress-theme-hope",
+    "personal-blog"
+  ],
   "scripts": {
     "build:vite": "vuepress-vite build docs",
     "build:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite build docs",
@@ -13,13 +18,26 @@
     "dev:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite dev docs",
     "lint": "prettier --check --write ."
   },
-  "devDependencies": {
-    "@vuepress/cli": "2.0.0-beta.60",
-    "prettier": "2.8.4",
+  "dependencies": {
+    "@vuepress/cli": "2.0.0-beta.61",
+    "@vuepress/client": "2.0.0-beta.61",
     "vue": "3.2.47",
-    "vuepress-plugin-search-pro": "^2.0.0-beta.180",
-    "vuepress-theme-hope": "2.0.0-beta.180",
-    "vuepress-vite": "2.0.0-beta.60",
-    "cross-env": "7.0.3"
+    "vuepress-plugin-search-pro": "^2.0.0-beta.185",
+    "vuepress-theme-hope": "2.0.0-beta.185",
+    "vuepress-vite": "2.0.0-beta.61"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "cross-env": "7.0.3",
+    "husky": "^8.0.3",
+    "prettier": "2.8.4"
+  },
+  "packageManager": "pnpm@7.28.0",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "pnpm run lint"
+    }
   }
 }
