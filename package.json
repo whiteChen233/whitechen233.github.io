@@ -1,22 +1,28 @@
 {
   "name": "note",
   "version": "1.0.0",
+  "private": true,
   "description": "A project on learning notes",
-  "auther": "white",
-  "license": "MIT",
-  "type": "module",
   "keywords": [
     "vuepress",
     "vuepress-theme-hope",
     "personal-blog"
   ],
+  "license": "MIT",
+  "type": "module",
   "scripts": {
     "build:vite": "vuepress-vite build docs",
     "build:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite build docs",
     "dev:vite": "vuepress-vite dev docs",
     "dev:vite-clean": "vuepress-vite dev docs --clean-cache",
     "dev:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite dev docs",
-    "lint": "prettier --check --write ."
+    "lint": "pnpm lint:prettier --write && pnpm lint:eslint --fix && pnpm lint:stylelint --fix",
+    "lint:check": "pnpm lint:prettier && pnpm lint:eslint && pnpm lint:stylelint",
+    "lint:eslint": "eslint . --ext  --ext .js,.cjs,.ts,.vue",
+    "lint:mdlint": "markdownlint **/*.md",
+    "lint:prettier": "prettier --check .",
+    "lint:stylelint": "stylelint **/*.{scss,css}",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@vuepress/cli": "2.0.0-beta.61",
@@ -29,15 +35,29 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
     "cross-env": "7.0.3",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
-    "prettier": "2.8.4"
+    "markdownlint-cli": "^0.33.0",
+    "nano-staged": "^0.8.0",
+    "prettier": "2.8.4",
+    "sort-package-json": "^2.4.1",
+    "stylelint": "^15.2.0",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-order": "^6.0.2",
+    "typescript": "^4.9.5"
   },
   "packageManager": "pnpm@7.28.0",
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "pnpm run lint"
-    }
-  }
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0",
+    "npm": ">=8",
+    "pnpm": ">=7"
+  },
+  "auther": "white"
 }
