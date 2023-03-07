@@ -38,7 +38,7 @@ export default hopeTheme({
     '/zh/': {
       navbar: zhNavbar,
       sidebar: zhSidebar,
-      footer: '主题使用 <a href="https://theme-hope.vuejs.press/zh/">VuePress Theme Hope</a>',
+      footer: '主题使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
       blog: {
         intro: '/zh/intro',
       },
@@ -49,7 +49,7 @@ export default hopeTheme({
     '/en/': {
       navbar: enNavbar,
       sidebar: enSidebar,
-      footer: 'Theme by <a href="https://theme-hope.vuejs.press/zh/">VuePress Theme Hope</a>',
+      footer: 'Theme by <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
       blog: {
         intro: '/en/intro',
       },
@@ -74,48 +74,77 @@ export default hopeTheme({
     },
     blog: true,
     mdEnhance: {
-      align: true,
-      attrs: true,
-      chart: true,
+      // 选项卡
+      tabs: true,
+      // 代码块分组
       codetabs: true,
-      container: true,
-      demo: true,
+      // chart, https://www.chartjs.org/docs/latest/
+      chart: true,
+      // Echarts, https://echarts.apache.org/zh/index.html
       echarts: true,
-      flowchart: true,
-      gfm: true,
-      imgSize: true,
-      include: true,
-      katex: true,
-      imgLazyload: true,
-      mark: true,
+      // mermaid, https://mermaid.js.org/
       mermaid: true,
+      // tax, https://katex.org/docs/options.html
+      katex: true,
+      // vue 交互演示
+      vuePlayground: true,
+      // 上角标
+      sup: true,
+      // 下角标
+      sub: true,
+      // 交互演示
       playground: {
         presets: ['ts', 'vue'],
       },
+      // 代码演示
+      demo: true,
+      // 任务列表
+      tasklist: true,
+      // 启用figure
+      figure: true,
+      // 图片懒加载
+      imgLazyload: true,
+      // 图片标记
+      imgMark: true,
+      // 图片大小
+      imgSize: true,
+      // 导入文件
+      include: true,
+      // 属性支持
+      attrs: true,
+      // 幻灯片, https://revealjs.com/
       presentation: {
         plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
         revealConfig: {
           controlsLayout: 'edges',
         },
       },
-      stylize: [
-        {
-          matcher: 'Recommanded',
-          replacer: ({ tag }) => {
-            if (tag === 'em')
-              return {
-                tag: 'Badge',
-                attrs: { type: 'tip' },
-                content: 'Recommanded',
-              };
-          },
-        },
-      ],
-      sub: true,
-      sup: true,
-      tabs: true,
+      // 标记
+      mark: true,
+      // 样式化
+      // stylize: [
+      //   {
+      //     matcher: 'Recommanded',
+      //     replacer: ({ tag }) => {
+      //       if (tag === 'em')
+      //         return {
+      //           tag: 'Badge',
+      //           attrs: { type: 'tip' },
+      //           content: 'Recommanded',
+      //         };
+      //     },
+      //   },
+      // ],
+      // 流程图, http://flowchart.js.org/
+      flowchart: true,
+      // 脚注
+      footnote: true,
+      // 自定义容器
+      container: true,
+      // 自定义对齐
+      align: true,
+      gfm: true,
       vPre: true,
-      vuePlayground: true,
     },
     autoCatalog: {
       exclude: ['/note/'],
