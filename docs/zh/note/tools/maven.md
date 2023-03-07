@@ -521,6 +521,274 @@ Maven 默认为一些核心的生命周期阶段绑定了插件目标, 当用户
 
 自定义绑定能够让 Maven 在构建过程中执行更多更丰富的任务
 
+例如, 有一个第三方的 jar 包不能通过 maven 仓库导入, 那么可以通过本地安装的方式导入本地库. 通过 build 元素的子元素 plugins, 将 `maven-install-plugin:install-file` 目标绑定到 clean 阶段上
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-install-plugin</artifactId>
+      <version>2.5.2</version>
+      <executions>
+        <execution>
+          <id>install-third-party-package</id>
+          <phase>clean</phase>
+          <goals>
+            <goal>install-file</goal>
+          </goals>
+          <configuration>
+            <file>${project.basedir}/lib/third-party-1.0.0.jar</file>
+            <repositoryLayout>default</repositoryLayout>
+            <groupId>third-party.groupId</groupId>
+            <artifactId>third-party.artifactId</artifactId>
+            <version>1.0.0</version>
+            <packaging>jar</packaging>
+            <generatePom>true</generatePom>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+execution 的说明:
+
+- id: 任务的唯一标识
+- phase: 插件目标需要绑定的生命周期阶段
+- goals: 用于指定一组插件目标, 其子元素 goal 用于指定单个插件目标
+- configuration: 该任务的配置
+
+::: tip
+当插件目标绑定到生命周期的不同阶段时, 其执行顺序由生命周期阶段的先后顺序决定. 如果多个目标绑定到同一个生命周期阶段, 其执行顺序与插件声明顺序一致, 先声明的先执行, 后声明的后执行
+:::
+
 ## 多模块
 
+多模块管理简单地来说就是将一个项目分为多个模块, 每个模块只负责单一的功能实现, 多模块项目由管理一组子模块的聚合器 POM 构建
+
+在大多数情况下, 聚合器位于项目的根目录中, 并且必须具有 pom 类型的打包. 子模块是常规的 Maven 项目, 它们可以单独构建, 也可以通过聚合器 POM 构建. 通过聚合器 POM 构建项目, 每个具有与 pom 不同的打包类型的项目都会生成一个构建的存档文件
+
+### 多模块的优点
+
+- 降低代码之间的耦合性（从类级别的耦合提升到 jar 包级别的耦合）
+- 减少重复, 提升复用性
+- 每个模块都可以是自解释的（通过模块名或者模块文档）
+- 模块还规范了代码边界的划分, 开发者很容易通过模块确定自己所负责的内容
+
+### 多模块的栗子
+
+一个多模块的父类 pom.xml 如下（注意高亮部分）:
+
+```xml {8,16-23}
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>demo</name>
+  <description>Demo project for Spring Boot</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <modules>
+    <module>demo-api</module>
+    <module>demo-dao</module>
+    <module>demo-manager</module>
+    <module>demo-service</module>
+    <module>demo-web</module>
+    <module>start</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+```
+
+其子模块的 pom.xml 如下:
+
+```xml {5-10}
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>demo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>demo-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</project>
+```
+
 ## Profile
+
+一个项目通常都会有多个不同的运行环境, 例如开发环境、测试环境、生产环境等。而不同环境的构建过程很可能是不同的, 例如数据源配置、插件、以及依赖的版本等, 每次将项目部署到不同的环境时, 都需要修改相应的配置, 这样重复的工作, 不仅浪费劳动力, 还容易出错. 为了解决这一问题, Maven 引入了 Profile 的概念, 通过它可以为不同的环境定制不同的构建过程
+
+### Profile 的类型
+
+Profile 可以分为 3 个类型, 它们的作用范围也各不相同
+
+| 类型        | 位置                                                        | 有效范围                    |
+| ----------- | ----------------------------------------------------------- | --------------------------- |
+| Per Profile | Maven 项目的 pom.xml 中                                     | 只对当前 Maven 项目有效     |
+| Per User    | 用户目录下（`%USER_HOME%`）的 `/.m2/setting.xml` 中         | 对该用户所有 Maven 项目有效 |
+| Global      | Maven 安装目录的（`%MAVEN_HOME%`）的 `\conf\setting.xml` 中 | 对本机所有 Maven 项目有效   |
+
+### Profile 的声明
+
+Maven 通过 profiles 标签来声明一组 Profile 配置, 每一个 profile 对应一个 Profile 配置
+
+比如常用的多环境 profile 配置:
+
+```xml
+<profiles>
+  <profile>
+    <!-- id 标识必填 -->
+    <id>env-develop</id>
+    <!-- 定义自定义的属性值 -->
+    <properties>
+      <!-- 这里的属性名标签（property.env）是支持自定义的 -->
+      <property.env>dev</property.env>
+    </properties>
+  </profile>
+  <profile>
+    <id>env-test</id>
+    <properties>
+      <property.env>test</property.env>
+    </properties>
+  </profile>
+</profiles>
+```
+
+在 Profile 中常用的 POM 元素如下表:
+
+<table>
+<thead>
+  <tr><td>一级</td><td>二级</td><td>三级</td></tr>
+</thead>
+<tbody>
+  <tr><td rowspan="18">project</td><td>repositories</td><td></td></tr>
+  <tr><td>pluginRepositories</td><td></td></tr>
+  <tr><td>dependencies</td><td></td></tr>
+  <tr><td>plugins</td><td></td></tr>
+  <tr><td>dependencyManagement</td><td></td></tr>
+  <tr><td>distributionManagement</td><td></td></tr>
+  <tr><td>modules</td><td></td></tr>
+  <tr><td>properties</td><td></td></tr>
+  <tr><td>reporting</td><td></td></tr>
+  <tr><td rowspan="9">build</td><td>plugins</td></tr>
+  <tr><td>defaultGoal</td></tr>
+  <tr><td>resources</td></tr>
+  <tr><td>testResources</td></tr>
+  <tr><td>directory</td></tr>
+  <tr><td>filters</td></tr>
+  <tr><td>finalName</td></tr>
+  <tr><td>pluginManagement</td></tr>
+</tbody>
+</table>
+
+在 setting.xml 中声明的 Profile 是无法保证能够随着 pom.xml 一起被分发的, 因此 Maven 不允许用户在该类型的 Profile 修改或增加依赖或插件等配置信息, 它只能声明以下范围较为宽泛的元素
+
+- repositories: 仓库配置
+- pluginRepositories: 插件仓库配置
+- properties: 键值对, 该键值对可以在 pom.xml 中使用
+
+### Profile 的激活
+
+Profile 能够在项目构建时, 修改 POM 中配置或者添加一些额外的配置元素. 用户可以通过多种方式激活 Profile, 以实现不同环境使用不同的配置, 执行不同的构建过程
+
+Profile 可以通过以下 6 种方式激活:
+
+- 命令行激活
+
+在命令行中使用 `mvn` 命令行参数 `-P` 加上 Profile 的 id 来激活 Profile, 多个 id 之间使用逗号隔开
+
+```shell
+# 在 pom.xml 启动 test1, test2 两个 Profile
+mvn clean install -Ptest1,test2
+```
+
+- settings.xml 文件显示激活
+
+在本地仓库的 settings.xml 文件中添加如下配置, 激活指定的 Profile
+
+```xml
+<activeProfiles>
+    <activeProfile>test</activeProfile>
+</activeProfiles>
+```
+
+- 系统属性激活
+
+用户可以配置当某个系统属性存在时, 激活指定的 Profile, 在 profile 标签添加如下配置:
+
+```xml
+<activation>
+  <property>
+    <name>user</name>
+    <value>prod</value>
+  </property>
+</activation>
+```
+
+执行命令 `mvn clean test -Duser=prod`, 就会自动激活这个 Profile
+
+- 操作系统环境激活
+
+Maven 还可以根据操作系统环境自动激活指定的 Profile, 在 profile 标签添加如下配置:
+
+```xml
+<activation>
+  <os>
+    <name>Windows 10</name>
+    <family>Windows</family>
+    <arch>amd64</arch>
+    <version>10.0</version>
+  </os>
+</activation>
+```
+
+- 文件存在与否激活
+
+Maven 可以根据某些文件存在与否, 来决定是否激活 Profile, 在 profile 标签添加如下配置:
+
+```xml
+<!-- 当存在 env.prod.properties 存在且 env.test.properties 不存在时, 该 Profile 会激活 -->
+<activation>
+  <file>
+    <exists>./src/main/resources/env.prod.properties</exists>
+    <missing>./src/main/resources/env.test.properties</missing>
+  </file>
+</activation>
+```
+
+- 默认激活
+
+可以在声明 Profile 时, 指定其默认激活, 在 profile 标签添加如下配置:
+
+```xml
+<activation>
+  <activeByDefault>true</activeByDefault>
+</activation>
+```
