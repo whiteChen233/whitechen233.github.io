@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "moduleResolution": "NodeNext"
+    "module": "CommonJS",
+    "strict": true,
+    "rootDir": "./",
+    "target": "ES6",
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
   "include": ["./docs/.vuepress/**/*.ts"]
 }

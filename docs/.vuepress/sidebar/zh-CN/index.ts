@@ -1,6 +1,6 @@
 import { sidebar } from 'vuepress-theme-hope';
 
-import { qccstp, frontEnd, tools, design } from './note';
+import { qccstp, backEnd, frontEnd, tools, design } from './note';
 import { stepByStep } from './step-by-step';
 
 export const zhSidebar = sidebar({
@@ -17,6 +17,7 @@ export const zhSidebar = sidebar({
   ],
   '/zh/note/QCCSTP/': qccstp,
   '/zh/note/front-end/': frontEnd,
+  '/zh/note/back-end/': backEnd,
   '/zh/note/design/': design,
   '/zh/note/tools/': tools,
   '/zh/step-by-step/': stepByStep,

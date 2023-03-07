@@ -2,7 +2,7 @@ import { defineUserConfig } from '@vuepress/cli';
 // import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 // import { searchPlugin } from "@vuepress/plugin-search";
 import { searchProPlugin } from 'vuepress-plugin-search-pro';
-import theme from './theme.js';
+import theme from './theme';
 
 export default defineUserConfig({
   base: '/',
