@@ -1,11 +1,7 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "strict": true,
-    "rootDir": "./",
-    "target": "ES6",
-    "esModuleInterop": true,
-    "moduleResolution": "node"
+    "rootDir": "./"
   },
-  "include": ["./docs/.vuepress/**/*.ts"]
+  "include": ["**/*.ts", "*.cjs"]
 }

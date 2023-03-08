@@ -1,217 +1,220 @@
-import { hopeTheme } from 'vuepress-theme-hope';
+import { hopeTheme } from 'vuepress-theme-hope/perf';
 import { enNavbar, zhNavbar } from './navbar';
 import { enSidebar, zhSidebar } from './sidebar';
 
-export default hopeTheme({
-  hostname: 'https://blog.white233.top',
-  author: {
-    name: 'White',
-    url: 'https://blog.white233.top',
-  },
-  iconAssets: 'iconify',
-  iconPrefix: 'mdi:',
-  logo: '/logo.png',
-  repo: 'whiteChen233/whitechen233.github.io',
-  docsDir: 'docs',
-  pageInfo: ['Author', 'Original', 'Date', 'Category', 'Tag', 'Word', 'ReadingTime'],
-  themeColor: {
-    white: '#ffffff',
-    red: '#e53e31',
-    green: '#3eaf7c',
-    orange: '#f29e00',
-  },
-  fullscreen: true,
-  blog: {
-    name: 'White',
-    description: 'Today.do(Bug::new);',
-    timeline: '温故而知新~',
-    roundAvatar: true,
-    medias: {
-      Email: 'mailto:white996@qq.com',
-      Gmail: 'mailto:white294476387@gmail.com',
-      GitHub: 'https://github.com/whiteChen233',
-      Gitee: 'https://gitee.com/294476387',
-      Steam: 'https://steamcommunity.com/profiles/76561198819524928/',
+export default hopeTheme(
+  {
+    hostname: 'https://blog.white233.top',
+    author: {
+      name: 'White',
+      url: 'https://blog.white233.top',
     },
-  },
-  locales: {
-    '/zh/': {
-      navbar: zhNavbar,
-      sidebar: zhSidebar,
-      footer: '主题使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
-      blog: {
-        intro: '/zh/intro',
-      },
-      metaLocales: {
-        editLink: '在 GitHub 上编辑此页',
+    iconAssets: 'iconify',
+    iconPrefix: 'mdi:',
+    logo: '/logo.png',
+    repo: 'whiteChen233/whitechen233.github.io',
+    docsDir: 'docs',
+    pageInfo: ['Author', 'Original', 'Date', 'Category', 'Tag', 'Word', 'ReadingTime'],
+    themeColor: {
+      white: '#ffffff',
+      red: '#e53e31',
+      green: '#3eaf7c',
+      orange: '#f29e00',
+    },
+    fullscreen: true,
+    blog: {
+      name: 'White',
+      description: 'Today.do(Bug::new);',
+      timeline: '温故而知新~',
+      roundAvatar: true,
+      medias: {
+        Email: 'mailto:white996@qq.com',
+        Gmail: 'mailto:white294476387@gmail.com',
+        GitHub: 'https://github.com/whiteChen233',
+        Gitee: 'https://gitee.com/294476387',
+        Steam: 'https://steamcommunity.com/profiles/76561198819524928/',
       },
     },
-    '/en/': {
-      navbar: enNavbar,
-      sidebar: enSidebar,
-      footer: 'Theme by <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
-      blog: {
-        intro: '/en/intro',
-      },
-      metaLocales: {
-        editLink: 'Edit this page on GitHub',
-      },
-    },
-  },
-  displayFooter: true,
-  copyright: 'MIT license | Copyright © 2021-present White',
-  // encrypt: {
-  //   config: {
-  //     "/en/demo/encrypt.html": ["1234"],
-  //     "/zh/demo/encrypt.html": ["1234"],
-  //   },
-  // },
-  plugins: {
-    // 评论
-    comment: {
-      provider: 'Waline',
-      serverURL: 'https://comment.white233.top',
-    },
-    blog: true,
-    mdEnhance: {
-      // 选项卡
-      tabs: true,
-      // 代码块分组
-      codetabs: true,
-      // chart, https://www.chartjs.org/docs/latest/
-      chart: true,
-      // Echarts, https://echarts.apache.org/zh/index.html
-      echarts: true,
-      // mermaid, https://mermaid.js.org/
-      mermaid: true,
-      // tax, https://katex.org/docs/options.html
-      katex: true,
-      // vue 交互演示
-      vuePlayground: true,
-      // 上角标
-      sup: true,
-      // 下角标
-      sub: true,
-      // 交互演示
-      playground: {
-        presets: ['ts', 'vue'],
-      },
-      // 代码演示
-      demo: true,
-      // 任务列表
-      tasklist: true,
-      // 启用figure
-      figure: true,
-      // 图片懒加载
-      imgLazyload: true,
-      // 图片标记
-      imgMark: true,
-      // 图片大小
-      imgSize: true,
-      // 导入文件
-      include: true,
-      // 属性支持
-      attrs: true,
-      // 幻灯片, https://revealjs.com/
-      presentation: {
-        plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
-        revealConfig: {
-          controlsLayout: 'edges',
+    locales: {
+      '/zh/': {
+        navbar: zhNavbar,
+        sidebar: zhSidebar,
+        footer: '主题使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
+        blog: {
+          intro: '/zh/intro',
+        },
+        metaLocales: {
+          editLink: '在 GitHub 上编辑此页',
         },
       },
-      // 标记
-      mark: true,
-      // 样式化
-      // stylize: [
-      //   {
-      //     matcher: 'Recommanded',
-      //     replacer: ({ tag }) => {
-      //       if (tag === 'em')
-      //         return {
-      //           tag: 'Badge',
-      //           attrs: { type: 'tip' },
-      //           content: 'Recommanded',
-      //         };
-      //     },
-      //   },
-      // ],
-      // 流程图, http://flowchart.js.org/
-      flowchart: true,
-      // 脚注
-      footnote: true,
-      // 自定义容器
-      container: true,
-      // 自定义对齐
-      align: true,
-      gfm: true,
-      vPre: true,
-    },
-    autoCatalog: {
-      exclude: ['/note/'],
-    },
-    components: {
-      components: ['Badge', 'FontIcon', 'SiteInfo'],
-    },
-    pwa: {
-      favicon: '/favicon.ico',
-      cacheHTML: true,
-      cachePic: true,
-      appendBase: true,
-      apple: {
-        icon: '/assets/icon/apple-icon-152.png',
-        statusBarColor: 'black',
+      '/en/': {
+        navbar: enNavbar,
+        sidebar: enSidebar,
+        footer: 'Theme by <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
+        blog: {
+          intro: '/en/intro',
+        },
+        metaLocales: {
+          editLink: 'Edit this page on GitHub',
+        },
       },
-      msTile: {
-        image: '/assets/icon/ms-icon-144.png',
-        color: '#ffffff',
+    },
+    displayFooter: true,
+    copyright: 'MIT license | Copyright © 2021-present White',
+    // encrypt: {
+    //   config: {
+    //     "/en/demo/encrypt.html": ["1234"],
+    //     "/zh/demo/encrypt.html": ["1234"],
+    //   },
+    // },
+    plugins: {
+      // 评论
+      comment: {
+        provider: 'Waline',
+        serverURL: 'https://comment.white233.top',
       },
-      manifest: {
-        icons: [
-          {
-            src: '/assets/icon/chrome-mask-512.png',
-            sizes: '512x512',
-            purpose: 'maskable',
-            type: 'image/png',
+      blog: true,
+      mdEnhance: {
+        // 选项卡
+        tabs: true,
+        // 代码块分组
+        codetabs: true,
+        // chart, https://www.chartjs.org/docs/latest/
+        chart: true,
+        // Echarts, https://echarts.apache.org/zh/index.html
+        echarts: true,
+        // mermaid, https://mermaid.js.org/
+        mermaid: true,
+        // tax, https://katex.org/docs/options.html
+        katex: true,
+        // vue 交互演示
+        vuePlayground: true,
+        // 上角标
+        sup: true,
+        // 下角标
+        sub: true,
+        // 交互演示
+        playground: {
+          presets: ['ts', 'vue'],
+        },
+        // 代码演示
+        demo: true,
+        // 任务列表
+        tasklist: true,
+        // 启用figure
+        figure: true,
+        // 图片懒加载
+        imgLazyload: true,
+        // 图片标记
+        imgMark: true,
+        // 图片大小
+        imgSize: true,
+        // 导入文件
+        include: true,
+        // 属性支持
+        attrs: true,
+        // 幻灯片, https://revealjs.com/
+        presentation: {
+          plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
+          revealConfig: {
+            controlsLayout: 'edges',
           },
-          {
-            src: '/assets/icon/chrome-mask-192.png',
-            sizes: '192x192',
-            purpose: 'maskable',
-            type: 'image/png',
-          },
-          {
-            src: '/assets/icon/chrome-512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: '/assets/icon/chrome-192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-        ],
-        shortcuts: [
-          {
-            name: 'Demo',
-            short_name: 'Demo',
-            url: '/demo/',
-            icons: [
-              {
-                src: '/assets/icon/guide-maskable.png',
-                sizes: '192x192',
-                purpose: 'maskable',
-                type: 'image/png',
-              },
-              {
-                src: '/assets/icon/guide-monochrome.png',
-                sizes: '192x192',
-                purpose: 'monochrome',
-                type: 'image/png',
-              },
-            ],
-          },
-        ],
+        },
+        // 标记
+        mark: true,
+        // 样式化
+        // stylize: [
+        //   {
+        //     matcher: 'Recommanded',
+        //     replacer: ({ tag }) => {
+        //       if (tag === 'em')
+        //         return {
+        //           tag: 'Badge',
+        //           attrs: { type: 'tip' },
+        //           content: 'Recommanded',
+        //         };
+        //     },
+        //   },
+        // ],
+        // 流程图, http://flowchart.js.org/
+        flowchart: true,
+        // 脚注
+        footnote: true,
+        // 自定义容器
+        container: true,
+        // 自定义对齐
+        align: true,
+        gfm: true,
+        vPre: true,
+      },
+      autoCatalog: {
+        exclude: ['/note/'],
+      },
+      components: {
+        components: ['Badge', 'FontIcon', 'SiteInfo'],
+      },
+      pwa: {
+        favicon: '/favicon.ico',
+        cacheHTML: true,
+        cachePic: true,
+        appendBase: true,
+        apple: {
+          icon: '/assets/icon/apple-icon-152.png',
+          statusBarColor: 'black',
+        },
+        msTile: {
+          image: '/assets/icon/ms-icon-144.png',
+          color: '#ffffff',
+        },
+        manifest: {
+          icons: [
+            {
+              src: '/assets/icon/chrome-mask-512.png',
+              sizes: '512x512',
+              purpose: 'maskable',
+              type: 'image/png',
+            },
+            {
+              src: '/assets/icon/chrome-mask-192.png',
+              sizes: '192x192',
+              purpose: 'maskable',
+              type: 'image/png',
+            },
+            {
+              src: '/assets/icon/chrome-512.png',
+              sizes: '512x512',
+              type: 'image/png',
+            },
+            {
+              src: '/assets/icon/chrome-192.png',
+              sizes: '192x192',
+              type: 'image/png',
+            },
+          ],
+          shortcuts: [
+            {
+              name: 'Demo',
+              short_name: 'Demo',
+              url: '/demo/',
+              icons: [
+                {
+                  src: '/assets/icon/guide-maskable.png',
+                  sizes: '192x192',
+                  purpose: 'maskable',
+                  type: 'image/png',
+                },
+                {
+                  src: '/assets/icon/guide-monochrome.png',
+                  sizes: '192x192',
+                  purpose: 'monochrome',
+                  type: 'image/png',
+                },
+              ],
+            },
+          ],
+        },
       },
     },
   },
-});
+  true,
+);

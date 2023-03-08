@@ -13,23 +13,29 @@
   "scripts": {
     "build:vite": "vuepress-vite build docs",
     "build:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite build docs",
+    "commit": "pnpm git-cz",
     "dev:vite": "vuepress-vite dev docs",
     "dev:vite-clean": "vuepress-vite dev docs --clean-cache",
     "dev:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite dev docs",
     "lint": "pnpm lint:prettier --write && pnpm lint:eslint --fix && pnpm lint:stylelint --fix",
     "lint:check": "pnpm lint:prettier && pnpm lint:eslint && pnpm lint:stylelint",
-    "lint:eslint": "eslint . --ext  --ext .js,.cjs,.ts,.vue",
+    "lint:eslint": "eslint . --ext .{js,cjs,ts,vue}",
     "lint:mdlint": "markdownlint **/*.md",
     "lint:prettier": "prettier --check .",
-    "lint:stylelint": "stylelint **/*.{scss,css}",
+    "lint:stylelint": "stylelint docs/.vuepress/**/*.{css,scss}",
     "prepare": "husky install"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-git"
+    }
   },
   "dependencies": {
     "@vuepress/cli": "2.0.0-beta.61",
     "@vuepress/client": "2.0.0-beta.61",
     "vue": "3.2.47",
-    "vuepress-plugin-search-pro": "^2.0.0-beta.189",
-    "vuepress-theme-hope": "2.0.0-beta.189",
+    "vuepress-plugin-search-pro": "^2.0.0-beta.190",
+    "vuepress-theme-hope": "2.0.0-beta.190",
     "vuepress-vite": "2.0.0-beta.61"
   },
   "devDependencies": {
@@ -37,19 +43,27 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
+    "commitizen": "^4.3.0",
     "cross-env": "7.0.3",
+    "cz-git": "^1.5.3",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
     "markdownlint-cli": "^0.33.0",
     "nano-staged": "^0.8.0",
+    "postcss": "^8.4.21",
     "prettier": "2.8.4",
     "sort-package-json": "^2.4.1",
     "stylelint": "^15.2.0",
+    "stylelint-config-recommended-scss": "^9.0.1",
     "stylelint-config-standard": "^30.0.1",
+    "stylelint-config-standard-scss": "^7.0.1",
     "stylelint-order": "^6.0.2",
     "typescript": "^4.9.5"
   },

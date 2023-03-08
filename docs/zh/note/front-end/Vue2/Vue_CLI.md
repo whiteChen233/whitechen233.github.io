@@ -18,7 +18,6 @@ Vue CLI 是一个官方发布的 Vue.js 项目脚手架。使用它可以快速�
 ### 使用前提
 
 - node：使用脚手架需要 node 环境，node 也会安装 npm(node package manager)
-
 - webpack：脚手架工具就使用了 webpack 模板，对所有的资源会压缩等优化操作，并在开发中提供了一套完整的功能，能够使得开发变得更高效。
 
 ### 安装
@@ -33,11 +32,11 @@ Vue CLI 是一个官方发布的 Vue.js 项目脚手架。使用它可以快速�
 
 ::: tip
 
-##### 关于旧版本
+#### 关于旧版本
 
 Vue CLI 的包名称由`vue-cli`改成了`@vue/cli`。如果已经全局安装了旧版本的 vue-cli (1.x 或 2.x)，需要先通过`npm uninstall vue-cli -g`或`yarn global > remove vue-cli`卸载它。
 
-##### 拉取 2.X 的模板(旧版本)
+#### 拉取 2.X 的模板(旧版本)
 
 Vue CLI >= 3 和旧版使用了相同的 vue 命令，所以 Vue CLI 2 (vue-cli) 被覆盖了。如果你仍然需要使用旧版本的 vue init 功能，你可以全局安装一个桥接工具：
 
@@ -53,7 +52,7 @@ vue init webpack my-project
 
 执行`vue init webpack my-project`后的一些选项：
 
-<pre>
+```text
 - Project name                                                            —— 项目名称
 - Project description                                                     —— 项目描述
 - Author                                                                  —— 作者
@@ -61,7 +60,7 @@ vue init webpack my-project
   - Runtime + Compiler
   - Runtime only
 - Install vue-router?                                                     —— 是否安装路由
-- Use ESLint to lint your code?                                           —— 是否使用ESLint代码规范
+- Use ESLint to lint your code?                                           —— 是否使用 eslint 代码规范
   - yes -> Pick an ESLint preset
     - Standard
     - Airbnb
@@ -69,11 +68,11 @@ vue init webpack my-project
 - Set up unit tests                                                       —— 单元测试
 - Setup e2e tests whit Nightwatch?                                        —— 端到端单元测试
 - Should we run `npm install` for you after the project has been created? —— 使用哪一个包管理器
-</pre>
+```
 
 生成的项目文件目录：
 
-<pre>
+```text
 - build
 - config
 - src
@@ -81,17 +80,17 @@ vue init webpack my-project
   - components
   - App.vue
   - main.js
-- static          —— 静态资源，原封不动的复制到dist中
-- .babelrc        —— babel的配置
+- static          —— 静态资源，原封不动的复制到 dist 中
+- .babelrc        —— babel 的配置
 - .editorconfig   —— 保证团队代码编辑风格的统一
-- .eslintignore   —— 忽略eslint规则的文件/文件夹
-- .eslintrc.js    —— eslit的配置
-- .gitignore      —— git版本控制忽略的文件/文件夹
-- .postcsssrc.js  —— css转化的配置
-- index.html      —— index的模板
+- .eslintignore   —— 忽略 eslint 规则的文件/文件夹
+- .eslintrc.js    —— eslint 的配置
+- .gitignore      —— git 版本控制忽略的文件/文件夹
+- .postcsssrc.js  —— css 转化的配置
+- index.html      —— index 的模板
 - package.json
 - README.md
-</pre>
+```
 
 ### Vue CLI 3
 
