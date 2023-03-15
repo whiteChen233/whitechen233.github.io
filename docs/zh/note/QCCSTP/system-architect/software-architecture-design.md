@@ -901,7 +901,7 @@ flowchart LR
 
 #### 主要的中间件
 
-![构件与中间件技术-主要的中间件](/assets/qccstp/构件与中间件技术-主要的中间件.png)
+![构件与中间件技术-主要的中间件](/assets/note/qccstp/构件与中间件技术-主要的中间件.png)
 
 - 远程过程调用
 - 对象请求代理
@@ -911,7 +911,7 @@ flowchart LR
 
 ##### 公共对象请求代理体系结构（Corba）
 
-![构件与中间件技术-Corba](/assets/qccstp/构件与中间件技术-Corba.png)
+![构件与中间件技术-Corba](/assets/note/qccstp/构件与中间件技术-Corba.png)
 
 > - 伺服对象（Servant）：Corba 对象的真正实现，负责完成客户端请求
 > - 对象适配器（Object Adapter）：用于屏蔽 ORB 内核的实现细节，服务器对象的实现提供抽象接口，以便他们使用 ORB 内部的某些功能。（可移植对象适配器（POA）：是对象实现与 ORB 其他组件之间的中介，它将客户请求传送到伺服对象，按需创建子 POA，提供管理伺服对象的策略）
@@ -944,7 +944,7 @@ CORBA 体系结构主要包括以下几个部分
 
 #### 分布式多层应用程序
 
-![典型应用架构-J2EE](/assets/qccstp/典型应用架构-J2EE.png)
+![典型应用架构-J2EE](/assets/note/qccstp/典型应用架构-J2EE.png)
 
 Bean 运行与 EJB 容器之中，共分三类：
 
@@ -954,26 +954,26 @@ Bean 运行与 EJB 容器之中，共分三类：
 
 #### J2EE 核心组成
 
-![典型应用架构-J2EE核心组成](/assets/qccstp/典型应用架构-J2EE核心组成.png)
+![典型应用架构-J2EE核心组成](/assets/note/qccstp/典型应用架构-J2EE核心组成.png)
 
 ## Web 架构设计
 
-![web架构设计](/assets/qccstp/web架构设计.png)
+![web架构设计](/assets/note/qccstp/web架构设计.png)
 
 ### 单台机器 到 数据库与 Web 服务器分离
 
-![Web架构设计-单机到服务分离](/assets/qccstp/Web架构设计-单机到服务分离.png)
+![Web架构设计-单机到服务分离](/assets/note/qccstp/Web架构设计-单机到服务分离.png)
 
 ### 应用服务器集群
 
-![Web架构设计-应用服务器集群](/assets/qccstp/Web架构设计-应用服务器集群.png)
+![Web架构设计-应用服务器集群](/assets/note/qccstp/Web架构设计-应用服务器集群.png)
 
 > 系统演变的过程中，出现了以下问题：
 >
 > - 用户请求由谁来转发到具体的应用服务器
 > - 用户如果每次访问到的服务器不一样，那么如何维护 session 的一致性
 >
-> ![Web架构设计-维护session的一致性](/assets/qccstp/Web架构设计-维护session的一致性.png)
+> ![Web架构设计-维护session的一致性](/assets/note/qccstp/Web架构设计-维护session的一致性.png)
 
 有状态和无状态
 
@@ -1008,13 +1008,13 @@ Bean 运行与 EJB 容器之中，共分三类：
 
 应用服务器的问题解决之后，瓶颈又来到了数据这边。所以数据库也要集群，因为数据库不像应用服务器，只需要处理业务逻辑，它持有数据，如何保证数据的一致性、完整性就成了数据库集群需要解决的问题。现在的策略一般是`（一）主（写），（多）从（读）`
 
-![Web架构设计-数据库读写分离化](/assets/qccstp/Web架构设计-数据库读写分离化.png)
+![Web架构设计-数据库读写分离化](/assets/note/qccstp/Web架构设计-数据库读写分离化.png)
 
 #### 用缓存缓解读库的压力
 
 随着访问量的增大，还是会有瓶颈：磁盘 I/O，硬盘的效率瓶颈
 
-![Web架构设计-缓存缓解读库压力](/assets/qccstp/Web架构设计-缓存缓解读库压力.png)
+![Web架构设计-缓存缓解读库压力](/assets/note/qccstp/Web架构设计-缓存缓解读库压力.png)
 
 Memcached 是一个自由开源的，高性能，分布式内存对象缓存系统。简洁的 key-value 存储系统。通过缓存数据查询结果，减少数据库访问次数，以提高动态 Web 应用的速度、体改可扩展性
 
@@ -1079,7 +1079,7 @@ Memcached 是一个自由开源的，高性能，分布式内存对象缓存系�
 ##### 缓存雪崩
 
 - 大部分缓存失效 → 数据库崩溃
-  ![Web架构设计-Redis缓存雪崩](/assets/qccstp/Web架构设计-Redis缓存雪崩.png)
+  ![Web架构设计-Redis缓存雪崩](/assets/note/qccstp/Web架构设计-Redis缓存雪崩.png)
 - 解决方案：
   - 缓存的高可用性
   - 缓存降级
@@ -1099,7 +1099,7 @@ Memcached 是一个自由开源的，高性能，分布式内存对象缓存系�
 
 CDN 的全程是 Content Delivery Network，即内容分发网络。其基本思路是尽可能的避开互联网上有可能影响数据传输速度和稳定性的瓶颈和缓环节，是内容传输的更快、更稳定
 
-![Web架构设计-CDN](/assets/qccstp/Web架构设计-CDN.png)
+![Web架构设计-CDN](/assets/note/qccstp/Web架构设计-CDN.png)
 
 ### XML 与 JSON
 

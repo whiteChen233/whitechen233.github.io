@@ -147,7 +147,7 @@ URL 由部分组成：资源类型、存放资源的主机域名、资源文件�
 
 TCP/IP 协议栈中协议与层次的关系：
 
-![协议](/assets/qccstp/网络协议.png)
+![协议](/assets/note/qccstp/网络协议.png)
 
 ---
 

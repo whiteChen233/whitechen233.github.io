@@ -9,7 +9,7 @@ UML(Unified modeling language)**统一建模语言**，是一种用于软件系�
 
 UML 本身是一套浮好的规定，就像数学符号和化学符号一样，这些符号用于描述软件模型中的各个元素和它们之间的关系，比如类、接口、实现、泛化、依赖、组合、聚合等，如下图：
 
-![UML图例](/assets/note/uml/note/UML图例.png)
+![UML图例](/assets/note/uml/UML图例.png)
 
 使用 UML 来建模，常用的工具有 Rational Rose，也可以使用一些插件来建模。
 
