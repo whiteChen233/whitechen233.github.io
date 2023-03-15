@@ -57,7 +57,7 @@ new Promise((resolve, reject) => {
   });
 ```
 
-![Promise](/assets/es6/promise.png)
+![Promise](/assets/note/es6/promise.png)
 
 ## `Promise.prototype.then()`
 

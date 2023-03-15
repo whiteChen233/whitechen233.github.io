@@ -9,7 +9,7 @@ UML(Unified modeling language)**统一建模语言**，是一种用于软件系�
 
 UML 本身是一套浮好的规定，就像数学符号和化学符号一样，这些符号用于描述软件模型中的各个元素和它们之间的关系，比如类、接口、实现、泛化、依赖、组合、聚合等，如下图：
 
-![UML图例](/assets/uml/UML图例.png)
+![UML图例](/assets/note/uml/note/UML图例.png)
 
 使用 UML 来建模，常用的工具有 Rational Rose，也可以使用一些插件来建模。
 
@@ -85,7 +85,7 @@ public class Department {}
 
 上面的类关系如下图所示：
 
-![依赖关系的例子](/assets/uml/依赖关系的例子.png)
+![依赖关系的例子](/assets/note/uml/依赖关系的例子.png)
 
 #### 泛化关系
 
@@ -104,7 +104,7 @@ public class PersonDao extends BaseDao {}
 
 上面的类关系如下图所示：
 
-![泛化关系的例子](/assets/uml/泛化关系的例子.png)
+![泛化关系的例子](/assets/note/uml/泛化关系的例子.png)
 
 #### 实现关系
 
@@ -124,7 +124,7 @@ public class PersonServiceImpl implements PersonService {
 
 上面的类关系如下图所示：
 
-![实现关系的例子](/assets/uml/实现关系的例子.png)
+![实现关系的例子](/assets/note/uml/实现关系的例子.png)
 
 #### 关联关系
 
@@ -166,7 +166,7 @@ public class IdCard {
 
 上面的类关系如下图所示：
 
-![关联关系的例子](/assets/uml/关联关系的例子.png '关联关系的例子')
+![关联关系的例子](/assets/note/uml/关联关系的例子.png '关联关系的例子')
 
 #### 聚合关系
 
@@ -198,7 +198,7 @@ public class Keyboard {}
 
 上面的类关系如下图所示：
 
-![聚合关系的例子](/assets/uml/聚合关系的例子.png '聚合关系的例子')
+![聚合关系的例子](/assets/note/uml/聚合关系的例子.png '聚合关系的例子')
 
 #### 组合关系
 
@@ -222,7 +222,7 @@ public class Disk {}
 
 上面的类关系如下图所示：
 
-![组合关系的例子](/assets/uml/组合关系的例子.png)
+![组合关系的例子](/assets/note/uml/组合关系的例子.png)
 
 举一个栗子：人和脑袋、身份证的关系：人不能没有脑袋，所以脑袋和人是组合关系；人可以没有身份证，所以人和身份证是聚合关系。但是在开发中，删除一个 Person 的时候，一般会同时删除 IdCard（级联删除），这个时候，IdCard
 和 Person 就是组合关系了。
