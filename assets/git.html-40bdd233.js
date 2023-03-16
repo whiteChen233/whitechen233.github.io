@@ -1,0 +1,1 @@
+import{_ as o,W as t,X as n,$ as e,a0 as a}from"./framework-e073d8fb.js";const c={},s=e("h2",{id:"coming-soon",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#coming-soon","aria-hidden":"true"},"#"),a(" coming soon")],-1),r=[s];function i(_,d){return t(),n("div",null,r)}const l=o(c,[["render",i],["__file","git.html.vue"]]);export{l as default};

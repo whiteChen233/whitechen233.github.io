@@ -1,0 +1,1 @@
+import{_ as o,W as a,X as n,$ as e,a0 as t}from"./framework-e073d8fb.js";const c={},s=e("h2",{id:"coming-soon",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#coming-soon","aria-hidden":"true"},"#"),t(" coming soon")],-1),r=[s];function _(d,i){return a(),n("div",null,r)}const h=o(c,[["render",_],["__file","gradle.html.vue"]]);export{h as default};
