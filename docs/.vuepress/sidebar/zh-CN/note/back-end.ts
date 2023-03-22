@@ -4,6 +4,12 @@ export const backEnd = arraySidebar([
   {
     text: '服务端开发',
     icon: 'server',
-    children: [],
+    children: [
+      {
+        text: 'Java Language',
+        prefix: 'java/',
+        children: ['', 'SPI'],
+      },
+    ],
   },
 ]);
