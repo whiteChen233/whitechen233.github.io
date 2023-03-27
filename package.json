@@ -58,7 +58,7 @@
     "markdownlint-cli": "^0.33.0",
     "nano-staged": "^0.8.0",
     "postcss": "^8.4.21",
-    "prettier": "2.8.4",
+    "prettier": "2.8.7",
     "sort-package-json": "^2.4.1",
     "stylelint": "^15.3.0",
     "stylelint-config-recommended-scss": "^9.0.1",
