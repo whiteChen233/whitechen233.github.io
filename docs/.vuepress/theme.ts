@@ -1,4 +1,4 @@
-import { hopeTheme } from 'vuepress-theme-hope/perf';
+import { hopeTheme } from 'vuepress-theme-hope';
 import { enNavbar, zhNavbar } from './navbar';
 import { enSidebar, zhSidebar } from './sidebar';
 
@@ -161,5 +161,5 @@ export default hopeTheme(
       },
     },
   },
-  true,
+  { custom: true },
 );

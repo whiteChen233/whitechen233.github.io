@@ -7,6 +7,9 @@ import theme from './theme';
 export default defineUserConfig({
   base: '/',
   locales: {
+    '/': {
+      lang: 'zh-CN',
+    },
     '/zh/': {
       lang: 'zh-CN',
       title: '温故而知新~',

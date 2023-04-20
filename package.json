@@ -34,8 +34,8 @@
     "@vuepress/cli": "2.0.0-beta.61",
     "@vuepress/client": "2.0.0-beta.61",
     "vue": "3.2.47",
-    "vuepress-plugin-search-pro": "2.0.0-beta.201",
-    "vuepress-theme-hope": "2.0.0-beta.201",
+    "vuepress-plugin-search-pro": "2.0.0-beta.205",
+    "vuepress-theme-hope": "2.0.0-beta.205",
     "vuepress-vite": "2.0.0-beta.61"
   },
   "devDependencies": {
@@ -60,7 +60,7 @@
     "postcss": "^8.4.21",
     "prettier": "2.8.7",
     "sort-package-json": "^2.4.1",
-    "stylelint": "^15.4.0",
+    "stylelint": "^15.5.0",
     "stylelint-config-recommended-scss": "^10.0.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-config-standard-scss": "^8.0.0",
