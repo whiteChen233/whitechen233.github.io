@@ -62,7 +62,7 @@
     "sort-package-json": "^2.4.1",
     "stylelint": "^15.4.0",
     "stylelint-config-recommended-scss": "^10.0.0",
-    "stylelint-config-standard": "^32.0.0",
+    "stylelint-config-standard": "^33.0.0",
     "stylelint-config-standard-scss": "^8.0.0",
     "stylelint-order": "^6.0.2",
     "typescript": "^5.0.2"
