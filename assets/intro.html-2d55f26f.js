@@ -1,0 +1,1 @@
+import{_ as e,X as t,Y as o,a0 as n}from"./framework-76301131.js";const _={},c=n("p",null,"Hello！很高兴认识你！",-1),s=[c];function r(l,a){return t(),o("div",null,s)}const d=e(_,[["render",r],["__file","intro.html.vue"]]);export{d as default};

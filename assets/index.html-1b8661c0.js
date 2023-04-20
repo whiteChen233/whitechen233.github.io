@@ -1,0 +1,1 @@
+import{_ as a,X as t,Y as c,a0 as e,a1 as n}from"./framework-76301131.js";const r={},s=e("h2",{id:"工欲善其事-必先利其器",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#工欲善其事-必先利其器","aria-hidden":"true"},"#"),n(" 工欲善其事, 必先利其器")],-1),o=[s];function _(d,i){return t(),c("div",null,o)}const l=a(r,[["render",_],["__file","index.html.vue"]]);export{l as default};
