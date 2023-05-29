@@ -155,7 +155,7 @@ Maven 在编译、执行测试、实际运行有不同的 classpath:
 
 #### 依赖版本规范
 
-`<dependency/>` 的 `<version/>` 标签定故意版本要求, 支持的语法:
+`<dependency/>` 的 `<version/>` 标签定义版本要求, 支持的语法:
 
 - `1.0`: 对 1.0 的软需求, 如果依赖树的前面没有其他版本出现, 请使用 1.0
 - `[1.0]`: 对 1.0 的硬性要求, 使用 1.0 并且只使用 1.0
@@ -226,7 +226,7 @@ Maven 在遇到这种问题的时候, 会遵循 `路径最短优先` 和 `声明
 
 Maven 为构建管理带来的一个强大补充是项目继承的概念, 尽管在构建系统中可以模拟 Ant 继承, 但 Maven 在项目对象模型中显式地执行了项目继承
 
-```xml {7}
+```xml {8}
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>

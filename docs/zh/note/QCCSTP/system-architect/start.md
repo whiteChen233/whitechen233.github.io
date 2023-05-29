@@ -140,7 +140,7 @@ date: 2022-08-24
 #### 解题思路
 
 $$
-\text{论文}=\textcolor{red}{心态} + \textcolor{orange}{技巧} + \text{理论} + \text{实践}
+\text{论文}=\textcolor{red}{\text{心态}} + \textcolor{orange}{\text{技巧}} + \text{理论} + \text{实践}
 $$
 
 - 心态: 心态放平, 不要猜题
