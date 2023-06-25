@@ -31,12 +31,12 @@
     }
   },
   "dependencies": {
-    "@vuepress/cli": "2.0.0-beta.62",
-    "@vuepress/client": "2.0.0-beta.62",
+    "@vuepress/cli": "2.0.0-beta.63",
+    "@vuepress/client": "2.0.0-beta.63",
     "vue": "3.3.4",
-    "vuepress-plugin-search-pro": "2.0.0-beta.216",
-    "vuepress-theme-hope": "2.0.0-beta.220",
-    "vuepress-vite": "2.0.0-beta.62"
+    "vuepress-plugin-search-pro": "2.0.0-beta.228",
+    "vuepress-theme-hope": "2.0.0-beta.228",
+    "vuepress-vite": "2.0.0-beta.63"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
@@ -46,9 +46,9 @@
     "commitizen": "^4.3.0",
     "cross-env": "7.0.3",
     "cz-git": "^1.6.1",
-    "eslint": "^8.39.0",
+    "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-config-standard-with-typescript": "^35.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -61,7 +61,7 @@
     "prettier": "2.8.8",
     "sort-package-json": "^2.4.1",
     "stylelint": "^15.6.0",
-    "stylelint-config-recommended-scss": "^11.0.0",
+    "stylelint-config-recommended-scss": "^12.0.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-config-standard-scss": "^9.0.0",
     "stylelint-order": "^6.0.3",
