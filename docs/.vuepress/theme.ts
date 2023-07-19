@@ -8,19 +8,15 @@ export default hopeTheme(
     author: {
       name: 'White',
       url: 'https://blog.white233.top',
+      email: 'white996@qq.com',
     },
     iconAssets: 'iconify',
     iconPrefix: 'mdi:',
     logo: '/logo.png',
     repo: 'whiteChen233/whitechen233.github.io',
     docsDir: 'docs',
-    pageInfo: ['Author', 'Original', 'Date', 'Category', 'Tag', 'Word', 'ReadingTime'],
-    themeColor: {
-      white: '#ffffff',
-      red: '#e53e31',
-      green: '#3eaf7c',
-      orange: '#f29e00',
-    },
+    pageInfo: ['Author', 'Original', 'Date', 'PageView', 'Category', 'Tag', 'Word', 'ReadingTime'],
+    themeColor: true,
     fullscreen: true,
     blog: {
       name: 'White',
@@ -50,7 +46,7 @@ export default hopeTheme(
       '/en/': {
         navbar: enNavbar,
         sidebar: enSidebar,
-        footer: 'Theme by <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
+        footer: 'Theme by <a href="https://theme-hope.vuejs.press/en/" target="_blank">VuePress Theme Hope</a>',
         blog: {
           intro: '/en/intro',
         },
@@ -61,12 +57,11 @@ export default hopeTheme(
     },
     displayFooter: true,
     copyright: 'MIT license | Copyright © 2021-present White',
-    // encrypt: {
-    //   config: {
-    //     "/en/demo/encrypt.html": ["1234"],
-    //     "/zh/demo/encrypt.html": ["1234"],
-    //   },
-    // },
+    encrypt: {
+      config: {
+        '/en/': ['dayByDay996'],
+      },
+    },
     plugins: {
       // 评论
       comment: {
@@ -114,12 +109,7 @@ export default hopeTheme(
         // 属性支持
         attrs: true,
         // 幻灯片, https://revealjs.com/
-        presentation: {
-          plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
-          revealConfig: {
-            controlsLayout: 'edges',
-          },
-        },
+        presentation: ['highlight', 'math', 'search', 'notes', 'zoom'],
         // 标记
         mark: true,
         // 样式化
