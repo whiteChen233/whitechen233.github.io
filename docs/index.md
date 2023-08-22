@@ -10,7 +10,13 @@ lang: zh-CN
 
 <!-- .slide: data-transition="zoom" -->
 
-杜绝花里胡哨，<a style="text-align:center;text-decoration:none;" href="/zh/">直接开始~</a>
+温故而知新~
+
+<!-- .element: class="r-fit-text" -->
+
+<br><br><br>
+
+<p style="text-align:right;font-size:30px;">花里胡哨，<a style="text-decoration:none;" href="/zh/">直接开始~</a></p>
 
 ---
 
