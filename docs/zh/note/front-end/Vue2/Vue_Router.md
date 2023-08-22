@@ -461,7 +461,7 @@ router.beforeEach((to, from, next) => {
 
 `next(false)`: 中断当前的导航。如果浏览器的 URL 改变了 (可能是用户手动或者浏览器后退按钮)，那么 URL 地址会重置到 from 路由对应的地址。
 
-`next('/')`或者`next({ path: '/' })`: 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向`next`传递任意位置对象，且允许设置诸如`replace: true`、`name: 'home'`之类的选项以及任何用在 `router-link`的` to``prop `或`router.push`中的选项。
+`next('/')`或者`next({ path: '/' })`: 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向`next`传递任意位置对象，且允许设置诸如`replace: true`、`name: 'home'`之类的选项以及任何用在 `router-link`的`to`、`prop`或`router.push`中的选项。
 
 `next(error)`: (2.4.0+) 如果传入 next 的参数是一个 Error 实例，则导航会被终止且该错误会被传递给`router.onError()`注册过的回调。
 
@@ -592,7 +592,7 @@ beforeRouteLeave (to, from, next) {
 
 因为它也是个组件，所以可以配合`<transition>`和`<keep-alive>`使用。如果两个结合一起用，要确保在内层使用`<keep-alive>`：
 
-```html
+```vue
 <transition>
   <keep-alive>
     <router-view></router-view>
@@ -606,7 +606,7 @@ beforeRouteLeave (to, from, next) {
 
 1. 利用 include、exclude 属性
 
-   ```html
+   ```vue
    <!-- 包含 -->
    <keep-alive include="A,B">
      <router-view></router-view>
@@ -642,7 +642,7 @@ export default [
 ];
 ```
 
-```html
+```vue
 <div id="app">
   <keep-alive>
     <!-- 需要缓存的视图组件 -->

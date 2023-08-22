@@ -19,7 +19,7 @@ date: 2021-07-17
 
 在`<slot></slot>`标签中添加的视为默认值。使用组件时没有使用则使用默认的，有则进行替换。如果有多个值同时放到组件中进行替换时，会一起作为替换元素。
 
-```html
+```vue
 <div id="app">
   <!-- 显示默认值 -->
   <cpn></cpn>
@@ -38,13 +38,13 @@ date: 2021-07-17
 </template>
 
 <script>
-  Vue.component('cpn', {
-    template: '#cpn',
-  });
+Vue.component('cpn', {
+  template: '#cpn',
+});
 
-  const app = new Vue({
-    el: '#app',
-  });
+const app = new Vue({
+  el: '#app',
+});
 </script>
 ```
 
@@ -62,7 +62,7 @@ date: 2021-07-17
 
 有时需要在插槽中访问子组件的数据，此时可以通过以下方式实现
 
-```html
+```vue
 <div id="app">
   <cpn>
     <!-- 在父组件中通过slotData获取从子组件传过来的数据，default是指默认的插槽，如果是具名插槽则需要替换成对应的名字且不能省略插槽名字。slotData.data中的data这个键就是子组件的slot中绑定的data(这个名字随便取) -->
@@ -82,24 +82,24 @@ date: 2021-07-17
 </template>
 
 <script>
-  Vue.component('cpn', {
-    template: '#cpn',
-    data() {
-      return {
-        list: ['Java', 'C++', 'C#'],
-      };
-    },
-  });
+Vue.component('cpn', {
+  template: '#cpn',
+  data() {
+    return {
+      list: ['Java', 'C++', 'C#'],
+    };
+  },
+});
 
-  const app = new Vue({
-    el: '#app',
-  });
+const app = new Vue({
+  el: '#app',
+});
 </script>
 ```
 
 ### 缩写语法
 
-```html
+```vue
 <!-- 1.独占默认插槽 -->
 <!--
   原始写法

@@ -133,13 +133,11 @@ module.exports = {
 
 使用`npm install vue --save`安装 Vue，使用如下：
 
-```HTML
+```html
 <html>
   ...
   <body>
-    <div id="app">
-      {{ message }}
-    </div>
+    <div id="app">{{ message }}</div>
     <script>
       import Vue from 'vue'
       new Vue({

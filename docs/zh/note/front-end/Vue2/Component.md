@@ -30,12 +30,12 @@ date: 2021-07-05
 
 在 HTML 中，使用如下的方式声明模板
 
-```html
+```vue
 <!-- 方式一：使用script标签声明 -->
 <script type="text/x-template" id="id">
-  <div>
-    ...
-  </div>
+<div>
+  ...
+</div>
 </script>
 
 <!-- 方式二：使用template标签声明 -->
@@ -45,36 +45,36 @@ date: 2021-07-05
 
 <!-- 使用方式 -->
 <script>
-  // 注册全局组件
-  Vue.component('tagName', {
-    template: '#id',
-  });
+// 注册全局组件
+Vue.component('tagName', {
+  template: '#id',
+});
 </script>
 ```
 
 ## 组件如何访问数据和方法
 
-```html
+```vue
 <script>
-  Vue.component('tagName', {
-    template: `
-      <div>
-        {{ data }}
-        <button @click="btnClick"></button>
-      </div>`,
-    /*
-     * 为什么data需要是一个函数而不是对象？
-     * 保证使用组件时每个组件内的数据不会相互影响
-     */
-    data () {
-      return {
-        data: 'data'
-      }
-    },
-    methods: {
-      btnClick () { // ... }
+Vue.component('tagName', {
+  template: `
+    <div>
+      {{ data }}
+      <button @click="btnClick"></button>
+    </div>`,
+  /*
+   * 为什么data需要是一个函数而不是对象？
+   * 保证使用组件时每个组件内的数据不会相互影响
+   */
+  data () {
+    return {
+      data: 'data'
     }
-  })
+  },
+  methods: {
+    btnClick () { // ... }
+  }
+})
 </script>
 ```
 
@@ -87,7 +87,7 @@ date: 2021-07-05
 
 父传子：
 
-```html
+```vue
 <!-- 父组件模板 -->
 <div id="app">
   <cpn :msg="message"></cpn>
@@ -101,44 +101,44 @@ date: 2021-07-05
 </template>
 
 <script>
-  // 子组件
-  const cpn = {
-    template: '#id',
-    // 1.数组
-    props: ['msg'],
-    // 2.类型限制
-    props: {
-      msg: String
-    },
-    // 3.默认值
-    props: {
-      msg: {
-        // 类型时Object或者Array时，default需要是一个factory function
-        type: String,
-        default: 'msg',
-        // 是否必传
-        required: true
-      }
+// 子组件
+const cpn = {
+  template: '#id',
+  // 1.数组
+  props: ['msg'],
+  // 2.类型限制
+  props: {
+    msg: String
+  },
+  // 3.默认值
+  props: {
+    msg: {
+      // 类型时Object或者Array时，default需要是一个factory function
+      type: String,
+      default: 'msg',
+      // 是否必传
+      required: true
     }
-    data () { return {} }
   }
+  data () { return {} }
+}
 
-  // 父组件
-  const app = new Vue({
-    el: '#app',
-    data: {
-      message: 'msg'
-    }
-    components: {
-      cpn
-    }
-  })
+// 父组件
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'msg'
+  }
+  components: {
+    cpn
+  }
+})
 </script>
 ```
 
 子传父：
 
-```html
+```vue
 <!-- 父组件模板 -->
 <div id="app">
   <!-- 在父组件中通过v-on监听这个自定义事件 -->
@@ -153,33 +153,33 @@ date: 2021-07-05
 </template>
 
 <script>
-  // 子组件
-  const cpn = {
-    template: '#id',
-    data() {
-      return {
-        books: ['Java', 'C', 'C#'],
-      };
+// 子组件
+const cpn = {
+  template: '#id',
+  data() {
+    return {
+      books: ['Java', 'C', 'C#'],
+    };
+  },
+  methods: {
+    btnClick(item) {
+      // 发送自定义事件
+      this.$emit('btn-click', item);
     },
-    methods: {
-      btnClick(item) {
-        // 发送自定义事件
-        this.$emit('btn-click', item);
-      },
-    },
-  };
+  },
+};
 
-  // 父组件
-  const app = new Vue({
-    el: '#app',
-    data: {},
-    components: { cpn },
-    methods: {
-      cpnClick(item) {
-        consloe.log(item);
-      },
+// 父组件
+const app = new Vue({
+  el: '#app',
+  data: {},
+  components: { cpn },
+  methods: {
+    cpnClick(item) {
+      consloe.log(item);
     },
-  });
+  },
+});
 </script>
 ```
 
