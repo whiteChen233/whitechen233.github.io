@@ -8,7 +8,7 @@ export const backEnd = arraySidebar([
       {
         text: 'Java Language',
         prefix: 'java/',
-        children: ['', 'SPI'],
+        children: ['', 'JVM', 'SPI'],
       },
     ],
   },
