@@ -1,7 +1,7 @@
 import { sidebar } from 'vuepress-theme-hope';
 
 import { qccstp, backEnd, frontEnd, tools, design } from './note';
-import { stepByStep } from './step-by-step';
+import { stepByStep, games } from './series';
 
 export const zhSidebar = sidebar({
   '/zh/': [
@@ -20,6 +20,7 @@ export const zhSidebar = sidebar({
   '/zh/note/back-end/': backEnd,
   '/zh/note/design/': design,
   '/zh/note/tools/': tools,
-  '/zh/step-by-step/': stepByStep,
+  '/zh/series/step-by-step/': stepByStep,
+  '/zh/series/games/': games,
   '/zh/links': [],
 });

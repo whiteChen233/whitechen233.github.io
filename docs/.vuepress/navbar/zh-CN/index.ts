@@ -14,6 +14,14 @@ export const zhNavbar = navbar([
       { text: '软件设计', icon: 'palette', link: 'design/' },
     ],
   },
-  { text: '手把手', icon: 'sign-language', link: '/zh/step-by-step/' },
+  {
+    text: '系列',
+    prefix: '/zh/series/',
+    icon: 'format-list-bulleted-type',
+    children: [
+      { text: '手把手', icon: 'sign-language', link: 'step-by-step/' },
+      { text: '第九艺术', icon: 'controller', link: 'games/' },
+    ],
+  },
   { text: '链接', icon: 'link-variant', link: '/zh/links/' },
 ]);

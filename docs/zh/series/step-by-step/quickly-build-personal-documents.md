@@ -45,7 +45,7 @@ yarn global add docsify-cli
 
 :::
 
-参考 [docsify-cli 的使用](#docsify-cli-的使用)
+参考 [docsify-cli 的使用](#docsify-cli)
 
 ### 初始化
 
@@ -939,7 +939,7 @@ docsify 有内置的代码高亮工具, 由 [Prism](https://github.com/PrismJS/p
 - [服务端渲染（SSR）](https://docsify.js.org/#/zh-cn/ssr)
 - [文件嵌入](https://docsify.js.org/#/zh-cn/embed-files)
 
-## docsify-cli 的使用
+## docsify-cli
 
 ### 初始化命令: init
 
