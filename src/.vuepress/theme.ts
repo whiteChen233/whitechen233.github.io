@@ -1,6 +1,6 @@
 import { hopeTheme } from 'vuepress-theme-hope';
 import { defaultNavbar } from './navbar';
-import { enSidebar, zhSidebar } from './sidebar';
+import { defaultSidebar } from './sidebar';
 
 export default hopeTheme(
   {
@@ -33,7 +33,7 @@ export default hopeTheme(
       intro: '/docs/intro',
     },
     navbar: defaultNavbar,
-    sidebar: zhSidebar,
+    sidebar: defaultSidebar,
     footer: '主题使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
     metaLocales: {
       editLink: '在 GitHub 上编辑此页',
