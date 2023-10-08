@@ -1,7 +1,7 @@
 ---
 title: 学而不厌，诲人不倦
 layout: Slide
-lang: zh-CN
+article: false
 ---
 
 <!-- markdownlint-disable MD024 MD033 MD051 -->
