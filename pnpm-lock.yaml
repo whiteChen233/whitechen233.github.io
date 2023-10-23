@@ -15,8 +15,8 @@ dependencies:
     specifier: 3.3.4
     version: 3.3.4
   vuepress-plugin-search-pro:
-    specifier: 2.0.0-beta.237
-    version: 2.0.0-beta.237(vuepress-vite@2.0.0-beta.67)
+    specifier: 2.0.0-beta.238
+    version: 2.0.0-beta.238(vuepress-vite@2.0.0-beta.67)
   vuepress-theme-hope:
     specifier: 2.0.0-beta.237
     version: 2.0.0-beta.237(vuepress-vite@2.0.0-beta.67)
@@ -8802,8 +8802,37 @@ packages:
       - supports-color
     dev: false
 
-  /vuepress-plugin-search-pro@2.0.0-beta.237(vuepress-vite@2.0.0-beta.67):
-    resolution: {integrity: sha512-EtIR6ewf4MfiFpYrxzwsobDSloSz2FeU8dWjYo6/XePNQgY4XCG7higZLg3+ooTmAkqEvxI5NcsirHu1gOY0ow==}
+  /vuepress-plugin-sass-palette@2.0.0-beta.238(vuepress-vite@2.0.0-beta.67):
+    resolution: {integrity: sha512-sPDpamMO8kKnwjnnLAPPEpRwBt8ji+biIRwuUKSg43/c+dDVeLV0TEomawGRAGnQQOQ5oaEXn3G+ffkdpHTAuQ==}
+    engines: {node: '>=16.19.0', npm: '>=8', pnpm: '>=7'}
+    peerDependencies:
+      sass-loader: ^13.3.2
+      vuepress: 2.0.0-beta.67
+      vuepress-vite: 2.0.0-beta.67
+      vuepress-webpack: 2.0.0-beta.67
+    peerDependenciesMeta:
+      sass-loader:
+        optional: true
+      vuepress:
+        optional: true
+      vuepress-vite:
+        optional: true
+      vuepress-webpack:
+        optional: true
+    dependencies:
+      '@vuepress/shared': 2.0.0-beta.67
+      '@vuepress/utils': 2.0.0-beta.67
+      chokidar: 3.5.3
+      sass: 1.69.4
+      vuepress-shared: 2.0.0-beta.238(vuepress-vite@2.0.0-beta.67)
+      vuepress-vite: 2.0.0-beta.67(@types/node@18.18.6)(@vuepress/client@2.0.0-beta.67)(ts-node@10.9.1)(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - supports-color
+    dev: false
+
+  /vuepress-plugin-search-pro@2.0.0-beta.238(vuepress-vite@2.0.0-beta.67):
+    resolution: {integrity: sha512-U6p0q5ftmoUtAoAzBgVPsddRaQcHLprkFx+fzZ3i/EvtMh5tN2LxC3Q9/QhB48NOST8FFQ0aXAqsPkNtvMB7nA==}
     engines: {node: '>=16.19.0', npm: '>=8', pnpm: '>=7'}
     peerDependencies:
       sass-loader: ^13.3.2
@@ -8829,8 +8858,8 @@ packages:
       slimsearch: 1.0.0
       vue: 3.3.4
       vue-router: 4.2.5(vue@3.3.4)
-      vuepress-plugin-sass-palette: 2.0.0-beta.237(vuepress-vite@2.0.0-beta.67)
-      vuepress-shared: 2.0.0-beta.237(vuepress-vite@2.0.0-beta.67)
+      vuepress-plugin-sass-palette: 2.0.0-beta.238(vuepress-vite@2.0.0-beta.67)
+      vuepress-shared: 2.0.0-beta.238(vuepress-vite@2.0.0-beta.67)
       vuepress-vite: 2.0.0-beta.67(@types/node@18.18.6)(@vuepress/client@2.0.0-beta.67)(ts-node@10.9.1)(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -8888,6 +8917,40 @@ packages:
 
   /vuepress-shared@2.0.0-beta.237(vuepress-vite@2.0.0-beta.67):
     resolution: {integrity: sha512-R4lGkX0GD1yUyK0iDrWIZvJbuoGyi9Z41gPz3jFexJM4ojjirkuvLy6DuMwFCi80GKJlrfWq19Tpeo5z5foPBA==}
+    engines: {node: '>=16.19.0', npm: '>=8', pnpm: '>=7'}
+    peerDependencies:
+      vuepress: 2.0.0-beta.67
+      vuepress-vite: 2.0.0-beta.67
+      vuepress-webpack: 2.0.0-beta.67
+    peerDependenciesMeta:
+      vuepress:
+        optional: true
+      vuepress-vite:
+        optional: true
+      vuepress-webpack:
+        optional: true
+    dependencies:
+      '@vuepress/client': 2.0.0-beta.67
+      '@vuepress/shared': 2.0.0-beta.67
+      '@vuepress/utils': 2.0.0-beta.67
+      '@vueuse/core': 10.5.0(vue@3.3.4)
+      cheerio: 1.0.0-rc.12
+      dayjs: 1.11.10
+      execa: 8.0.1
+      fflate: 0.8.1
+      gray-matter: 4.0.3
+      semver: 7.5.4
+      striptags: 3.2.0
+      vue: 3.3.4
+      vue-router: 4.2.5(vue@3.3.4)
+      vuepress-vite: 2.0.0-beta.67(@types/node@18.18.6)(@vuepress/client@2.0.0-beta.67)(ts-node@10.9.1)(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - supports-color
+    dev: false
+
+  /vuepress-shared@2.0.0-beta.238(vuepress-vite@2.0.0-beta.67):
+    resolution: {integrity: sha512-KTAYchOorvUg/CfPZgjpl5h6cIjxaab1u3n6AlF9vy8LA5WqHmE2vcfcutWpDRumRkA88v1ltQGxEXLnqbUTkg==}
     engines: {node: '>=16.19.0', npm: '>=8', pnpm: '>=7'}
     peerDependencies:
       vuepress: 2.0.0-beta.67
