@@ -3,5 +3,5 @@
   "compilerOptions": {
     "rootDir": "./"
   },
-  "include": ["**/*.ts", "*.cjs"]
+  "include": ["src/.vuepress/**/*.ts", "*.cjs"]
 }

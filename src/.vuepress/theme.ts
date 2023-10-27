@@ -38,30 +38,6 @@ export default hopeTheme(
     metaLocales: {
       editLink: '在 GitHub 上编辑此页',
     },
-    // locales: {
-    //   '/zh/': {
-    //     navbar: zhNavbar,
-    //     sidebar: zhSidebar,
-    //     footer: '主题使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a>',
-    //     blog: {
-    //       intro: '/zh/intro',
-    //     },
-    //     metaLocales: {
-    //       editLink: '在 GitHub 上编辑此页',
-    //     },
-    //   },
-    //   '/en/': {
-    //     navbar: enNavbar,
-    //     sidebar: enSidebar,
-    //     footer: 'Theme by <a href="https://theme-hope.vuejs.press/en/" target="_blank">VuePress Theme Hope</a>',
-    //     blog: {
-    //       intro: '/en/intro',
-    //     },
-    //     metaLocales: {
-    //       editLink: 'Edit this page on GitHub',
-    //     },
-    //   },
-    // },
     displayFooter: true,
     copyright: 'MIT license | Copyright © 2021-present White',
     encrypt: {
@@ -116,23 +92,26 @@ export default hopeTheme(
         // 属性支持
         attrs: true,
         // 幻灯片, https://revealjs.com/
-        presentation: ['highlight', 'math', 'search', 'notes', 'zoom'],
+        revealJs: {
+          plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
+          themes: ['league'],
+        },
         // 标记
         mark: true,
         // 样式化
-        // stylize: [
-        //   {
-        //     matcher: 'Recommanded',
-        //     replacer: ({ tag }) => {
-        //       if (tag === 'em')
-        //         return {
-        //           tag: 'Badge',
-        //           attrs: { type: 'tip' },
-        //           content: 'Recommanded',
-        //         };
-        //     },
-        //   },
-        // ],
+        stylize: [
+          {
+            matcher: 'Recommanded',
+            replacer: ({ tag }) => {
+              if (tag === 'em')
+                return {
+                  tag: 'Badge',
+                  attrs: { type: 'tip' },
+                  content: 'Recommanded',
+                };
+            },
+          },
+        ],
         // 流程图, http://flowchart.js.org/
         flowchart: true,
         // 脚注
