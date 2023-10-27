@@ -1,7 +1,7 @@
 import { sidebar } from 'vuepress-theme-hope';
 
-import { qccstp, backEnd, frontEnd, tools, design } from './note';
-import { stepByStep, games } from './series';
+import { qccstp, backEnd, frontEnd, tools, design } from './note/index.js';
+import { stepByStep, games } from './series/index.js';
 
 export const defaultSidebar = sidebar({
   '/docs/': [

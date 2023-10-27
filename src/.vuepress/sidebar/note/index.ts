@@ -1,5 +1,5 @@
-export { qccstp } from './qccstp';
-export { frontEnd } from './front-end';
-export { backEnd } from './back-end';
-export { tools } from './tools';
-export { design } from './design';
+export { qccstp } from './qccstp.js';
+export { frontEnd } from './front-end.js';
+export { backEnd } from './back-end.js';
+export { tools } from './tools.js';
+export { design } from './design.js';
