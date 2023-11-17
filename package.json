@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "@vue/repl": "^2.7.0",
-    "@vuepress/cli": "2.0.0-beta.68",
-    "@vuepress/client": "2.0.0-beta.68",
+    "@vuepress/cli": "2.0.0-rc.0",
+    "@vuepress/client": "2.0.0-rc.0",
     "@waline/client": "^2.15.8",
     "chart.js": "^4.4.0",
     "echarts": "^5.4.3",
@@ -43,13 +43,13 @@
     "mermaid": "^10.6.1",
     "reveal.js": "^5.0.2",
     "vue": "^3.3.8",
-    "vuepress-plugin-search-pro": "2.0.0-beta.250",
-    "vuepress-theme-hope": "2.0.0-beta.250",
-    "vuepress-vite": "2.0.0-beta.68"
+    "vuepress-plugin-search-pro": "2.0.0-rc.0",
+    "vuepress-theme-hope": "2.0.0-rc.0",
+    "vuepress-vite": "2.0.0-rc.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.1",
-    "@commitlint/config-conventional": "^18.4.0",
+    "@commitlint/cli": "^18.4.2",
+    "@commitlint/config-conventional": "^18.4.2",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "commitizen": "^4.3.0",
@@ -67,7 +67,7 @@
     "markdownlint-cli": "^0.37.0",
     "nano-staged": "^0.8.0",
     "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
     "sort-package-json": "^2.6.0",
     "stylelint": "^15.11.0",
     "stylelint-config-recommended-scss": "^13.1.0",
@@ -76,7 +76,7 @@
     "stylelint-order": "^6.0.3",
     "typescript": "^5.2.2"
   },
-  "packageManager": "pnpm@8.10.2",
+  "packageManager": "pnpm@8.10.5",
   "engines": {
     "node": ">=16.0.0",
     "npm": ">=8",
