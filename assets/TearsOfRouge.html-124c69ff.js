@@ -1,1 +1,0 @@
-import{_ as o}from"./plugin-vue_export-helper-c27b6911.js";import{o as t,c as s,d as e}from"./app-9c6973b9.js";const l={},n=e("p",null,"红楼交杯相思豆，痴男怨女乞白头。",-1),_=e("br",null,null,-1),c=e("blockquote",null,[e("p",null,"一句话，精髓！（半成品也来占个坑）")],-1),r=[n,_,c];function a(u,d){return t(),s("div",null,r)}const m=o(l,[["render",a],["__file","TearsOfRouge.html.vue"]]);export{m as default};
