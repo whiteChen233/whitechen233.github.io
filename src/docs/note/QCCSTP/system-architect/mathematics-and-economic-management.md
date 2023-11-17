@@ -262,7 +262,7 @@ function generateData(n) {
   return data;
 }
 
-module.exports = {
+const option = {
   animation: false,
   grid: {
     top: 40,
@@ -272,8 +272,8 @@ module.exports = {
   },
   xAxis: {
     name: 'x',
-    min: -5,
-    max: 10,
+    min: -1,
+    max: 8,
     minorTick: {
       show: true,
     },

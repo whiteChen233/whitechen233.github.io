@@ -80,7 +80,7 @@ date: 2022-08-28
 RAD 的软件流程
 
 ```mermaid
-flowchart LR
+flowchart TB
   A[业务建模]--->B[数据建模]--->C[过程建模]--->D[应用生成]--->E[测试交付]
 ```
 
