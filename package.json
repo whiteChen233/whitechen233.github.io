@@ -43,7 +43,7 @@
     "mermaid": "^10.6.1",
     "reveal.js": "^5.0.2",
     "vue": "^3.3.8",
-    "vuepress-plugin-search-pro": "2.0.0-rc.0",
+    "vuepress-plugin-search-pro": "2.0.0-rc.1",
     "vuepress-theme-hope": "2.0.0-rc.0",
     "vuepress-vite": "2.0.0-rc.0"
   },
