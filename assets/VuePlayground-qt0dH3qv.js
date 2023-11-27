@@ -1,7 +1,0 @@
-import{i as _,j as m,k as f,s,l as R,v as g,n as y,p as a,$ as w,_ as n}from"./app-baMNq6vb.js";const S=e=>JSON.parse(decodeURIComponent(e));var h=_({name:"VuePlayground",props:{title:{type:String,default:""},files:{type:String,required:!0},settings:{type:String,default:"{}"}},setup(e){const u=m(),i=f(!0),t=s(),l=s(),r=s(),o=R(()=>g({},u,S(e.settings))),d=async()=>{const[{ReplStore:v,Repl:p},{default:c}]=await Promise.all([n(()=>import("./vue-repl-xXCYMy1D.js"),__vite__mapDeps([0,1,2])),n(()=>import("./codemirror-editor-tg54WD-P.js"),__vite__mapDeps([3,2,1]))]);t.value=p,r.value=c,l.value=new v({serializedState:decodeURIComponent(e.files)}),o.value.vueVersion&&await l.value.setVueVersion(o.value.vueVersion)};return y(async()=>{await d(),i.value=!1}),()=>[a("div",{class:"vue-playground-wrapper"},[e.title?a("div",{class:"header"},decodeURIComponent(e.title)):null,a("div",{class:"repl-container"},[i.value?a(w,{class:"preview-loading",height:192}):null,t.value?a(t.value,{editor:r.value,store:l.value,autoResize:!0,...o.value,layout:"horizontal"}):null])])]}});export{h as default};
-function __vite__mapDeps(indexes) {
-  if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["assets/vue-repl-xXCYMy1D.js","assets/app-baMNq6vb.js","assets/utils-5585d0be-XOQqDqQW.js","assets/codemirror-editor-tg54WD-P.js"]
-  }
-  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
-}
