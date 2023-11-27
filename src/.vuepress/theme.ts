@@ -117,7 +117,7 @@ export default hopeTheme(
         // 脚注
         footnote: true,
         // 自定义容器
-        container: true,
+        hint: true,
         // 自定义对齐
         align: true,
         gfm: true,
