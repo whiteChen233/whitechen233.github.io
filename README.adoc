@@ -1,12 +1,10 @@
-= 学习笔记 | Study Notes
+= 个人博客 | Personal Blog
 
 image:https://img.shields.io/badge/Auther-White-blue?style=for-the-badge&logo=github[link=https://github.com/whiteChen233]
 image:https://img.shields.io/badge/LICENSE-MIT-green?style=for-the-badge[link=https://github.com/whiteChen233/whitechen233.github.io/blob/main/LICENSE]
 
-俗话说，好记心不如烂笔头，对于我这种学渣来说，学过的知识可太TM容易忘了
+欢迎来到我的个人博客！
 
-没办法只能寄希望于电子大脑了...
+本项目使用 link:https://vuepress.github.io/zh/[VuePress,window=_blank] 搭建，搭配使用的主题是 link:https://theme-hope.vuejs.press/zh/[VuePress Theme Hope,window=_blank]
 
-本项目使用 link:https://vuepress.github.io/zh/[VuePress,window=_blank] 搭建，搭配使用的主题是 link:https://theme-hope.vuejs.press/zh/[VuePress Theme Hope,window=_blank] 
-
-== link:https://blog.white233.top/[笔记首页,window=_blank]
+== link:https://blog.white233.top/[博客首页,window=_blank]
