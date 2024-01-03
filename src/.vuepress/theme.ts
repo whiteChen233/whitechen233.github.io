@@ -129,12 +129,12 @@ export default hopeTheme(
       components: {
         components: ['Badge', 'FontIcon', 'SiteInfo'],
       },
-      pwa: {
-        favicon: '/favicon.ico',
-        cacheHTML: true,
-        cachePic: true,
-        appendBase: true,
-      },
+      // pwa: {
+      //   favicon: '/favicon.ico',
+      //   cacheHTML: true,
+      //   cachePic: true,
+      //   appendBase: true,
+      // },
     },
   },
   { custom: true },
