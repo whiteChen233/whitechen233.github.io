@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@vue/repl':
-    specifier: ^3.1.1
-    version: 3.1.1
+    specifier: ^3.2.0
+    version: 3.2.0
   '@vuepress/cli':
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0(typescript@5.3.3)
@@ -46,7 +46,7 @@ dependencies:
     version: 2.0.0-rc.10(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)
   vuepress-theme-hope:
     specifier: 2.0.0-rc.10
-    version: 2.0.0-rc.10(@vue/repl@3.1.1)(@waline/client@2.15.8)(chart.js@4.4.1)(echarts@5.4.3)(flowchart.ts@2.0.0)(katex@0.16.9)(markdown-it@13.0.2)(mathjax-full@3.2.2)(mermaid@10.6.1)(reveal.js@5.0.4)(typescript@5.3.3)(vuepress-plugin-search-pro@2.0.0-rc.10)(vuepress-vite@2.0.0-rc.0)
+    version: 2.0.0-rc.10(@vue/repl@3.2.0)(@waline/client@2.15.8)(chart.js@4.4.1)(echarts@5.4.3)(flowchart.ts@2.0.0)(katex@0.16.9)(markdown-it@13.0.2)(mathjax-full@3.2.2)(mermaid@10.6.1)(reveal.js@5.0.4)(typescript@5.3.3)(vuepress-plugin-search-pro@2.0.0-rc.10)(vuepress-vite@2.0.0-rc.0)
   vuepress-vite:
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0(@types/node@18.19.4)(@vuepress/client@2.0.0-rc.0)(typescript@5.3.3)(vue@3.4.3)
@@ -1493,8 +1493,8 @@ packages:
       '@vue/shared': 3.4.3
     dev: false
 
-  /@vue/repl@3.1.1:
-    resolution: {integrity: sha512-9nJImsUeywU2MTqvzf4ueqWC49UC3LVXVPk1HmoNnLVumfWXv+w5ytuSA//fxb/N/O5vCqE0UV63/dYvnCZpwQ==}
+  /@vue/repl@3.2.0:
+    resolution: {integrity: sha512-heKXXwAm4p3wYqVsYqW5i9bAkiGqwbZygfBx8stZ48QqTvaTGiGY3qASJwvhc5FrZDPGoGcFRjab6XDImKxPvA==}
     dev: false
 
   /@vue/runtime-core@3.4.3:
@@ -6898,7 +6898,7 @@ packages:
       - typescript
     dev: false
 
-  /vuepress-plugin-md-enhance@2.0.0-rc.10(@vue/repl@3.1.1)(chart.js@4.4.1)(echarts@5.4.3)(flowchart.ts@2.0.0)(katex@0.16.9)(markdown-it@13.0.2)(mathjax-full@3.2.2)(mermaid@10.6.1)(reveal.js@5.0.4)(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0):
+  /vuepress-plugin-md-enhance@2.0.0-rc.10(@vue/repl@3.2.0)(chart.js@4.4.1)(echarts@5.4.3)(flowchart.ts@2.0.0)(katex@0.16.9)(markdown-it@13.0.2)(mathjax-full@3.2.2)(mermaid@10.6.1)(reveal.js@5.0.4)(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0):
     resolution: {integrity: sha512-bZJs7MWv8GdGdC3OxjEU1kAnmOp9odiq+jYKr85mS4TkqH7aVYRrhuJcUErRKCSO7shBhBFpm1zVwnIGkx41Jw==}
     engines: {node: '>=18.16.0', npm: '>=8', pnpm: '>=7', yarn: '>=2'}
     peerDependencies:
@@ -6977,7 +6977,7 @@ packages:
       '@mdit/plugin-tex': 0.7.6(markdown-it@13.0.2)
       '@mdit/plugin-uml': 0.7.6(markdown-it@13.0.2)
       '@types/markdown-it': 13.0.7
-      '@vue/repl': 3.1.1
+      '@vue/repl': 3.2.0
       '@vuepress/client': 2.0.0-rc.0(typescript@5.3.3)
       '@vuepress/shared': 2.0.0-rc.0
       '@vuepress/utils': 2.0.0-rc.0
@@ -7241,7 +7241,7 @@ packages:
       - typescript
     dev: false
 
-  /vuepress-theme-hope@2.0.0-rc.10(@vue/repl@3.1.1)(@waline/client@2.15.8)(chart.js@4.4.1)(echarts@5.4.3)(flowchart.ts@2.0.0)(katex@0.16.9)(markdown-it@13.0.2)(mathjax-full@3.2.2)(mermaid@10.6.1)(reveal.js@5.0.4)(typescript@5.3.3)(vuepress-plugin-search-pro@2.0.0-rc.10)(vuepress-vite@2.0.0-rc.0):
+  /vuepress-theme-hope@2.0.0-rc.10(@vue/repl@3.2.0)(@waline/client@2.15.8)(chart.js@4.4.1)(echarts@5.4.3)(flowchart.ts@2.0.0)(katex@0.16.9)(markdown-it@13.0.2)(mathjax-full@3.2.2)(mermaid@10.6.1)(reveal.js@5.0.4)(typescript@5.3.3)(vuepress-plugin-search-pro@2.0.0-rc.10)(vuepress-vite@2.0.0-rc.0):
     resolution: {integrity: sha512-rco6FT3Fqj77VYCjLyfU80doK4jW7PfJGSLYEyTCwocwsJhpOROGP4glLbqEnC59VrMWgFE/WfB8pfBfQkEZJg==}
     engines: {node: '>=18.16.0', npm: '>=8', pnpm: '>=7', yarn: '>=2'}
     peerDependencies:
@@ -7305,7 +7305,7 @@ packages:
       vuepress-plugin-comment2: 2.0.0-rc.10(@waline/client@2.15.8)(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)
       vuepress-plugin-components: 2.0.0-rc.10(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)
       vuepress-plugin-copy-code2: 2.0.0-rc.10(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)
-      vuepress-plugin-md-enhance: 2.0.0-rc.10(@vue/repl@3.1.1)(chart.js@4.4.1)(echarts@5.4.3)(flowchart.ts@2.0.0)(katex@0.16.9)(markdown-it@13.0.2)(mathjax-full@3.2.2)(mermaid@10.6.1)(reveal.js@5.0.4)(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)
+      vuepress-plugin-md-enhance: 2.0.0-rc.10(@vue/repl@3.2.0)(chart.js@4.4.1)(echarts@5.4.3)(flowchart.ts@2.0.0)(katex@0.16.9)(markdown-it@13.0.2)(mathjax-full@3.2.2)(mermaid@10.6.1)(reveal.js@5.0.4)(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)
       vuepress-plugin-photo-swipe: 2.0.0-rc.10(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)
       vuepress-plugin-reading-time2: 2.0.0-rc.10(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)
       vuepress-plugin-rtl: 2.0.0-rc.10(typescript@5.3.3)(vuepress-vite@2.0.0-rc.0)

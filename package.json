@@ -31,7 +31,7 @@
     }
   },
   "dependencies": {
-    "@vue/repl": "^3.1.1",
+    "@vue/repl": "^3.2.0",
     "@vuepress/cli": "2.0.0-rc.0",
     "@vuepress/client": "2.0.0-rc.0",
     "@waline/client": "^2.15.8",
