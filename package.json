@@ -42,7 +42,7 @@
     "mathjax-full": "^3.2.2",
     "mermaid": "^10.6.1",
     "reveal.js": "^5.0.4",
-    "vue": "^3.4.3",
+    "vue": "^3.4.5",
     "vuepress-plugin-search-pro": "2.0.0-rc.10",
     "vuepress-theme-hope": "2.0.0-rc.10",
     "vuepress-vite": "2.0.0-rc.0"
