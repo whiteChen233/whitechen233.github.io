@@ -1,0 +1,1 @@
+import{_ as t}from"./plugin-vue_export-helper-x3n3nnut.js";import{o as n,c as o,e}from"./app-b5nJVXcc.js";const c={},s=e("h2",{id:"工欲善其事-必先利其器",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#工欲善其事-必先利其器"},[e("span",null,"工欲善其事, 必先利其器")])],-1),a=[s];function r(_,d){return n(),o("div",null,a)}const f=t(c,[["render",r],["__file","index.html.vue"]]);export{f as default};

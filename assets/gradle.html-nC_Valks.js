@@ -1,0 +1,1 @@
+import{_ as o}from"./plugin-vue_export-helper-x3n3nnut.js";import{o as n,c,e}from"./app-b5nJVXcc.js";const s={},t=e("h2",{id:"coming-soon",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#coming-soon"},[e("span",null,"coming soon")])],-1),a=[t];function r(_,l){return n(),c("div",null,a)}const m=o(s,[["render",r],["__file","gradle.html.vue"]]);export{m as default};
