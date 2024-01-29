@@ -82,7 +82,7 @@ public interface Collection<E> extends Iterable<E> {
 }
 ```
 
-上面代码可以看到 `java.util.Collection` 继承自 `java.util.Iterable`, 它定义了如下方法:
+上面代码可以看到 `java.util.Collection` 继承自 `java.util.Iterable`, 它提供了标准的迭代器模型, 定义了如下方法:
 
 ```java
 public interface Iterable<E> {
@@ -280,32 +280,32 @@ Queue 接口支持以先进先出的方式存储和访问元素
 
 ```mermaid
 classDiagram
-  class Map ~K|V~ {
+  class Map ~K,V~ {
     <<interface>>
   }
-  class ConcurrentMap ~K|V~ {
+  class ConcurrentMap ~K,V~ {
     <<interface>>
   }
-  class SortedMap ~K|V~ {
+  class SortedMap ~K,V~ {
     <<interface>>
   }
-  class NavigableMap ~K|V~ {
+  class NavigableMap ~K,V~ {
     <<interface>>
   }
-  class HashMap ~K|V~ {
+  class HashMap ~K,V~ {
     ~table: HashMap.Node&lt;K,V&gt;[]
   }
-  class Hashtable ~K|V~ {
+  class Hashtable ~K,V~ {
     ~table: Hashtable.Entry&lt;K,V&gt;[]
   }
-  class LinkedHashMap ~K|V~ {
+  class LinkedHashMap ~K,V~ {
     ~head: LinkedHashMap.Entry&lt;K,V&gt;
     ~tail: LinkedHashMap.Entry&lt;K,V&gt;
   }
-  class ConcurrentHashMap ~K|V~ {
+  class ConcurrentHashMap ~K,V~ {
     ~table: ConcurrentHashMap.Entry&lt;K,V&gt;[]
   }
-  class TreeMap ~K|V~ {
+  class TreeMap ~K,V~ {
     -root: TreeMap.Entry&lt;K,V&gt;
   }
   Map <|-- SortedMap

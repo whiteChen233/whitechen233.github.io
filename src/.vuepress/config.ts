@@ -1,8 +1,10 @@
-import { defineUserConfig } from '@vuepress/cli';
+import type { UserConfig } from 'vuepress';
+import { defineUserConfig } from 'vuepress';
 import { searchProPlugin } from 'vuepress-plugin-search-pro';
+
 import theme from './theme.js';
 
-export default defineUserConfig({
+export default <UserConfig>defineUserConfig({
   base: '/',
   lang: 'zh-CN',
   title: '温故而知新~',
