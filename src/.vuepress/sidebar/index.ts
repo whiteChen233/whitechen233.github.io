@@ -12,7 +12,7 @@ export const defaultSidebar = sidebar({
       icon: 'heart',
       link: '/docs/essay/',
       prefix: '/docs/essay/',
-      children: ['me', 'love', 'rain', 'tearsOfRouge', 'SlowSlowSong'],
+      children: ['me', 'love', 'rain', 'TearsOfRouge', 'SlowSlowSong'],
     },
   ],
   '/docs/note/QCCSTP/': qccstp,

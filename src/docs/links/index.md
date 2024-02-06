@@ -17,7 +17,7 @@ dependence:
     repo: https://github.com/vuepress-theme-hope/vuepress-theme-hope
     preview: /assets/links/VuePress-theme-hope.png
 links:
-  - name: White's Note
+  - name: White's Blog
     desc: 温故而知新~
     logo: https://blog.white233.top/logo.png
     url: https://blog.white233.top/
