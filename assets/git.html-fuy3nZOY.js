@@ -1,1 +1,0 @@
-import{_ as e}from"./plugin-vue_export-helper-x3n3nnut.js";import{o as n,c as t,e as o}from"./app-b5nJVXcc.js";const c={},s=o("h2",{id:"coming-soon",tabindex:"-1"},[o("a",{class:"header-anchor",href:"#coming-soon"},[o("span",null,"coming soon")])],-1),a=[s];function r(_,i){return n(),t("div",null,a)}const d=e(c,[["render",r],["__file","git.html.vue"]]);export{d as default};
