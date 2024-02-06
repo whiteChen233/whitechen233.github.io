@@ -123,7 +123,7 @@ export default hopeTheme(
         gfm: true,
         vPre: true,
       },
-      autoCatalog: {
+      catalog: {
         exclude: ['/note/', '/series/'],
       },
       components: {
