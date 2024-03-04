@@ -34,7 +34,7 @@
     "@vue/repl": "^3.4.0",
     "@vuepress/bundler-vite": "2.0.0-rc.6",
     "@waline/client": "^2.15.8",
-    "chart.js": "^4.4.1",
+    "chart.js": "^4.4.2",
     "echarts": "^5.4.3",
     "flowchart.ts": "^3.0.0",
     "katex": "^0.16.9",
