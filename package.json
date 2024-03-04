@@ -40,7 +40,7 @@
     "katex": "^0.16.9",
     "mathjax-full": "^3.2.2",
     "mermaid": "^10.8.0",
-    "reveal.js": "^5.0.4",
+    "reveal.js": "^5.0.5",
     "vue": "^3.4.15",
     "vuepress": "2.0.0-rc.6",
     "vuepress-plugin-search-pro": "2.0.0-rc.22",
