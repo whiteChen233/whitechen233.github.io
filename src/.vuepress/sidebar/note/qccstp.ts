@@ -7,7 +7,7 @@ export const qccstp = arraySidebar([
     prefix: 'software-design-engineer/',
     collapsible: true,
     children: [
-      'start',
+      '',
       'computer-composition-and-structure',
       'program-language',
       'operating-system',
@@ -25,7 +25,7 @@ export const qccstp = arraySidebar([
     prefix: 'system-architect/',
     collapsible: true,
     children: [
-      'start',
+      '',
       'enterprise-informatization-strategy-and-implementation',
       'software-engineering',
       'software-architecture-design',
