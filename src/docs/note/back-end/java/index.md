@@ -1,5 +1,5 @@
 ---
-title: Java 简介
+title: Java 语言
 date: 2023-03-22
 ---
 
