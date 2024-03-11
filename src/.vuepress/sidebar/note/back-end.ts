@@ -15,7 +15,7 @@ export const backEnd = arraySidebar([
         text: 'Spring Framework',
         prefix: 'spring/',
         collapsible: true,
-        children: [''],
+        children: ['', 'Spring_Basics'],
       },
     ],
   },
