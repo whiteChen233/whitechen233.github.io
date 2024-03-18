@@ -1,7 +1,7 @@
 ---
 title: Java SPI 机制
 date: 2023-03-22
-order: 3
+order: 4
 ---
 
 ## SPI 是什么

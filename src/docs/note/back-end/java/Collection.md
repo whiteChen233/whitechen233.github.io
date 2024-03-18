@@ -560,7 +560,7 @@ HashMap 主要用来存放键值对, 它基于哈希表的 Map 接口实现, 是
 
 [^second]: 拉链法: 将链表和数组相结合. 也就是说创建一个链表数组, 数组中每一格就是一个链表, 若遇到哈希冲突, 则将冲突的值加到链表中即可
 
-HashMap 默认的初始化大小为 16, 之后每次扩充, 容量变为原来的 2 倍. 并且 HashMap 总是使用 2 的幂作为哈希表的大小
+HashMap 默认的初始化大小为 16, 之后每次扩充, 容量变为原来的 2 倍, 并且 HashMap 总是使用 2 的幂作为哈希表的大小
 
 ::: tip
 
@@ -609,14 +609,54 @@ JDK 1.8 的 hash 方法相比于 JDK 1.7 的方法更加简化, 而且性能也�
 
 - 每一个结点都有一个颜色, 要么红色, 要么黑色
 - 树的根结点为黑色
+- 每个叶子结点(NULL)都是黑色的
 - 树中不存在两个相邻的红色结点（即红色结点的父子结点都不能是红色）
-- 从任意一个结点（包括根结点）到其任何后代 NULL 结点（默认是黑色）的每条路径都具有相同数量的黑色结点
+- 从任意一个结点（包括根结点）到其任何后代叶子结点(NULL, 默认是黑色)的每条路径都具有相同数量的黑色结点
+
+因为最后一条规则的限制, 插入的数据总是红色的, 然后通过旋转(左旋\右旋)和变色来保证树平衡, 那么会有下面几种情况:
+
+- 父结点是黑色, 不用调整
+- 父结点是红色:
+  - 叔结点是空的, 旋转+变色
+  - 叔结点是红色, 父结点、叔结点变黑色, 祖父结点变红色
+  - 叔结点是黑色, 旋转+变色
+
+JDK 1.8 中 HashMap 的红黑树怎么声明的呢?
+
+```java
+static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
+    TreeNode<K,V> parent;  // red-black tree links
+    TreeNode<K,V> left;
+    TreeNode<K,V> right;
+    TreeNode<K,V> prev;    // needed to unlink next upon deletion
+    boolean red;
+}
+```
+
+注意到红黑树继承了 `LinkedHashMap.Entry<K, V>`, 而 `Entry<K, V>` 又是继承自 `HashMap.Node<K, V>` 的:
+
+```java
+// LinkedHashMap.Entry<K, V>
+static class Entry<K,V> extends HashMap.Node<K,V> {
+    Entry<K,V> before, after;
+}
+
+// HashMap.Node<K, V>
+static class Node<K,V> implements Map.Entry<K,V> {
+    final int hash;
+    final K key;
+    V value;
+    Node<K,V> next;
+}
+```
+
+注意两个属性: `TreeNode<K, V>.prev` 和 `HashMap.Node<K, V>.next`, 这说明 HashMap 中的红黑树同时也是一个双向链表
 
 :::
 
 > TreeMap、TreeSet 以及 JDK1.8 之后的 HashMap 底层都用到了红黑树, 而红黑树就是为了解决二叉查找树的缺陷, 因为二叉查找树在某些情况下会退化成一个线性结构
 
-看一下 `put` 的源码, 可以了解底层是如何处理链表到红黑树的转换的
+看一下 `put()` 方法的源码, 了解底层是如何处理链表到红黑树的转换的
 
 ```java
 // 使用列表而不是树的计数阈值
@@ -644,12 +684,14 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
         if (p.hash == hash && ((k = p.key) == key || (key != null && key.equals(k))))
             e = p;
         else if (p instanceof TreeNode)
+            // 插入红黑树
             e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
         else {
             // for 循环遍历链表
             for (int binCount = 0; ; ++binCount) {
                 // 遍历到最后一个结点
                 if ((e = p.next) == null) {
+                    // 尾插法插入数据
                     p.next = newNode(hash, key, value, null);
                     // 当链表元素个数大于等于8个的时候
                     if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
@@ -662,6 +704,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
                 p = e;
             }
         }
+        // 找到一个已经存在的 key 然后替换原本的 value 并返回
         if (e != null) { // existing mapping for key
             V oldValue = e.value;
             if (!onlyIfAbsent || oldValue == null)
@@ -671,6 +714,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
         }
     }
     ++modCount;
+    // 添加元素后的数组长度大于扩容阈值了会触发 resize() 进行扩容
     if (++size > threshold)
         resize();
     afterNodeInsertion(evict);
@@ -681,22 +725,36 @@ final void treeifyBin(Node<K,V>[] tab, int hash) {
     int n, index; Node<K,V> e;
     // 判断当前列表的长度是否达到了转换成树的阈值(64)
     if (tab == null || (n = tab.length) < MIN_TREEIFY_CAPACITY)
-        // 如果长度小于 64, 那么只是对数组进行扩容
+        /*
+         * 如果长度小于 64, 那么只是对数组进行扩容. resize 会重新 hash,
+         * 原本的链表的元素有可能变少, 也可以说一定程度上优化了存取性能
+         */
         resize();
     else if ((e = tab[index = (n - 1) & hash]) != null) {
         // 数组长度大于 64, 转换成红黑树
         TreeNode<K,V> hd = null, tl = null;
         do {
+            // 转换成 TreeNode
             TreeNode<K,V> p = replacementTreeNode(e, null);
             if (tl == null)
+                // TreeNode 的第一个元素(双向链表的第一个结点)
                 hd = p;
             else {
+                // 这里的 TreeNode 变成了双向链表
                 p.prev = tl;
                 tl.next = p;
             }
             tl = p;
         } while ((e = e.next) != null);
         if ((tab[index] = hd) != null)
+            /*
+             * 真正转换的逻辑
+             * 首先通过遍历链表, 依次通过 hashcode、compareTo(实现 Comparable<?> 接口)、
+             * getClass().getName()、System.identityHashCode() 来比较各个结点的 key 值大小,
+             * 构建出红黑树
+             * 然后将 TreeNode 中变成了红黑树根结点的元素移动到链表的最前面
+             * 最后验证一下红黑树是不是满足规范
+             */
             hd.treeify(tab);
     }
 }
@@ -707,6 +765,179 @@ final void treeifyBin(Node<K,V>[] tab, int hash) {
 为了能让 HashMap 存取高效, 应当减少碰撞, 也就是要尽量把数据分配均匀. Hash 值的范围值是 -2147483648 到 2147483647, 大概有 40 亿的映射空间, 只要哈希函数映射得比较均匀松散, 一般应用是很难出现碰撞的. 但是问题是一个 40 亿长度的数组, 内存也是放不下的. 所以这个散列值不能拿来直接用, 一般都会对数组的长度取模运算, 得到的余数才是用来存放对应的数组下标. 而这个计算下标的方法是 `(n - 1) & hash` (n是数组长度)
 
 **在取余(%)操作中, 如果除数是 2 的幂次则等价于与其除数减一的与(&)操作（也就是说 `hash % length == hash & (lenght - 1)`, 前提是 length 是 2 的 n 次方）**, 并且由于采用的是二进制位操作 &, 相对于 % 取余运算能够提高运算效率, 这就解释了为什么 HashMap 的长度是 2 的幂次方
+
+#### 初始化 HashMap 时指定的大小等于它创建后的大小吗?
+
+先说结论, **不等于**
+
+在使用带有 `initialCapacity` 参数的构造方法创建 HashMap 时, 会执行一个 `tableSizeFor()` 的方法, 这个方法的计算结果会被赋值给 `threshold`(扩容时的阈值), 在第一次 put 元素的时候, 触发 `resize()`, 这里的逻辑会将 `threshold` 赋值给 `newCap`(新的容量), 然后再重新计算 `threshold`, 然后再创建 HashMap. 而 `tableSizeFor()` 计算的结果并不等于 `initialCapacity`, 所以初始化 HashMap 时指定的大小不等于它创建后的大小
+
+下面看下源码的实现:
+
+```java
+public HashMap(int initialCapacity, float loadFactor) {
+    if (initialCapacity < 0)
+        throw new IllegalArgumentException("Illegal initial capacity: " +
+                                            initialCapacity);
+    if (initialCapacity > MAXIMUM_CAPACITY)
+        initialCapacity = MAXIMUM_CAPACITY;
+    if (loadFactor <= 0 || Float.isNaN(loadFactor))
+        throw new IllegalArgumentException("Illegal load factor: " +
+                                            loadFactor);
+    this.loadFactor = loadFactor;
+    this.threshold = tableSizeFor(initialCapacity);
+}
+
+/**
+ * 这里是很牛逼的操作哦
+ *
+ * 简单来说这个算法是将给定的值的二进制的最高位通过不断右移使其后面的值全部为 1,
+ * 再通过 +1 使其进位, 来得到一个大于 cap 的最小的 2 的幂次方的数
+ *
+ * n |= n >>> x; 为什么执行5次, 因为 2^5 = 32, 也就是一个 int 的长度,
+ * 也就是说不管这个数是多少, 经过这些操作都能使 cap 的二进制值经转换后全变为 1
+ */
+static final int tableSizeFor(int cap) {
+    // 先减一是为了保证 8 16 这种本就是 2 的幂次方的值不被扩大
+    int n = cap - 1;
+    // 将元素据右移x位并进行或操作
+    n |= n >>> 1;
+    n |= n >>> 2;
+    n |= n >>> 4;
+    n |= n >>> 8;
+    n |= n >>> 16;
+    // 最后保证值不会超过 MAXIMUM_CAPACITY, 然后 +1 来使其变成大于 cap 的最小的 2 的幂次方
+    return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+}
+
+final Node<K,V>[] resize() {
+    Node<K,V>[] oldTab = table;
+    int oldCap = (oldTab == null) ? 0 : oldTab.length;
+    int oldThr = threshold;
+    int newCap, newThr = 0;
+    // 旧容量大于 0
+    if (oldCap > 0) {
+        if (oldCap >= MAXIMUM_CAPACITY) {
+            threshold = Integer.MAX_VALUE;
+            return oldTab;
+        }
+        // newCap = oldCap << 1 新容量为旧容量的两倍
+        else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
+                  oldCap >= DEFAULT_INITIAL_CAPACITY)
+            newThr = oldThr << 1; // double threshold
+    }
+    // 旧容量为 0 但扩容阈值大于 0
+    else if (oldThr > 0) // initial capacity was placed in threshold
+        // 使用带有初始化大小的构造函数创建 HashMap 第一次扩容就是这里初始化容量的
+        // 把旧扩容阈值赋值给新容量
+        newCap = oldThr;
+    else {               // zero initial threshold signifies using defaults
+        // 无参构造函数创建的 HashMap 第一次扩容就是这里初始化容量的
+        newCap = DEFAULT_INITIAL_CAPACITY;
+        newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
+    }
+    // 新扩容阈值为 0 则通过新容量计算
+    if (newThr == 0) {
+        float ft = (float)newCap * loadFactor;
+        newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ?
+                  (int)ft : Integer.MAX_VALUE);
+    }
+    threshold = newThr;
+    // 使用新容量创建一个新的数组
+    @SuppressWarnings({"rawtypes","unchecked"})
+    Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+    table = newTab;
+    // 如果原本的数组不为空, 需要将原数据转移至新数组
+    if (oldTab != null) {
+        for (int j = 0; j < oldCap; ++j) {
+            Node<K,V> e;
+            if ((e = oldTab[j]) != null) {
+                oldTab[j] = null;
+                // 原本只有一个结点
+                if (e.next == null)
+                    // 重新计算数组索引
+                    newTab[e.hash & (newCap - 1)] = e;
+                // 处理红黑树
+                else if (e instanceof TreeNode)
+                    /*
+                     * 遍历树的元素将它们重新计算 hash 放入新的数组中
+                     * 按照和处理链表类似的处理逻辑变成两个链表,
+                     * 当新的链表长度小于 6 时, 重新转换为链表,
+                     * 否则将其索引指向相应的位置(index 或者 index + oldCap)
+                     */
+                    ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
+                // 处理链表
+                else { // preserve order
+                    // 拆分链表 一个low 一个 high
+                    Node<K,V> loHead = null, loTail = null;
+                    Node<K,V> hiHead = null, hiTail = null;
+                    Node<K,V> next;
+                    // 遍历链表
+                    do {
+                        next = e.next;
+                        // 拆分的标准
+                        if ((e.hash & oldCap) == 0) {
+                            if (loTail == null)
+                                loHead = e;
+                            else
+                                loTail.next = e;
+                            loTail = e;
+                        }
+                        else {
+                            if (hiTail == null)
+                                hiHead = e;
+                            else
+                                hiTail.next = e;
+                            hiTail = e;
+                        }
+                    } while ((e = next) != null);
+                    if (loTail != null) {
+                        loTail.next = null;
+                        // low 的链表直接在原位置
+                        newTab[j] = loHead;
+                    }
+                    if (hiTail != null) {
+                        hiTail.next = null;
+                        // high 的链表在原位置+ oldCap 的位置
+                        newTab[j + oldCap] = hiHead;
+                    }
+                }
+            }
+        }
+    }
+    return newTab;
+  }
+```
+
+::: tip 关于拆分标准 (e.hash & oldCap) == 0 和数组下标 j、j+oldCap
+
+首先要知道的是:
+
+- oldCap 一定是 2 的整数次幂, 假设是 $2^m$
+- newCap 是 oldCap 的 2 倍, 值是 $2^{m+1}$
+- hash 对数组大小取模 `(n - 1) & hash` 其实就是取 hash 的低 $m$ 位
+
+举个栗子, 假设 oldCap = 8, 即 $2^3$, (8 - 1 = 7) 的二进制为 `0000 0000 0000 0000 0000 0000 0000 0111`, 那么 `(8 - 1) & hash` 其实就是取 hash 值的低 3 位, 这里假设为 `abc`, 依次类推, 扩容后的大小为 16, 那么 `(16 - 1) & hash` 其实就是取 hash 的低 4 位, 也就两种情况:
+
+> 0abc
+> 1abc
+
+`0abc` 跟原来的 index 值一致, 而 `1abc = 0abc + 1000 = 0abc + oldCap`, 重点来了, 虽然数组大小扩大了一倍, 但是同一个 key 在新旧 table 中对应的数组下标 index 却存在一定的联系: **要么跟以前一致, 要么相差一个 oldCap**
+
+而新旧 index 是否跟原本一致就体现在 hash 的第 3 位(最低位是第0位), 怎么拿到这一位的值呢?
+
+> `hash & 0000 0000 0000 0000 0000 0000 0000 1000`
+
+上面的式子不就是 `hash & 8`, 而 8 不就是原本的数组长度吗, 所以:
+
+> 如果 `(e.hash & oldCap) == 0` 则该节点在新数组的下标与原数组一致都为 `j`
+> 如果 `(e.hash & oldCap) == 1` 则该节点在新数组的下标为原数组下标 `j + oldCap`
+
+根据这个条件将原始的链表拆分为两个链表, 然后一次性将整个链表存入到新的数组中
+
+:::
+
+有个特殊情况需要注意下, 若指定初始容量为 0 或者 1 来创建 HashMap 时, 第一次调用 `put()` 方法时会触发两次 `resize()`, 因为不管指定容量为 0 还是 1 , 经 `tableSizeFor()` 方法计算出来的初始容量都为 1, 也就是说第一次执行 `resize()` 方法后数组的容量为 1 而 `threshold` 为 0, 在 `putVal()` 方法最后会判断一次 `++size > threshold`, 而此时条件成立`(size=1,threshold=0)`会再次执行 `resize()` 方法, 完成后数组的容量变为 2
 
 #### HashMap 多线程操作导致死循环
 
