@@ -5,7 +5,7 @@ env:
 
 extends:
   - 'plugin:vue/vue3-essential'
-  - 'standard-with-typescript'
+  - 'love'
   - 'eslint:recommended'
   - 'plugin:@typescript-eslint/recommended'
   - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
