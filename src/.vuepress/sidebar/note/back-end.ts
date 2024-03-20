@@ -9,7 +9,7 @@ export const backEnd = arraySidebar([
         text: 'Java Language',
         prefix: 'java/',
         collapsible: true,
-        children: ['', 'JVM', 'Collection', 'Concurrent', 'SPI'],
+        children: ['', 'Java_Basics', 'JVM', 'Collection', 'Concurrent', 'SPI'],
       },
       {
         text: 'Spring Framework',
