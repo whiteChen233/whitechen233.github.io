@@ -1,7 +1,7 @@
 ---
 title: Java 虚拟机
 date: 2023-03-28
-order: 1
+order: 2
 ---
 
 ## JVM 是什么
@@ -40,31 +40,41 @@ Java 的类加载器机制使得程序的架构更加灵活, 可以动态地加�
 
 这些区域有各自的用途, 以及创建和销毁的时间, 有的区域随着虚拟机进程的启动而存在, 有些区域则依赖用户线程的启动和结束而建立和销毁. 其中程序计数器、Java 虚拟机、本地方法栈是线程私有的, 而 Java 堆, 方法区（以及 Java 8 之后的直接内存）是线程共享的
 
-JDK 1.8 后 JVM 的结构与之前有一些区别, 下面是 JDK 1.7 的图示:
+JDK 1.8 以后 JVM 的结构与之前版本有一些区别, 下面是 JDK 1.7 的图示:
 
 ```mermaid
-flowchart TB
+flowchart TD
   subgraph one [运行时数据区域 Runtime Date Area]
+    direction TB
     subgraph two [线程共享]
+      direction LR
       subgraph A [堆 Heap]
         b[字符串常量池\nString Constant Pool]
       end
       subgraph seven [方法区 Method Area]
         a[运行时常量池\nRuntime Constant Pool]
       end
+      A ~~~ seven
     end
     subgraph three [线程私有]
+      direction LR
       subgraph four [线程 Thread]
+        direction TB
         B[虚拟机栈\nVM Stack]
         C[本地方法栈\nNative Method Stack]
         D[程序计数器\nProgram Counter Register]
+        B ~~~ C ~~~ D
       end
       subgraph five [线程 Thread]
+        direction TB
         E[虚拟机栈\nVM Stack]
         F[本地方法栈\nNative Method Stack]
         G[程序计数器\nProgram Counter Register]
+        E ~~~ F ~~~ G
       end
+      four ~~~ five
     end
+    two ~~~ three
   end
   subgraph six [本地内存]
     I[直接内存\nDirect Memory]
@@ -85,16 +95,22 @@ flowchart TD
       end
     end
     subgraph three [线程私有]
+      direction LR
       subgraph four [线程 Thread]
+        direction TB
         B[虚拟机栈\nVM Stack]
         C[本地方法栈\nNative Method Stack]
         D[程序计数器\nProgram Counter Register]
+        B ~~~ C ~~~ D
       end
       subgraph five [线程 Thread]
+        direction TB
         E[虚拟机栈\nVM Stack]
         F[本地方法栈\nNative Method Stack]
         G[程序计数器\nProgram Counter Register]
+        E ~~~ F ~~~ G
       end
+      four ~~~ five
     end
   end
   subgraph six [本地内存]

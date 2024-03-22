@@ -1,6 +1,7 @@
 ---
 title: Java 基础
 date: 2024-03-14
+order: 1
 ---
 
 ## Java 语言的特点
@@ -37,6 +38,14 @@ Java 和 C++ 都是面向对象语言, 都支持封装、继承、多态
 - 把系统中很多类的共同特性拿出来进行封装, 变成了一个抽象类
 
 > **接口是自上而下的; 抽象是自下而上的**
+
+### 重载和重写的区别
+
+- 重载: 发生在同一个类中, 方法名相同而参数列表不同(参数类型、个数不同、顺序不同), 与方法返回值和访问修饰符无关, 也就是重载的方法不能根据返回类型区分
+- 重写: 发生在父子类之间, 方法名、参数列表必须相同, 返回值类型要小于等于父类的、抛出的异常要小于等于父类的、访问修饰符大于等于父类的(里氏替换原则); 如果父类方法访问修饰符为 `private`, 则子类中就不是重写
+
+> 构造器(Constructor)能不能被重写(Override)呢?
+> 不能, 但是它能被重载
 
 ## Java 的数据类型
 
@@ -273,4 +282,64 @@ public final void wait() throws InterruptedException
 protected void finalize() throws Throwable { }
 ```
 
-### hashCode 和 equals
+### hashCode() 和 equals()
+
+#### hashCode()
+
+`hashCode()` 的作用是用来获取哈希码(`int`类型)的, 也称为散列码, 散列码可以用来确认其在哈希表中的索引位置
+
+> HashMap 能够通过 key 获取对应的 value, 这里面就用到了散列码
+
+#### equals()
+
+`equals()` 是用来判断对象是否相等的, 而 JDK 中 `Object#equals()` 的源码是这样的:
+
+```java
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+```
+
+`==` 比较对象的时候, 如果比较的是对象(引用类型), 那么左右两边对象的内存地址是否相同, 如果比较的是基本类型, 那就是比较两边的值是否相等, 所以 `equals()` 方法比较的是对象地址, 一般来说, 意义不大, 所以一般子类都会重写 `equals()` 方法, 如 `String`、`Integer`、`Date` 等
+
+#### 为什么重写 equals 方法时必须重写 hashCode 方法
+
+- 首先为什么要重写 `equals()` 呢?
+  在实际开发中, 我们希望能够通过 `equals()` 方法来判断对象是否相等, 但是其默认实现是不支持我们的需求的, 所以需要对其进行重写(一般是比较对象的属性值是否相等)
+- 那又为什么要重写 `hashCode()` 呢?
+  因为在使用散列数据结构的时候, 比如哈希表, 我们希望相等对象能有相同的哈希码, 举个例子, 银行里面的个人和存款, 看下面的代码:
+
+```java
+public class Test {
+
+    public static void main(String[] args) {
+        People p1 = new People("李", "男");
+        Map<People, Integer> money = new HashMap<>();
+
+        money.put(p1, 1000);
+
+        People p2 = new People("李", "男");
+        System.out.println(money.get(p2));  // 输出 null, 实际上我们会希望通过这个人的信息一样可以拿到他的存款
+    }
+
+    static class People {
+
+        private String name;
+
+        private String sex;
+
+        public People(String name, String sex) {
+            this.name = name;
+            this.sex = sex;
+        }
+    }
+}
+```
+
+尽管 p1 和 p2 具有一样的内容, 但是他们的哈希码是不一样的, 为了解决这种问题, 我们需要重写 `hashCode()` 来保证他们是相等的, 这样就可以解决上面例子中的问题了
+
+因为两个相等的对象的 `hashCode` 值必须是相等的, 也就是说如果 `equals()` 方法判断两个对象是相等的, 那这两个对象的 `hashCode` 也一定要相等
+
+- 如果两个对象的哈希码相等并且它们的 `equals()` 方法也返回 `true`, 这个时候才认为他们相等(`HashMap` 中就是这样判断 key 是不是一样的)
+- 如果两个对象的 `hashCode()` 值相等, 但这两个对象不一定相等(哈希碰撞)
+- 如果两个对象的 `hashCode()` 值不想等, 那么就可以认为两个对象不相等

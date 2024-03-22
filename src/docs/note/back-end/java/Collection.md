@@ -1,7 +1,7 @@
 ---
 title: Java 集合
 date: 2023-09-04
-order: 2
+order: 3
 ---
 
 ## 集合是什么
