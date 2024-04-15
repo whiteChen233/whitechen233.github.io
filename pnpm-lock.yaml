@@ -33,8 +33,8 @@ dependencies:
     specifier: ^10.9.0
     version: 10.9.0
   reveal.js:
-    specifier: ^5.0.5
-    version: 5.0.5
+    specifier: ^5.1.0
+    version: 5.1.0
   vue:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.4.4)
@@ -46,7 +46,7 @@ dependencies:
     version: 2.0.0-rc.35(typescript@5.4.4)(vuepress@2.0.0-rc.9)
   vuepress-theme-hope:
     specifier: 2.0.0-rc.35
-    version: 2.0.0-rc.35(@vue/repl@4.1.1)(@waline/client@3.1.3)(chart.js@4.4.2)(echarts@5.5.0)(flowchart.ts@3.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mathjax-full@3.2.2)(mermaid@10.9.0)(reveal.js@5.0.5)(typescript@5.4.4)(vuepress-plugin-search-pro@2.0.0-rc.35)(vuepress@2.0.0-rc.9)
+    version: 2.0.0-rc.35(@vue/repl@4.1.1)(@waline/client@3.1.3)(chart.js@4.4.2)(echarts@5.5.0)(flowchart.ts@3.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mathjax-full@3.2.2)(mermaid@10.9.0)(reveal.js@5.1.0)(typescript@5.4.4)(vuepress-plugin-search-pro@2.0.0-rc.35)(vuepress@2.0.0-rc.9)
 
 devDependencies:
   '@commitlint/cli':
@@ -5730,8 +5730,8 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  /reveal.js@5.0.5:
-    resolution: {integrity: sha512-MPWPV/cRlkZhh72dAGYv/bUCr9ulwM2/ucCqiL/KN4tvhb6VvN49iwOyWHE08wppj8lMQXi2xbS3kyKgfyTYqg==}
+  /reveal.js@5.1.0:
+    resolution: {integrity: sha512-KDt7m0+xwKV6nAZt4CNPVFBf42sTKRQapg0bGGKB5PKO5XvChnMfwlZkybydHiQJ7p5+6LbHKRGrhXODdoNIaA==}
     engines: {node: '>=18.0.0'}
     dev: false
 
@@ -6612,7 +6612,7 @@ packages:
       - typescript
     dev: false
 
-  /vuepress-plugin-md-enhance@2.0.0-rc.35(@vue/repl@4.1.1)(chart.js@4.4.2)(echarts@5.5.0)(flowchart.ts@3.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mathjax-full@3.2.2)(mermaid@10.9.0)(reveal.js@5.0.5)(typescript@5.4.4)(vuepress@2.0.0-rc.9):
+  /vuepress-plugin-md-enhance@2.0.0-rc.35(@vue/repl@4.1.1)(chart.js@4.4.2)(echarts@5.5.0)(flowchart.ts@3.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mathjax-full@3.2.2)(mermaid@10.9.0)(reveal.js@5.1.0)(typescript@5.4.4)(vuepress@2.0.0-rc.9):
     resolution: {integrity: sha512-tg49w/XVyRilAwvMJs7zLt1aSO23r6uyZitw0jyZBFGR57jEp2aoI68MFVDmRPlbKGe9X0l0ZbWX460eKpNtOw==}
     engines: {node: '>=18.16.0', npm: '>=8', pnpm: '>=7', yarn: '>=2'}
     peerDependencies:
@@ -6697,7 +6697,7 @@ packages:
       katex: 0.16.10
       mathjax-full: 3.2.2
       mermaid: 10.9.0
-      reveal.js: 5.0.5
+      reveal.js: 5.1.0
       vue: 3.4.21(typescript@5.4.4)
       vuepress: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9)(typescript@5.4.4)(vue@3.4.21)
       vuepress-plugin-sass-palette: 2.0.0-rc.35(typescript@5.4.4)(vuepress@2.0.0-rc.9)
@@ -6773,7 +6773,7 @@ packages:
       - typescript
     dev: false
 
-  /vuepress-theme-hope@2.0.0-rc.35(@vue/repl@4.1.1)(@waline/client@3.1.3)(chart.js@4.4.2)(echarts@5.5.0)(flowchart.ts@3.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mathjax-full@3.2.2)(mermaid@10.9.0)(reveal.js@5.0.5)(typescript@5.4.4)(vuepress-plugin-search-pro@2.0.0-rc.35)(vuepress@2.0.0-rc.9):
+  /vuepress-theme-hope@2.0.0-rc.35(@vue/repl@4.1.1)(@waline/client@3.1.3)(chart.js@4.4.2)(echarts@5.5.0)(flowchart.ts@3.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mathjax-full@3.2.2)(mermaid@10.9.0)(reveal.js@5.1.0)(typescript@5.4.4)(vuepress-plugin-search-pro@2.0.0-rc.35)(vuepress@2.0.0-rc.9):
     resolution: {integrity: sha512-gUsIpPqP2Z7IMNttz/0VvrTrGfHkybtNb+FL5wqeEGY3roWAVqpJJnJgar38n7WWoMXY5SrbiOyIxyiQF9UmSQ==}
     engines: {node: '>=18.16.0', npm: '>=8', pnpm: '>=7', yarn: '>=2'}
     peerDependencies:
@@ -6832,7 +6832,7 @@ packages:
       vue: 3.4.21(typescript@5.4.4)
       vuepress: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9)(typescript@5.4.4)(vue@3.4.21)
       vuepress-plugin-components: 2.0.0-rc.35(typescript@5.4.4)(vuepress@2.0.0-rc.9)
-      vuepress-plugin-md-enhance: 2.0.0-rc.35(@vue/repl@4.1.1)(chart.js@4.4.2)(echarts@5.5.0)(flowchart.ts@3.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mathjax-full@3.2.2)(mermaid@10.9.0)(reveal.js@5.0.5)(typescript@5.4.4)(vuepress@2.0.0-rc.9)
+      vuepress-plugin-md-enhance: 2.0.0-rc.35(@vue/repl@4.1.1)(chart.js@4.4.2)(echarts@5.5.0)(flowchart.ts@3.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mathjax-full@3.2.2)(mermaid@10.9.0)(reveal.js@5.1.0)(typescript@5.4.4)(vuepress@2.0.0-rc.9)
       vuepress-plugin-sass-palette: 2.0.0-rc.35(typescript@5.4.4)(vuepress@2.0.0-rc.9)
       vuepress-plugin-search-pro: 2.0.0-rc.35(typescript@5.4.4)(vuepress@2.0.0-rc.9)
       vuepress-shared: 2.0.0-rc.35(typescript@5.4.4)(vuepress@2.0.0-rc.9)
