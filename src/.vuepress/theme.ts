@@ -22,7 +22,6 @@ export default hopeTheme(
       name: 'White',
       description: 'Today.do(Bug::new);',
       timeline: '温故而知新~',
-      roundAvatar: true,
       medias: {
         Email: 'mailto:white996@qq.com',
         Gmail: 'mailto:white294476387@gmail.com',
