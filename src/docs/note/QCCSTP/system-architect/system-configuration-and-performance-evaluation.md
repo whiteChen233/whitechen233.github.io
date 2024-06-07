@@ -19,8 +19,11 @@ date: 2022-09-26
 - 兼容性
 
 [^1]: 平均每条指令的平均时钟周期个数（CPI，clock per instruction）
+
 [^2]: 每（时钟）周期运行多少个指令（IPC，instruction per clock）
+
 [^3]: 每秒执行百万条指令数（MIPS，Million Instruction Per Second）
+
 [^4]: 每秒百万浮点运算次数（MFLOPS，Million Floating-point Operations per Second）
 
 ## 阿姆达尔解决方案

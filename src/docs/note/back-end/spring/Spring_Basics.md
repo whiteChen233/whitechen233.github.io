@@ -72,6 +72,8 @@ XML 配置声明:
 - 当要销毁 Bean 的时候, 如果 Bean 实现了 `DisposableBean` 接口, 执行 `destroy()` 方法
 - 当要销毁 Bean 的时候, 如果 Bean 在配置元数据中定义了 `destroy-method` 属性, 执行指定的方法
 
+> xml 中的 `init-method`、`destroy-method` 分别对应注解 `@PostConstruct` 和 `@PreDestroy`
+
 可以简单理解成下面几个流程:
 
 ```mermaid
@@ -294,7 +296,7 @@ public class AppConfig {
 
   在项目中的 resources 下创建一个 `applicationContext.xml` 的配置文件, 内容如下:
 
-  ```xml{16-19}
+  ```xml {7-10}
   <?xml version="1.0" encoding="UTF-8"?>
   <beans xmlns="http://www.springframework.org/schema/beans"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -311,7 +313,7 @@ public class AppConfig {
 
   然后在代码中使用 XML 的方式获取 AppConfig 对象
 
-  ```java{3-4}
+  ```java {3-4}
   public class Test {
       public static void main(String[] args) {
           ApplicationContext context =
@@ -327,7 +329,7 @@ public class AppConfig {
 
     首先创建一个配置类, 如下:
 
-    ```java{1,4}
+    ```java {1,4}
     @Configuration
     public class AppConfiguration {
 
@@ -343,7 +345,7 @@ public class AppConfig {
 
     然后在代码中使用如下的方式获取 AppConfig 对象:
 
-    ```java{3-4}
+    ```java {3-4}
     public class Test {
         public static void main(String[] args) {
             ApplicationContext context =
@@ -357,7 +359,7 @@ public class AppConfig {
 
     更简单的方式, 既不需要依赖于 XML 文件也不需要配置类, 而是直接将 Bean 的创建交给目标类, 仅需要在目标类添加注解就能实现:
 
-    ```java{2,5,8}
+    ```java {2,5,8}
     @Data
     @Component
     public class AppConfig {
@@ -372,7 +374,7 @@ public class AppConfig {
 
     使用的时候跟注解方式是类似的:
 
-    ```java{3-4}
+    ```java {3-4}
     public class Test {
         public static void main(String[] args) {
             ApplicationContext context =
@@ -616,7 +618,7 @@ getBean(beanName) {
         getSingleton(beanName, () -> createBean() {
           doCreateBean() {
             BeanWrapper = createBeanInstance()
-            // 在这里提前暴露对象(存入三级缓存)
+            // 在执行 populateBean() 之前会把 bean 存入三级缓存(提前暴露对象)
             populateBean(BeanWrapper)
           }
         })
@@ -817,7 +819,7 @@ protected Object doCreateBean(String beanName, RootBeanDefinition mbd, @Nullable
 
 可以看下 `addSingletonFactory()` 的逻辑, 很简单, 就是放入三级缓存:
 
-```java{7}
+```java {7}
 protected void addSingletonFactory(String beanName, ObjectFactory<?> singletonFactory) {
     Assert.notNull(singletonFactory, "Singleton factory must not be null");
     synchronized (this.singletonObjects) {
@@ -877,7 +879,7 @@ public interface SmartInstantiationAwareBeanPostProcessor extends InstantiationA
 
 > 暴露对象: 要么是原始对象, 要么是代理对象
 
-```java{6,18}
+```java {6,18}
 public Object getEarlyBeanReference(Object bean, String beanName) {
     Object cacheKey = this.getCacheKey(bean.getClass(), beanName);
     /*
@@ -914,7 +916,7 @@ protected Object wrapIfNecessary(Object bean, String beanName, Object cacheKey) 
 
 再看看一下 `AbstractAutoProxyCreator` 中实现的 `postProcessAfterInitialization()` 方法, 第 4 行就是去判断之前是不是执行过 **[是否需要创建 Bean 的代理对象]** 的逻辑, 如果执行过那就不会再去执行了, 没有循环依赖的对象如果需要代理都是这里产生代理对象的
 
-```java{4}
+```java {4}
 public Object postProcessAfterInitialization(@Nullable Object bean, String beanName) {
     if (bean != null) {
         Object cacheKey = this.getCacheKey(bean.getClass(), beanName);
@@ -933,7 +935,7 @@ public Object postProcessAfterInitialization(@Nullable Object bean, String beanN
 - 三个 map 结构中分别存储什么对象?
   - 一级缓存: 成品
   - 二级缓存: 半成品或者半成品的代理对象
-  - 三级缓存: Lambda 表达式(`getEarlyBeanReference()`)
+  - 三级缓存: 是一个 `ObjectFactory<?>` 对象(函数式接口, 只有一个 `getObject()` 方法), 里面是一个 Lambda 表达式 `() -> getEarlyBeanReference()`
 - 三个 map 缓存的查找对象的顺序是什么样的?
   - 先从一级缓存找, 找不到就从二级缓存找, 找不到再从三级缓存找
 - 如果只有一个 map, 能否解决循环依赖的问题?

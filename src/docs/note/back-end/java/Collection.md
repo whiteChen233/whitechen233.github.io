@@ -146,6 +146,7 @@ Java 迭代器不是集合, 而是一种访问集合的方法, 并且是单向�
 
 ```mermaid
 classDiagram
+  direction LR
   class Iterable~E~ {
     <<interface>>
   }
@@ -325,7 +326,7 @@ ArrayList 有三种方式来初始化:
 
 ArrayList 的扩容机制
 
-```java{36}
+```java {36}
 /**
  * 要分配的最大数组大小
  */
@@ -514,6 +515,7 @@ Map 本身是支持 null 键以及 null 值的
 
 ```mermaid
 classDiagram
+  direction LR
   class Map ~K,V~ {
     <<interface>>
   }

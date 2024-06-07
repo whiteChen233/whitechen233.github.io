@@ -11,7 +11,7 @@ Vuex 是一个专门为 Vue.js 应用程序开发的**状态管理模式**。它
 
 让我们从一个简单的 Vue 计数应用开始：
 
-```javascript
+```js
 new Vue({
   // state
   data() {
@@ -69,7 +69,7 @@ new Vue({
 
 ### NPM
 
-```bash
+```shell
 npm install vuex --save
 ```
 
@@ -105,7 +105,7 @@ Vuex 依赖 Promise 。如果你支持的浏览器并没有实现 Promise (比�
 
 安装 Vuex 之后，让我们来创建一个 store。创建过程直截了当——仅需要提供一个初始 state 对象和一些 mutation：
 
-```javascript
+```js
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -125,7 +125,7 @@ const store = new Vuex.Store({
 
 现在，你可以通过 `store.state` 来获取状态对象，以及通过 `store.commit` 方法触发状态变更：
 
-```javascript
+```js
 store.commit('increment');
 
 console.log(store.state.count); // -> 1
@@ -133,7 +133,7 @@ console.log(store.state.count); // -> 1
 
 为了在 Vue 组件中访问 `this.$store property`，你需要为 Vue 实例提供创建好的 store。Vuex 提供了一个从根组件向所有子组件，以 store 选项的方式"注入"该 store 的机制：
 
-```javascript
+```js
 new Vue({
   el: '#app',
   store,
@@ -142,7 +142,7 @@ new Vue({
 
 现在我们可以从组件的方法提交一个变更：
 
-```javascript
+```js
 methods: {
   increment() {
     this.$store.commit('increment')
@@ -167,7 +167,7 @@ methods: {
 
 当一个组件需要获取多个状态的时候，将这些状态都声明为计算属性会有些重复和冗余。为了解决这个问题，我们可以使用 mapState 辅助函数帮助我们生成计算属性，让你少按几次键：
 
-```javascript
+```js
 // 在单独构建的版本中辅助函数为 Vuex.mapState
 import { mapState } from 'vuex';
 
@@ -190,7 +190,7 @@ export default {
 
 当映射的计算属性的名称与 state 的子节点名称相同时，我们也可以给 mapState 传一个字符串数组。
 
-```javascript
+```js
 computed: mapState([
   // 映射 this.count 为 store.state.count
   'count',
@@ -203,7 +203,7 @@ Vuex 允许我们在 store 中定义"getter"（可以认为是 store 的计算�
 
 Getter 接受 state 作为其第一个参数：
 
-```javascript
+```js
 const store = new Vuex.Store({
   state: {
     todos: [
@@ -223,13 +223,13 @@ const store = new Vuex.Store({
 
 Getter 会暴露为 store.getters 对象，你可以以属性的形式访问这些值：
 
-```javascript
+```js
 store.getters.doneTodos; // -> [{ id: 1, text: '...', done: true }]
 ```
 
 Getter 也可以接受其他 getter 作为第二个参数：
 
-```javascript
+```js
 getters: {
   // ...
   doneTodosCount: (state, getters) => {
@@ -241,7 +241,7 @@ store.getters.doneTodosCount; // -> 1
 
 我们可以很容易地在任何组件中使用它：
 
-```javascript
+```js
 computed: {
   doneTodosCount () {
     return this.$store.getters.doneTodosCount
@@ -255,7 +255,7 @@ computed: {
 
 也可以通过让 getter 返回一个函数，来实现给 getter 传参。在你对 store 里的数组进行查询时非常有用。
 
-```javascript
+```js
 getters: {
   // ...
   getTodoById: (state) => (id) => {
@@ -269,7 +269,7 @@ store.getters.getTodoById(2); // -> { id: 2, text: '...', done: false }
 
 mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性：
 
-```javascript
+```js
 import { mapGetters } from 'vuex';
 
 export default {
@@ -287,7 +287,7 @@ export default {
 
 如果你想将一个 getter 属性另取一个名字，使用对象形式：
 
-```javascript
+```js
 ...mapGetters({
   // 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
   doneCount: 'doneTodosCount'
@@ -298,7 +298,7 @@ export default {
 
 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 **事件类型 (type)** 和 一个 **回调函数 (handler)**。
 
-```javascript
+```js
 const store = new Vuex.Store({
   state: {
     count: 1,
@@ -314,7 +314,7 @@ const store = new Vuex.Store({
 
 你不能直接调用一个 mutation handler。这个选项更像是事件注册："当触发一个类型为 `increment` 的 mutation 时，调用此函数。"要唤醒一个 mutation handler，你需要以相应的 type 调用 store.commit 方法：
 
-```javascript
+```js
 store.commit('increment');
 ```
 
@@ -322,7 +322,7 @@ store.commit('increment');
 
 你可以向 `store.commit` 传入额外的参数，即 mutation 的 **载荷（payload）**：
 
-```javascript
+```js
 // ...
 mutations: {
   increment (state, n) {
@@ -331,13 +331,13 @@ mutations: {
 }
 ```
 
-```javascript
+```js
 store.commit('increment', 10);
 ```
 
 在大多数情况下，载荷应该是一个对象，这样可以包含多个字段并且记录的 mutation 会更易读：
 
-```javascript
+```js
 // ...
 mutations: {
   increment (state, payload) {
@@ -346,7 +346,7 @@ mutations: {
 }
 ```
 
-```javascript
+```js
 store.commit('increment', {
   amount: 10,
 });
@@ -356,7 +356,7 @@ store.commit('increment', {
 
 提交 mutation 的另一种方式是直接使用包含 `type` 属性的对象：
 
-```javascript
+```js
 store.commit({
   type: 'increment',
   amount: 10,
@@ -365,7 +365,7 @@ store.commit({
 
 当使用对象风格的提交方式，整个对象都作为载荷传给 mutation 函数，因此 handler 保持不变：
 
-```javascript
+```js
 mutations: {
   increment (state, payload) {
     state.count += payload.amount
@@ -383,7 +383,7 @@ mutations: {
    - 使用 `Vue.set(obj, 'newProp', 123)` 添加属性, 或者使用 `Vue.delete(obj, 'prop')` 删除属性
    - 以新对象替换老对象。例如，利用对象展开运算符我们可以这样写：
 
-   ```javascript
+   ```js
    state.obj = { ...state.obj, newProp: 123 };
    ```
 
@@ -391,12 +391,12 @@ mutations: {
 
 使用常量替代 mutation 事件类型在各种 Flux 实现中是很常见的模式。这样可以使 linter 之类的工具发挥作用，同时把这些常量放在单独的文件中可以让你的代码合作者对整个 app 包含的 mutation 一目了然：
 
-```javascript
+```js
 // mutation-types.js
 export const SOME_MUTATION = 'SOME_MUTATION';
 ```
 
-```javascript
+```js
 // store.js
 import Vuex from 'vuex'
 import { SOME_MUTATION } from './mutation-types'
@@ -418,7 +418,7 @@ const store = new Vuex.Store({
 
 一条重要的原则就是要记住 **mutation 必须是同步函数**。为什么？请参考下面的例子：
 
-```javascript
+```js
 mutations: {
   someMutation (state) {
     api.callAsyncMethod(() => {
@@ -434,7 +434,7 @@ mutations: {
 
 你可以在组件中使用 `this.$store.commit('xxx')` 提交 mutation，或者使用 `mapMutations` 辅助函数将组件中的 methods 映射为 `store.commit` 调用（需要在根节点注入 `store`）。
 
-```javascript
+```js
 import { mapMutations } from 'vuex';
 
 export default {
@@ -457,7 +457,7 @@ export default {
 
 在 mutation 中混合异步调用会导致程序很难调试。例如，当你调用了两个包含异步回调的 mutation 来改变状态，你怎么知道什么时候回调和哪个先回调呢？这就是为什么我们要区分这两个概念。在 Vuex 中，**mutation 都是同步事务**：
 
-```javascript
+```js
 store.commit('increment');
 // 任何由 "increment" 导致的状态变更都应该在此刻完成。
 ```
@@ -469,7 +469,7 @@ Action 类似于 mutation，不同在于：
 
 一个简单的 action：
 
-```javascript
+```js
 const store = new Vuex.Store({
   state: {
     count: 0,
@@ -491,7 +491,7 @@ Action 函数接受一个与 store 实例具有相同方法和属性的 context 
 
 > 可以使用 ES2015 的参数解构来简化代码：
 >
-> ```javascript
+> ```js
 > actions: {
 >   increment ({ commit }) {
 >     commit('increment')
@@ -503,13 +503,13 @@ Action 函数接受一个与 store 实例具有相同方法和属性的 context 
 
 Action 通过 `store.dispatch` 方法触发：
 
-```javascript
+```js
 store.dispatch('increment');
 ```
 
 乍一眼看上去感觉多此一举，我们直接分发 mutation 岂不更方便？实际上并非如此，还记得 **mutation 必须同步执行**这个限制么？Action 就不受约束！我们可以在 action 内部执行异步操作：
 
-```javascript
+```js
 actions: {
   incrementAsync ({ commit }) {
     setTimeout(() => {
@@ -521,14 +521,14 @@ actions: {
 
 Actions 支持同样的载荷方式和对象方式进行分发：
 
-```javascript
+```js
 // 以载荷形式分发
 store.dispatch('incrementAsync', {
   amount: 10,
 });
 ```
 
-```javascript
+```js
 // 以对象形式分发
 store.dispatch({
   type: 'incrementAsync',
@@ -538,7 +538,7 @@ store.dispatch({
 
 来看一个更加实际的购物车示例，涉及到**调用异步 API 和分发多重 mutation**：
 
-```javascript
+```js
 actions: {
   checkout ({ commit, state }, products) {
     // 把当前购物车的物品备份起来
@@ -563,7 +563,7 @@ actions: {
 
 你在组件中使用 `this.$store.dispatch('xxx')` 分发 action，或者使用 `mapActions` 辅助函数将组件的 methods 映射为 `store.dispatch` 调用（需要先在根节点注入 `store`）：
 
-```javascript
+```js
 import { mapActions } from 'vuex';
 
 export default {
@@ -588,7 +588,7 @@ Action 通常是异步的，那么如何知道 action 什么时候结束呢？�
 
 首先，你需要明白 `store.dispatch` 可以处理被触发的 action 的处理函数返回的 Promise，并且 `store.dispatch` 仍旧返回 Promise：
 
-```javascript
+```js
 actions: {
   actionA ({ commit }) {
     return new Promise((resolve, reject) => {
@@ -603,7 +603,7 @@ actions: {
 
 现在你可以：
 
-```javascript
+```js
 store.dispatch('actionA').then(() => {
   // ...
 });
@@ -611,7 +611,7 @@ store.dispatch('actionA').then(() => {
 
 在另外一个 action 中也可以：
 
-```javascript
+```js
 actions: {
   // ...
   actionB ({ dispatch, commit }) {
@@ -624,7 +624,7 @@ actions: {
 
 最后，如果我们利用 `async / await`，我们可以如下组合 action：
 
-```javascript
+```js
 // 假设 getData() 和 getOtherData() 返回的是 Promise
 
 actions: {
@@ -646,7 +646,7 @@ actions: {
 
 为了解决以上问题，Vuex 允许我们将 store 分割成**模块（module）**。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割：
 
-```javascript
+```js
 const moduleA = {
   state: () => ({ ... }),
   mutations: { ... },
@@ -675,7 +675,7 @@ store.state.b // -> moduleB 的状态
 
 对于模块内部的 mutation 和 getter，接收的第一个参数是**模块的局部状态对象**。
 
-```javascript
+```js
 const moduleA = {
   state: () => ({
     count: 0,
@@ -697,7 +697,7 @@ const moduleA = {
 
 同样，对于模块内部的 action，局部状态通过 `context.state` 暴露出来，根节点状态则为 `context.rootState`：
 
-```javascript
+```js
 const moduleA = {
   // ...
   actions: {
@@ -712,7 +712,7 @@ const moduleA = {
 
 对于模块内部的 getter，根节点状态会作为第三个参数暴露出来：
 
-```javascript
+```js
 const moduleA = {
   // ...
   getters: {
@@ -729,7 +729,7 @@ const moduleA = {
 
 如果希望你的模块具有更高的封装度和复用性，你可以通过添加 `namespaced: true` 的方式使其成为带命名空间的模块。当模块被注册后，它的所有 getter、action 及 mutation 都会自动根据模块注册的路径调整命名。例如：
 
-```javascript
+```js
 const store = new Vuex.Store({
   modules: {
     account: {
@@ -780,7 +780,7 @@ const store = new Vuex.Store({
 
 若需要在全局命名空间内分发 action 或提交 mutation，将 `{ root: true }` 作为第三参数传给 `dispatch` 或 `commit` 即可。
 
-```javascript
+```js
 modules: {
   foo: {
     namespaced: true,
@@ -818,7 +818,7 @@ modules: {
 
 若需要在带命名空间的模块注册全局 action，你可添加 `root: true`，并将这个 action 的定义放在函数 `handler` 中。例如：
 
-```javascript
+```js
 {
   actions: {
     someOtherAction ({dispatch}) {
@@ -844,7 +844,7 @@ modules: {
 
 当使用 `mapState`, `mapGetters`, `mapActions` 和 `mapMutations` 这些函数来绑定带命名空间的模块时，写起来可能比较繁琐：
 
-```javascript
+```js
 computed: {
   ...mapState({
     a: state => state.some.nested.module.a,
@@ -861,7 +861,7 @@ methods: {
 
 对于这种情况，你可以将模块的空间名称字符串作为第一个参数传递给上述函数，这样所有绑定都会自动将该模块作为上下文。于是上面的例子可以简化为：
 
-```javascript
+```js
 computed: {
   ...mapState('some/nested/module', {
     a: state => state.a,
@@ -878,7 +878,7 @@ methods: {
 
 而且，你可以通过使用 `createNamespacedHelpers` 创建基于某个命名空间辅助函数。它返回一个对象，对象里有新的绑定在给定命名空间值上的组件绑定辅助函数：
 
-```javascript
+```js
 import { createNamespacedHelpers } from 'vuex';
 
 const { mapState, mapActions } = createNamespacedHelpers('some/nested/module');
@@ -902,7 +902,7 @@ export default {
 
 如果你开发的插件（Plugin）提供了模块并允许用户将其添加到 Vuex store，可能需要考虑模块的空间名称问题。对于这种情况，你可以通过插件的参数对象来允许用户指定空间名称：
 
-```javascript
+```js
 // 通过插件的参数对象得到空间名称
 // 然后返回 Vuex 插件函数
 export function createPlugin(options = {}) {
@@ -918,7 +918,7 @@ export function createPlugin(options = {}) {
 
 在 store 创建之后，你可以使用 `store.registerModule` 方法注册模块：
 
-```javascript
+```js
 import Vuex from 'vuex';
 
 const store = new Vuex.Store({
@@ -959,7 +959,7 @@ store.registerModule(['nested', 'myModule'], {
 
 实际上这和 Vue 组件内的 `data` 是同样的问题。因此解决办法也是相同的——使用一个函数来声明模块状态（仅 2.3.0+ 支持）：
 
-```javascript
+```js
 const MyReusableModule = {
   state: () => ({
     foo: 'bar',

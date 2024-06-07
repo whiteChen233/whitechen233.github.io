@@ -45,12 +45,19 @@ export default hopeTheme(
       },
     },
     plugins: {
+      blog: true,
+      shiki: {
+        langs: ['java', 'javascript', 'typescript', 'shellscript', 'markdown', 'xml', 'html', 'text', 'vue', 'json'],
+        themes: {
+          light: 'slack-ochin',
+          dark: 'slack-dark'
+        },
+      },
       // 评论
       comment: {
         provider: 'Waline',
         serverURL: 'https://comment.white233.top',
       },
-      blog: true,
       mdEnhance: {
         // 选项卡
         tabs: true,

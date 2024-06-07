@@ -174,7 +174,9 @@ flowchart TD
     e. JVM 将抛出 java.lang.OutOfMemoryError: Unable to create new native thread 错误
 
 [^2]: 有一种内核作业（Kernel Job）名为 Out of Memory Killer, 它会在可用内存极低的情况下"杀死"（kill）某些进程. OOM Killer 会对所有进程进行打分, 然后将评分较低的进程"杀死", 具体的评分规则可以参考 Surviving the Linux OOM Killer
+
 [^3]: JVM 在为数组分配内存前, 会检查要分配的数据结构在系统中是否可寻址, 通常为 `Integer.MAX_VALUE - 2`
+
 [^4]: Java 允许应用程序通过 Direct ByteBuffer 直接访问堆外内存, 许多高性能程序通过 Direct ByteBuffer 结合内存映射文件（Memory Mapped File）实现高速 IO
 
 :::

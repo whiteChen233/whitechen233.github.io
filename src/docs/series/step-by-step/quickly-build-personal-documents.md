@@ -149,7 +149,7 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
 
 一个页面的 `title` 标签是由侧边栏中选中条目的名称所生成的. 为了更好的 SEO , 可以在指定文件后面指定页面标题.
 
-```markdown
+```md
 <!-- docs/_sidebar.md -->
 
 - [Home](/)
@@ -160,7 +160,7 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
 
 当设置了 `subMaxLevel` 时, 默认情况下每个标题都会自动添加到目录中. 如果需要忽略特定的标题, 可以添加 `<!-- {docsify-ignore} -->`
 
-```markdown
+```md
 # 一级标题
 
 ## 二级标题 <!-- {docsify-ignore} -->
@@ -168,7 +168,7 @@ docs/pages/page2.md   => http://localhost:3000/pages/page2
 
 如果需要忽略整个页面上所有的标题, 在页面的第一个标题上使用 `<!-- {docsify-ignore-all} -->`
 
-```markdown
+```md
 # 一级标题 <!-- {docsify-ignore-all} -->
 
 ## 二级标题
@@ -208,7 +208,7 @@ docsify 也支持自定义导航栏, 可以通过 HTML 和 Markdown 两种方式
 
 如果导航内容比较多, 可以写成嵌套的列表, docsify 会将其渲染成下拉列表的样式
 
-```markdown
+```md
 <!-- _navbar.md -->
 
 - 导航一
@@ -233,7 +233,7 @@ docsify 也支持自定义导航栏, 可以通过 HTML 和 Markdown 两种方式
 
 docsify 默认的背景是随机生成的渐变色, 可以通过在 `_coverpage.md` 末尾添加图片的 Markdown 语法来设置背景, 支持图片和颜色
 
-```markdown
+```md
 <!-- _coverpage.md -->
 
 [GitHub](https://github.com/whiteChen233/whitechen233.github.io)
@@ -408,7 +408,7 @@ window.$docsify = {
 
 然后需要创建一个 `_coverpage.md`
 
-```markdown
+```md
 <!-- _coverpage.md -->
 
 ![logo](_media/icon.svg)
@@ -477,7 +477,7 @@ window.$docsify = {
 
 在初始化的基础上添加一个 `page1.md`, `pages\README.md`, 然后需要创建一个 `_sidebar.md`, 内容如下
 
-```markdown
+```md
 - 目录
   - [pages](pages/)
   - [index](README.md)
@@ -519,7 +519,7 @@ window.$docsify = {
 
 创建 `_navbar.md` 文件
 
-```markdown
+```md
 <!-- _navbar.md -->
 
 - [En](/)
@@ -567,7 +567,7 @@ window.$docsify = {
 
 如果在侧边栏中有指向主页的链接, 并希望它在访问根网址时显示为活动状态, 请确保相应地更新侧边栏
 
-```markdown
+```md
 - Sidebar
   - [Home](/)
   - [Another page](page.md)
@@ -799,7 +799,7 @@ CSS 的压缩文件位于 `/lib/themes/`
 
 如果需要忽略某张图片
 
-```markdown
+```md
 ![](image.png ':no-zoom')
 ```
 

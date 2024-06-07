@@ -5,7 +5,7 @@ date: 2021-08-27
 
 以前在前端开发时会有一种情况：一个请求需要依赖另一个请求，如此循环嵌套，就形成了网络请求的回调地狱。
 
-```javascript
+```ts
 $.ajax('url1', function (data1) {
   // 一些逻辑处理 ...
   $.ajax('url2', function (data2) {
@@ -38,7 +38,7 @@ ES6 中一个非常重要的和好用的特性就是 Promise。
 
 待定状态的 Promise 对象要么会通过一个值被兑现（fulfilled），要么会通过一个原因（错误）被拒绝（rejected）。当这些情况之一发生时，我们用 promise 的 then 方法排列起来的相关处理程序就会被调用。如果 promise 在一个相应的处理程序被绑定时就已经被兑现或被拒绝了，那么这个处理程序就会被调用，因此在完成异步操作和绑定处理方法之间不会存在竞争状态。
 
-```javascript
+```ts
 new Promise((resolve, reject) => {
   setTimeout(() => {
     // 成功的时候调用 resolve
@@ -65,7 +65,7 @@ new Promise((resolve, reject) => {
 
 ### 语法
 
-```javascript
+```ts
 p.then(onFulfilled[, onRejected])
 
 p.then(value => {
@@ -102,7 +102,7 @@ p.then(value => {
 
 ### 语法
 
-```javascript
+```ts
 p.catch(onRejected);
 
 p.catch(function (reason) {

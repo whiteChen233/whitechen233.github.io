@@ -54,7 +54,7 @@ date: 2021-08-17
 1. URL 的 hash：URL 的 hash 也就是锚点(#)，本质上是改变`window.location`的`href`属性，可以直接通过`location.hash`来改变`href`，但是页面不会发生刷新。
 2. 当页面中的 hash 发生变化时，会触发`hashchange`事件，可以通过监听这个事件来判断路由是否发生了变化。
 
-```javascript
+```js
 window.addEventListener(
   'hashchange',
   (event) => {
@@ -80,7 +80,7 @@ History API：
 2. 向前跳转：`window.history.forward()`，这和用户点击浏览器前进按钮的效果相同。
 3. 跳转到 history 中指定的一个点: `window.history.go()`，用`go()`方法载入到会话历史中的某一特定页面，通过与当前页面相对位置来标志 (当前页面的相对位置标志为 0).
 
-   ```javascript
+   ```js
    window.history.go(-1); // 相当于 back()
    window.history.go(1); // 相当于 forward()
 
@@ -135,7 +135,7 @@ vue-router 是基于路由和组件的，路由用于设定访问路径，将路
 
 执行以下命令安装 vue-router：
 
-```bash
+```shell
 npm install vue-router --save
 ```
 
@@ -145,7 +145,7 @@ npm install vue-router --save
 - 第二步：创建**路由实例**，并且传入路由**映射配置**
 - 第三步：在**Vue 实例**中**挂载**创建的**路由实例**
 
-```javascript
+```js
 // /router/index.ts
 import Vue from 'vue'
 import VueRoter from 'vue-router'
@@ -179,7 +179,7 @@ export default new Vue ({
 - 第二步：配置路由映射：组件和路径映射关系
 - 第三步：使用路由：`<router-link>`和`<router-view>`
 
-```javascript
+```js
 // router/index.ts
 
 // 创建VueRouter对象
@@ -228,7 +228,7 @@ const routers = [
 
 一般情况下，进入网站首页希望默认渲染某个页面的内容，在之前的例子中需要在 routers 中添加如下代码即可：
 
-```javascript
+```js
 // 配置一个根路径的映射，重定向到/home
 {
   path: '/',
@@ -240,7 +240,7 @@ const routers = [
 
 默认情况下，vue-router 是使用 hash 模式的，也就是 url 上会带上一个`#`，这样不太美观，通过修改 router 的 mode 属性来变更为 history 模式
 
-```javascript
+```js
 // 添加 mode 属性
 export default new VueRouter({
   routers,
@@ -267,7 +267,7 @@ export default new VueRouter({
 
 在某些情况下，一个页面的路径可能时不确定的，比如某个系统中用户界面，形如：`/user/zhangsan`、`/user/123`，除了前面的`/user`之外，后面还有其他参数。这种 path 和 Component 的匹配关系，称之为动态路由（也是路由传递数据的一种方式）。
 
-```javascript
+```js
 // router.js
 {
   path: '/user/:id',
@@ -289,7 +289,7 @@ methods: {
 
 复用组件时，想对路由参数的变化作出响应的话，你可以简单地`watch`(监测变化)`$route`对象：
 
-```javascript
+```js
 const User = {
   template: '...',
   watch: {
@@ -302,7 +302,7 @@ const User = {
 
 或者使用 2.2 中引入的`beforeRouteUpdate`导航守卫：
 
-```javascript
+```js
 const User = {
   template: '...',
   beforeRouteUpdate(to, from, next) {
@@ -320,7 +320,7 @@ const User = {
 
 首先，可以将异步组件定义为返回一个 Promise 的工厂函数 (该函数返回的 Promise 应该 resolve 组件本身)：
 
-```javascript
+```js
 const Foo = () =>
   Promise.resolve({
     /* 组件定义对象 */
@@ -329,19 +329,19 @@ const Foo = () =>
 
 第二，在 Webpack 2 中，我们可以使用动态 import (opens new window)语法来定义代码分块点 (split point)：
 
-```javascript
+```js
 import('./Foo.vue'); // 返回 Promise
 ```
 
 结合这两者，这就是如何定义一个能够被 Webpack 自动代码分割的异步组件。
 
-```javascript
+```js
 const Foo = () => import('./Foo.vue');
 ```
 
 在路由配置中什么都不需要改变，只需要像往常一样使用 Foo：
 
-```javascript
+```js
 const router = new VueRouter({
   routes: [{ path: '/foo', component: Foo }],
 });
@@ -351,7 +351,7 @@ const router = new VueRouter({
 
 1. 结合 Vue 的异步组件和 webpack 的代码分析
 
-   ```javascript
+   ```js
    const Home = (resolve) => {
      require.ensure(['../components/Home.vue'], () => {
        resolve(require('../components/Home.vue'));
@@ -361,13 +361,13 @@ const router = new VueRouter({
 
 2. AMD 写法
 
-   ```javascript
+   ```js
    const Home = (resolve) => require(['../components/Home.vue'], resolve);
    ```
 
 3. 在 ES6 中，可以使用跟简单的写法来组织 Vue 一部组件和 Webpack 的代码分割
 
-   ```javascript
+   ```js
    const Home = () => import('../components/Home.vue');
    ```
 
@@ -375,7 +375,7 @@ const router = new VueRouter({
 
 有时候我们想把某个路由下的所有组件都打包在同个异步块 (chunk) 中。只需要使用 命名 chunk (opens new window)，一个特殊的注释语法来提供 chunk name (需要 Webpack > 2.4)。
 
-```javascript
+```js
 const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue');
 const Bar = () => import(/* webpackChunkName: "group-foo" */ './Bar.vue');
 const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue');
@@ -392,7 +392,7 @@ Webpack 会将任何一个异步模块与相同的块名称组合到相同的异
 - 创建对应的子组件，并且在路由映射中配置对应的子路由
 - 在组件内部使用`<router-view>`标签
 
-```javascript
+```js
 {
   path: '/home',
   component: () => import('../components/Home'),
@@ -439,7 +439,7 @@ Webpack 会将任何一个异步模块与相同的块名称组合到相同的异
 
 使用`router.beforeEach`注册一个全局前置守卫：
 
-```javascript
+```js
 const router = new VueRouter({ ... })
 
 router.beforeEach((to, from, next) => {
@@ -477,7 +477,7 @@ router.beforeEach((to, from, next) => {
 
 你也可以注册全局后置钩子，然而和守卫不同的是，这些钩子不会接受 next 函数也不会改变导航本身：
 
-```javascript
+```js
 router.afterEach((to, from) => {
   // ...
 });
@@ -487,7 +487,7 @@ router.afterEach((to, from) => {
 
 你可以在路由配置上直接定义`beforeEnter`守卫：
 
-```javascript
+```js
 const router = new VueRouter({
   routes: [
     {
@@ -511,7 +511,7 @@ const router = new VueRouter({
 - beforeRouteUpdate (2.2 新增)
 - beforeRouteLeave
 
-```javascript
+```js
 const Foo = {
   template: `...`,
   beforeRouteEnter(to, from, next) {
@@ -536,7 +536,7 @@ const Foo = {
 
 不过，你可以通过传一个回调给`next`来访问组件实例。在导航被确认的时候执行回调，并且把组件实例作为回调方法的参数。
 
-```javascript
+```js
 beforeRouteEnter (to, from, next) {
   next(vm => {
     // 通过 `vm` 访问组件实例
@@ -546,7 +546,7 @@ beforeRouteEnter (to, from, next) {
 
 注意`beforeRouteEnter`是支持给`next`传递回调的唯一守卫。对于`beforeRouteUpdate`和`beforeRouteLeave`来说，`this`已经可用了，所以不支持传递回调，因为没有必要了。
 
-```javascript
+```js
 beforeRouteUpdate (to, from, next) {
   // just use `this`
   this.name = to.params.name
@@ -556,7 +556,7 @@ beforeRouteUpdate (to, from, next) {
 
 这个离开守卫通常用来禁止用户在还未保存修改前突然离开。该导航可以通过`next(false)`来取消。
 
-```javascript
+```js
 beforeRouteLeave (to, from, next) {
   const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
   if (answer) {
@@ -621,7 +621,7 @@ beforeRouteLeave (to, from, next) {
 
 2. 利用 meta 属性
 
-```javascript
+```js
 export default [
   {
     path: '/',

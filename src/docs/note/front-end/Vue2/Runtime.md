@@ -15,7 +15,7 @@ date: 2021-07-17
 
 使用 runtime-only 的写法
 
-```javascript
+```js
 // main.js
 new Vue({
   el: '#app',
@@ -25,7 +25,7 @@ new Vue({
 
 使用 runtime-compiler 的写法
 
-```javascript
+```js
 // main.js
 new Vue({
   el: '#app',
@@ -36,7 +36,7 @@ new Vue({
 
 runtime-only 中的函数 h，实际上是 createElement 函数。所以上面这种写法可以改成如下
 
-```javascript
+```js
 // createElement 的一种用法: createElement('标签',{标签的属性},[内容])
 new Vue({
   el: '#app',

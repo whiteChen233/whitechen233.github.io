@@ -30,7 +30,7 @@ date: 2021-07-17
 
 ### CommonJS 中的使用
 
-```javascript
+```js
 // 以下代码需要运行环境支持
 
 // 导出
@@ -56,7 +56,7 @@ const test = _moduleA.test;
 
 导出的功能都是由 named exports 组成— 每个项目（无论是函数，常量等）在导出时都由其名称引用，并且该名称也用于在导入时引用它
 
-```javascript
+```js
 // 导出
 // 方式一
 export const flag = true;
@@ -77,7 +77,7 @@ import { flag, test } from 'moduleA';
 
 还有一种导出类型叫做 default export —这样可以很容易地使模块提供默认功能，并且还可以帮助 JavaScript 模块与现有的 CommonJS 和 AMD 模块系统进行互操作
 
-```javascript
+```js
 // 默认导出，一个模块只能有一个default
 export default {};
 
@@ -87,7 +87,7 @@ import customName from 'ModuleA';
 
 #### 重命名导出与导入
 
-```javascript
+```js
 // 重命名导出
 export { function1 as newFunc1, function2 as newFunc2 };
 
@@ -95,7 +95,7 @@ export { function1 as newFunc1, function2 as newFunc2 };
 import { newFunc1, newFunc2 } from 'moduleA';
 ```
 
-```javascript
+```js
 // 导出
 export { function1, function2 };
 
@@ -107,7 +107,7 @@ import { function1 as newFunc1, function2 as newFunc2 } from 'moduleA';
 
 导入每一个模块功能到一个模块功能对象上。可以使用以下语法形式：
 
-```javascript
+```js
 // 导入
 import * as ModuleA from 'moduleA';
 

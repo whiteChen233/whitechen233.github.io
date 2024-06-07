@@ -25,7 +25,7 @@ webpack 需要 nodejs 的环境，使用 nodejs 中的包管理器 npm 安装 we
 
 output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。
 
-```javascript
+```js
 // webpack.config.js
 const path = require('path');
 
@@ -71,7 +71,7 @@ loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身�
 1. test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。
 2. use 属性，表示进行转换时，应该使用哪个 loader。
 
-```javascript
+```js
 // webpack.config.js
 const path = require('path');
 
@@ -108,7 +108,7 @@ module.exports = config;
 
 使用 babel 这个 loader 可以将 ES6 的语法转换成 ES5，使用这条命令安装`npm install babel-loader babel-core babel-preset-2015`
 
-```javascript
+```js
 // webpack.config.js
 module.exports = {
   // ...
@@ -162,7 +162,7 @@ module.exports = {
 
 上面的代码使用的是 runtime-only 但是却包含了 template(`<div id="app"></div>`),所以代码执行不了
 
-```javascript
+```js
 //webpack.config.js
 //其实就是取别名，找到以 vue 结尾的，就去node_modules重新查一下路径
 module.exports = {
@@ -222,7 +222,7 @@ plugin 是插件的意思，通常是对于某个现有 框架进行拓展。web
 
 Bannerplugin: 为打包文件添加版权声明，是 webpack 自带的
 
-```javascript
+```js
 // webpack.config.js
 const webpack = require('webpack');
 moduke.exports = {
@@ -239,7 +239,7 @@ HtmlWebpackPlugin：自动生成 index.html 文件，将打包的 js 文件自�
 
 配置：
 
-```javascript
+```js
 // webpack.config.js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
@@ -261,7 +261,7 @@ module.exports = {
 
 配置：
 
-```javascript
+```js
 // webpack.config.js
 const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
@@ -281,7 +281,7 @@ webpack 提供了一个可选的本地开发服务器，这个本地服务器基
 - inline: 页面实时刷新
 - historyApiFallback: 在 SPA 页面中，依赖 HTML5 的 history 模式
 
-```javascript
+```js
 // webpack.config.js
 module.exports = {
   // ...
@@ -304,7 +304,7 @@ module.exports = {
 
 在分离之前，需要先安装`webpack-merge`来合并分离后的配的文件，使用`npm install --save-dev webpack-merge`安装
 
-```javascript
+```js
 // base.config.js、dev.config.js、prod.config.js在同一个文件夹中
 
 // base.config.js
@@ -339,7 +339,7 @@ module.exports = webpackMerge(baseConfig, {
 
 修改之后需要将`package.json`中的 script 脚本修改一下：
 
-```javascript
+```js
 /**
  * 假设文件结构如下
  * - packasge.json
